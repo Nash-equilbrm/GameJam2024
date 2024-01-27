@@ -16,7 +16,7 @@ public class SatelliteObject : MonoBehaviour
     private float startAngle;
     private float curentAngle = 0f;        // Góc hiện tại
 
-    private void Start()
+    private void OnEnable()
     {
         float f = (float)Math.PI / 2f;
         curentAngle = startAngle * f;
