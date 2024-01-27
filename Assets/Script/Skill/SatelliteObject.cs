@@ -21,6 +21,18 @@ public class SatelliteObject : MonoBehaviour
         float f = (float)Math.PI / 2f;
         curentAngle = startAngle * f;
     }
+    private void OnDisable()
+    {
+        foreach(var o in playerController.Darts)
+        {
+            if (o.active)
+            {
+                return;
+            }
+        }
+        playerController.isSkillCasting = false;
+        playerController.currentSkillCD = playerController.skillCD;
+    }
     void Update()
     {
         if (!playerController.photonView.IsMine) { return; }

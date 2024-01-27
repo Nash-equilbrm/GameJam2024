@@ -18,12 +18,11 @@ public class PlayerController : MonoBehaviour
     private bool _isFacingRight = true;
     public GameObject[] Darts;
 
-    private bool isSkillCasting = false;
-    [SerializeField]
-    private float skillCD = 5f;
+    public bool isSkillCasting = false;
+    public float skillCD = 5f;
     [SerializeField]
     private float skillTime = 3f;
-    private float currentSkillCD = 0f;
+    public float currentSkillCD = 0f;
     private float currentSkillTime = 0f;
 
     public PhotonView photonView;
