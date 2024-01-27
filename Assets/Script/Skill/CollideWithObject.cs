@@ -17,9 +17,9 @@ public class CollideWithObject : MonoBehaviour
         if (collision.CompareTag("LocalPlayer"))
         {
             Vector3 collisionPosition = collision.transform.position - transform.position;
-            Debug.Log("Collision Position: " + collisionPosition.normalized);
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            rb.AddForce((collisionPosition.x>0?1:-1) * impactForce*Vector2.one.normalized, ForceMode2D.Impulse);
+            rb.AddForce(new Vector2((collisionPosition.x>0?1:-1) * impactForce,-1*impactForce), ForceMode2D.Impulse);
+            Debug.Log(rb.velocity);
             PlayerController playerController = collision.GetComponent<PlayerController>();
             playerController.canMove = false;
             playerController.time = 3f;
