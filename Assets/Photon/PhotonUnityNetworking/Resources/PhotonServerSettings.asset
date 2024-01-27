@@ -44,6 +44,8 @@ MonoBehaviour:
   - DartCollide
   - UseSkill
   - SetActiveObject_RPC
+  - SetActiveObbstacle_RPC
+  - SetActiveObstacle_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

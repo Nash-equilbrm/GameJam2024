@@ -279,6 +279,10 @@ PrefabInstance:
       propertyPath: photonView
       value: 
       objectReference: {fileID: 563578014363995891}
+    - target: {fileID: 248498298129332287, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: impactForce
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1593057742377930498, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.023
@@ -351,6 +355,10 @@ PrefabInstance:
       propertyPath: photonView
       value: 
       objectReference: {fileID: 9005017715662557601}
+    - target: {fileID: 4605792083586555805, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: impactForce
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4913437530917309651, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 
@@ -363,6 +371,10 @@ PrefabInstance:
       propertyPath: photonView
       value: 
       objectReference: {fileID: 7940767254499580572}
+    - target: {fileID: 5666547405384146812, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: impactForce
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6101781432452861127, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 
@@ -371,6 +383,10 @@ PrefabInstance:
       propertyPath: photonView
       value: 
       objectReference: {fileID: 5727854409260741453}
+    - target: {fileID: 6314661230764283120, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: impactForce
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7527645011173038861, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 

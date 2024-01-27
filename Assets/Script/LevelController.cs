@@ -199,5 +199,6 @@ public class LevelController : MonoBehaviour
         }
 
         GenerateEndBlock(mapCode);
+
     }
 }
