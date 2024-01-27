@@ -19,7 +19,7 @@ public class CollideWithObject : MonoBehaviour
             Vector3 collisionPosition = collision.transform.position - transform.position;
             Debug.Log("Collision Position: " + collisionPosition.normalized);
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            rb.AddForce(collisionPosition * impactForce*Vector2.right, ForceMode2D.Impulse);
+            rb.AddForce((collisionPosition.x>0?1:-1) * impactForce*Vector2.one.normalized, ForceMode2D.Impulse);
             PlayerController playerController = collision.GetComponent<PlayerController>();
             playerController.canMove = false;
             playerController.time = 3f;

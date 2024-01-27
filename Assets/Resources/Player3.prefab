@@ -192,8 +192,10 @@ MonoBehaviour:
   - {fileID: 5225226103149724264}
   - {fileID: 5910523229671863695}
   - {fileID: 2916033930376718995}
+  isSkillCasting: 0
   skillCD: 1
   skillTime: 100
+  currentSkillCD: 0
   photonView: {fileID: 3715272576747707929}
   canMove: 0
   time: 0
@@ -279,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 563578014363995891}
     - target: {fileID: 248498298129332287, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: impactForce
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1593057742377930498, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -355,7 +357,7 @@ PrefabInstance:
       objectReference: {fileID: 9005017715662557601}
     - target: {fileID: 4605792083586555805, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: impactForce
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4913437530917309651, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
@@ -371,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 7940767254499580572}
     - target: {fileID: 5666547405384146812, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: impactForce
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6101781432452861127, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
@@ -383,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 5727854409260741453}
     - target: {fileID: 6314661230764283120, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: impactForce
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7527645011173038861, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
