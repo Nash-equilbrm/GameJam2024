@@ -8,7 +8,7 @@ using Photon.Pun;
 using HaloKero.Multiplayer;
 using Unity.VisualScripting;
 using HaloKero.UI;
-using HaloKero.Lobby;
+using ExitGames.Client.Photon;
 
 
 
@@ -33,8 +33,7 @@ namespace HaloKero.Gameplay
             UIManager.Instance.HideAllNotifies();
 
             UIManager.Instance.ShowScreen<LobbyScreen>(forceShowData: true);
-            _context.Register(EventID.OnPlayerEnter, _context.GetAllLobbyRegister);
-            _context.Register(EventID.StartGamePlay, _context.CheckStartGameRequirements);
+          
 
 
             foreach (var p in PhotonNetwork.PlayerList)
@@ -42,31 +41,23 @@ namespace HaloKero.Gameplay
                 _context.Broadcast(EventID.SetPlayerID, p.ActorNumber);
             }
 
+            _context.Register(EventID.StartGamePlay, StartGameplay);
+        }
 
 
-
+        private void StartGameplay(object data = null)
+        {
+            UIManager.Instance.HideAllScreens();
+            GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
         }
 
         public override void Exit()
         {
-            _context.Unregister(EventID.OnPlayerEnter, _context.GetAllLobbyRegister);
-            _context.Unregister(EventID.StartGamePlay, _context.CheckStartGameRequirements);
+            _context.Unregister(EventID.StartGamePlay, StartGameplay);
         }
 
-        //public override void LogicUpdate()
-        //{
-        //    foreach (var register in _context.PlayerLobbyRegisters)
-        //    {
-        //        if (!register.IsReady)
-        //        {
-        //            return;
-        //        }
-        //    }
 
-        //    // go to new scene
-        //    UIManager.Instance.HideAllScreens();
-        //    GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
-        //}
+
     }
 }
 

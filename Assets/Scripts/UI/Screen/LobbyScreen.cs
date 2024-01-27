@@ -1,5 +1,4 @@
 using HaloKero.Gameplay;
-using HaloKero.Lobby;
 using HaloKero.UI.Overlap;
 using HaloKero.UI.Popup;
 using Photon.Pun;
@@ -8,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using ExitGames.Client.Photon;
+using Photon.Realtime;
 
 
 
@@ -40,7 +40,7 @@ namespace HaloKero.UI
             base.Show(data);
             this.Register(EventID.OnPlayerEnter, SetUpPlayerSlot);
             this.Register(EventID.SetPlayerID, SetUpPlayerSlot);
-            _getReadyBtn.onClick.AddListener(StartGame);
+            _getReadyBtn.onClick.AddListener(StartGameBtn);
             _openSettingBtn.onClick.AddListener(OpenSettingPopup);
 
 
@@ -51,7 +51,7 @@ namespace HaloKero.UI
             Relocalize();
         }
 
-        private void StartGame()
+        private void StartGameBtn()
         {
             //this.Broadcast(EventID.StartGamePlay);
             if (_getReadyBtnTxt.text == ready)
@@ -70,16 +70,27 @@ namespace HaloKero.UI
             }
             else
             {
-                foreach(var p in PhotonNetwork.PlayerList)
+                foreach (var p in PhotonNetwork.PlayerList)
                 {
-                    if ((bool)p.CustomProperties["ready"] == false)
+                    if (p.CustomProperties.TryGetValue("ready", out object readyObj))
                     {
-                        return;
+                        bool ready = (bool)readyObj;
+                        if (!ready)
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        // Handle the case where "ready" custom property is not found
+                        Debug.LogWarning("Custom property 'ready' not found for player: " + p.ActorNumber);
                     }
                 }
                 // start game
-                UIManager.Instance.HideAllScreens();
-                GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
+                PhotonNetwork.RaiseEvent((byte)EventID.StartGamePlay, null, new RaiseEventOptions { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
+
+
+                
             }
         }
 
@@ -120,6 +131,10 @@ namespace HaloKero.UI
             //_getReadyBtnTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.GET_READY_BTN;
             _getReadyBtnTxt.text = ready;
         }
+
+
+
+        
     }
 }
 

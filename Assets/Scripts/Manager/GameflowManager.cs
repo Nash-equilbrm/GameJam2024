@@ -2,7 +2,6 @@ using Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using HaloKero.Lobby;
 using System.Linq;
 
 
@@ -13,13 +12,13 @@ namespace HaloKero.Gameplay
         [Header("Lobby Management")]
         public GameObject playerLobbyRegisterPrefab;
         [SerializeField] private GameObject[] _playerDummyPrefabs;
-        [SerializeField] private List<PlayerLobbyRegister> _playerLobbyRegisters;
+        //[SerializeField] private List<PlayerLobbyRegister> _playerLobbyRegisters;
 
         private int _localPlayerID = -1;
         private bool _gameSceneLoaded = false;
         public GameObject LocalPlayerDummyPrefabs => _playerDummyPrefabs[_localPlayerID];
         public GameObject[] PlayerDummyPrefabs { get => _playerDummyPrefabs; }
-        public List<PlayerLobbyRegister> PlayerLobbyRegisters { get => _playerLobbyRegisters; }
+        //public List<PlayerLobbyRegister> PlayerLobbyRegisters { get => _playerLobbyRegisters; }
 
 
 
@@ -71,57 +70,8 @@ namespace HaloKero.Gameplay
 
 
 
-        internal void GetAllLobbyRegister(object data = null)
-        {
-            StartCoroutine(GetAllLobbyRegisterCoroutine());
-        }
-
-        IEnumerator GetAllLobbyRegisterCoroutine()
-        {
-            Debug.Log("Get player");
-
-            //delay for network
-            yield return new WaitForSeconds(.5f);
-            _playerLobbyRegisters.Clear();
-            _playerLobbyRegisters = FindObjectsOfType<PlayerLobbyRegister>().Select(x => x).ToList();
-        }
 
 
-        internal void CheckStartGameRequirements(object data = null)
-        {
-            if (_playerLobbyRegisters.Count <= 1)
-            {
-                Debug.Log("Need more players");
-                return;
-            }
-            foreach (var register in _playerLobbyRegisters)
-            {
-                if (register.photonView.IsMine && register.IsReady)
-                {
-                    Debug.Log("Player set unready");
-                    return;
-                }
-                else if (!register.photonView.IsMine && !register.IsReady)
-                {
-                    Debug.Log("Wait for all player to be ready");
-                    return;
-                }
-            }
-
-            // go to new scene
-        }
-
-
-        public void StartGameplay()
-        {
-            if (_playerLobbyRegisters.Count > 1 && !_gameSceneLoaded)
-            {
-                //Debug.Log("Start new gameplay here");
-                //PhotonNetwork.Instantiate(_playerDummyPrefabs[PhotonNetwork.LocalPlayer.ActorNumber].name, Vector3.zero, Quaternion.identity);
-                UIManager.Instance.HideAllScreens();
-                GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
-            }
-        }
 
     }
 }

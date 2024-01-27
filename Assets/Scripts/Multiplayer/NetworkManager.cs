@@ -1,7 +1,10 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 namespace HaloKero.Multiplayer
 {
-    public class NetworkManager : MonoBehaviourPunCallbacks
+    public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         private void Start()
         {
@@ -73,6 +76,7 @@ namespace HaloKero.Multiplayer
         public override void OnJoinedRoom()
         {
             this.Broadcast(EventID.OnJoinRoomSuccess);
+            Debug.Log("player join: " + PhotonNetwork.PlayerList.Count());
         }
 
 
@@ -100,6 +104,13 @@ namespace HaloKero.Multiplayer
             }
         }
 
+        public void OnEvent(EventData photonEvent)
+        {
+            if (photonEvent.Code == (int)EventID.StartGamePlay)
+            {
+                this.Broadcast(EventID.StartGamePlay);
+            }
+        }
     }
 }
 
