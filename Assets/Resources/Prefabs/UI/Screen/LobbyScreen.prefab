@@ -935,6 +935,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476c8395a07b61b41b4527d7516e0340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settingBtnTxt: {fileID: 3757557407649271885}
+  _getReadyBtnTxt: {fileID: 2963695316174379951}
+  _getReadyBtn: {fileID: 2094235008690797518}
+  _openSettingBtn: {fileID: 2327808133508766044}
   _characters:
   - {fileID: 8275212456006495960}
   - {fileID: 8675265282550045930}

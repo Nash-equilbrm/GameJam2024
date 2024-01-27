@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using HaloKero.UI.Popup;
+using Photon.Pun;
 
 
 namespace HaloKero.Gameplay
@@ -43,17 +44,16 @@ namespace HaloKero.Gameplay
             UIManager.Instance.HideAllPopups();
             UIManager.Instance.HideAllNotifies();
 
-            if (SceneManager.GetSceneByBuildIndex(1).isLoaded)
-            {
-                SceneManager.UnloadSceneAsync(1);
-            }
+
             UIManager.Instance.ShowScreen<MainMenuScreen>(forceShowData: true);
         }
 
         private void LoadLobbyScene(object data = null)
         {
-            UIManager.Instance.ShowScreen<LoadingScreen>(forceShowData: true);
-            _context.StartCoroutine(LoadAsync(1));
+            //UIManager.Instance.ShowScreen<LoadingScreen>(forceShowData: true);
+            //_context.StartCoroutine(LoadAsync(1));
+            PhotonNetwork.LoadLevel(1);
+            _context.ChangeState(GameFlowState.Lobby);
         }
 
 
