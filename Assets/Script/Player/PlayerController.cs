@@ -140,4 +140,17 @@ public class PlayerController : MonoBehaviour
     {
         isFacingRight = !isFacingRight;
     }
+
+
+    public void SetActiveObject(bool active)
+    {
+        photonView.RPC("SetActiveObject_RPC", RpcTarget.All, active);
+    }
+
+
+    [PunRPC]
+    public void SetActiveObject_RPC(bool active)
+    {
+        gameObject.SetActive(false);
+    }
 }

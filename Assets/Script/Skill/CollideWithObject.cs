@@ -10,11 +10,7 @@ public class CollideWithObject : MonoBehaviour
     [SerializeField]
     private PhotonView photonView;
     [SerializeField]
-    private Collider2D colli;
-    private void Start()
-    {
-        colli = GetComponent<Collider2D>();
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -27,29 +23,18 @@ public class CollideWithObject : MonoBehaviour
         }
         if (collision.CompareTag("Player"))
         {
-            PhotonNetwork.RemoveBufferedRPCs(photonView.ViewID, "DartCollide");
-            photonView.RPC("DartCollide", RpcTarget.AllBuffered, this.gameObject as object);
-            PhotonNetwork.SendAllOutgoingCommands();
+            collision.GetComponent<PlayerController>().SetActiveObject(false);
+           
         }
         if (collision.CompareTag("Darts"))
         {
-            PhotonNetwork.RemoveBufferedRPCs(photonView.ViewID, "DartCollide");
-            photonView.RPC("DartCollide", RpcTarget.AllBuffered, collision.gameObject as object);
-            PhotonNetwork.SendAllOutgoingCommands();
+            photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
         }
 
     }
     [PunRPC]
-    public void DartCollide(object obj)
+    public void SetActiveObject_RPC(bool active)
     {
-        if (obj is GameObject o)
-        {
-            Collider2D collider = o.GetComponent<Collider2D>();
-            if (collider != null)
-            {
-                collider.gameObject.SetActive(false);
-            }
-        }
-        
+         gameObject.SetActive(active);
     }
 }
