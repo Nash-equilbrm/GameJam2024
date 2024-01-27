@@ -7,6 +7,7 @@ using UnityEngine;
 //[RequireComponent(typeof(Rigidbody2D), typeof(TouchDirection))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
     private TouchDirection touchDirection;
     public Rigidbody2D rb;
     [SerializeField]
@@ -15,9 +16,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 3f;
     [SerializeField]
     private bool _isFacingRight = true;
-    [SerializeField]
-    private GameObject darts;
-    private GameObject spawnedDart;
+    public GameObject[] Darts;
 
     private bool isSkillCasting = false;
     [SerializeField]
@@ -42,7 +41,7 @@ public class PlayerController : MonoBehaviour
             Destroy(rb);
             return;
         }
-
+        tag = "LocalPlayer";
         Camera.main.GetComponent<CameraFollow>().SetupCamera(this.transform);
     }
 
@@ -61,14 +60,25 @@ public class PlayerController : MonoBehaviour
             _isFacingRight = value;
         }
     }
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        touchDirection = GetComponent<TouchDirection>();
-    }
 
     private void Update()
     {
+        if (isSkillCasting)
+        {
+            if (currentSkillTime > 0)
+            {
+                currentSkillTime -= Time.timeScale * Time.deltaTime;
+            }
+            else
+            {
+                foreach (var dart in Darts)
+                {
+                    dart.SetActive(false);
+                }
+                isSkillCasting = false;
+                currentSkillCD = skillCD;
+            }
+        }
         if (!photonView.IsMine) { return; }
         if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
         {
@@ -94,29 +104,22 @@ public class PlayerController : MonoBehaviour
         if (currentSkillCD > 0 && !isSkillCasting)
         {
             currentSkillCD -= Time.timeScale * Time.deltaTime;
-            //Debug.Log("current skillCD: " + currentSkillCD);
         }
         if (Input.GetKeyDown(KeyCode.E) && !isSkillCasting && currentSkillCD <= 0)
         {
-            spawnedDart = Instantiate(darts, transform.position, transform.rotation);
-            spawnedDart.transform.parent = transform;
-            isSkillCasting = true;
-            currentSkillTime = skillTime;
+            photonView.RPC("UseSkill", RpcTarget.All);
         }
-        if (isSkillCasting)
+
+    }
+    [PunRPC]
+    private void UseSkill()
+    {
+        foreach(var dart in Darts)
         {
-            if (currentSkillTime > 0)
-            {
-                currentSkillTime -= Time.timeScale * Time.deltaTime;
-            }
-            else
-            {
-                //Debug.Log("Skill ended");
-                Destroy(spawnedDart);
-                isSkillCasting = false;
-                currentSkillCD = skillCD;
-            }
+            dart.SetActive(true);
         }
+        isSkillCasting = true;
+        currentSkillTime = skillTime;
     }
 
     private void FixedUpdate()

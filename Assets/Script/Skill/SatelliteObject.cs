@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class SatelliteObject : MonoBehaviour
 {
     [SerializeField]
     private Transform center;
-
+    public PlayerController playerController;
     public float radius = 5f;        // Bán kính của quỹ đạo hình tròn
     public float speed = 2f;         // Tốc độ di chuyển
 
@@ -22,7 +23,11 @@ public class SatelliteObject : MonoBehaviour
     }
     void Update()
     {
-
+        if (!playerController.photonView.IsMine) { return; }
+        if (playerController.photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            return;
+        }
         curentAngle += speed * Time.deltaTime;
 
         float x = center.position.x + Mathf.Cos(curentAngle) * radius;
