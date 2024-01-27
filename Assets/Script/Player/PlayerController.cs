@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private float currentSkillTime = 0f;
 
     public PhotonView photonView;
+    public bool canMove;
+    public float time;
     private void Start()
     {
         if (photonView == null)
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
             Destroy(rb);
             return;
         }
+        canMove = true;
         tag = "LocalPlayer";
         Camera.main.GetComponent<CameraFollow>().SetupCamera(this.transform);
     }
@@ -84,6 +87,12 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        time -= Time.deltaTime;
+        if (time > 0)
+        {
+            canMove = false;
+        }
+        else canMove = true;
         PlayerMovement();
         DartSkill();
     }
@@ -94,7 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)&&canMove)
         {
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }

@@ -20,6 +20,9 @@ public class CollideWithObject : MonoBehaviour
             Debug.Log("Collision Position: " + collisionPosition.normalized);
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.AddForce(collisionPosition * impactForce*Vector2.right, ForceMode2D.Impulse);
+            PlayerController playerController = collision.GetComponent<PlayerController>();
+            playerController.canMove = false;
+            playerController.time = 3f;
         }
         if (collision.CompareTag("Player"))
         {

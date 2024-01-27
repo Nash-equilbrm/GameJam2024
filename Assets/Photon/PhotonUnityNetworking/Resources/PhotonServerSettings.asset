@@ -43,6 +43,7 @@ MonoBehaviour:
   - DEBUG_RPC
   - DartCollide
   - UseSkill
+  - SetActiveObject_RPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

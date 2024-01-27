@@ -192,9 +192,11 @@ MonoBehaviour:
   - {fileID: 5225226103149724264}
   - {fileID: 5910523229671863695}
   - {fileID: 2916033930376718995}
-  skillCD: 5
-  skillTime: 3
+  skillCD: 1
+  skillTime: 100
   photonView: {fileID: 3715272576747707929}
+  canMove: 0
+  time: 0
 --- !u!58 &-1378608141047948024
 CircleCollider2D:
   m_ObjectHideFlags: 0
