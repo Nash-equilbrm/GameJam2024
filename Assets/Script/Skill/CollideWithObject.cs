@@ -17,17 +17,19 @@ public class CollideWithObject : MonoBehaviour
         if (collision.CompareTag("LocalPlayer"))
         {
             Vector3 collisionPosition = collision.transform.position - transform.position;
-            //Debug.Log("Collision Position: " + collisionPosition.normalized);
+            Debug.Log("Collision Position: " + collisionPosition.normalized);
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            rb.AddForce(collisionPosition * impactForce, ForceMode2D.Impulse);
+            rb.AddForce(collisionPosition * impactForce*Vector2.right, ForceMode2D.Impulse);
         }
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Player");
             photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
 
         }
         if (collision.CompareTag("Darts"))
         {
+            Debug.Log("dart");
             photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
         }
 
