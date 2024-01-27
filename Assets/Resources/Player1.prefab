@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3697390115169404407}
   - component: {fileID: 3715272576747707929}
   - component: {fileID: -4169211582306823503}
-  - component: {fileID: 1610242019809861854}
   - component: {fileID: 678398170703583841}
   - component: {fileID: 5090341017844259936}
   - component: {fileID: -1378608141047948024}
+  - component: {fileID: 538648085751938572}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -109,7 +109,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 1610242019809861854}
+  - {fileID: 0}
+  - {fileID: 538648085751938572}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -128,7 +129,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -140,22 +141,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1610242019809861854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729128925693698033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &678398170703583841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac9a92e57c9e6c4896daf40fcd65c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 3
-  speed: 3
+  jumpForce: 12
+  speed: 6
   _isFacingRight: 1
   darts: {fileID: 4231154781321748556, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
   skillCD: 5
@@ -239,3 +224,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.64}
   serializedVersion: 2
   m_Radius: 0.64031243
+--- !u!114 &538648085751938572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729128925693698033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0

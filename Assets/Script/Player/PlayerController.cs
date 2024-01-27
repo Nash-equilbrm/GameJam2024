@@ -4,11 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchDirection))]
+//[RequireComponent(typeof(Rigidbody2D), typeof(TouchDirection))]
 public class PlayerController : MonoBehaviour
 {
     private TouchDirection touchDirection;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField]
     private float jumpForce = 3f;
     [SerializeField]
@@ -32,11 +32,15 @@ public class PlayerController : MonoBehaviour
     {
         if (photonView == null)
             photonView = GetComponent<PhotonView>();
-        if (!photonView.IsMine) { return; }
+        if (!photonView.IsMine)
+        {
+            return;
+        }
         if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
         {
             return;
         }
+
         Camera.main.GetComponent<CameraFollow>().SetupCamera(this.transform);
     }
 
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         PlayerMovement();
-        DartSkill();      
+        DartSkill();
     }
     private void PlayerMovement()
     {
@@ -85,10 +89,11 @@ public class PlayerController : MonoBehaviour
     }
     private void DartSkill()
     {
-        if (currentSkillCD > 0 && !isSkillCasting) {
+        if (currentSkillCD > 0 && !isSkillCasting)
+        {
             currentSkillCD -= Time.timeScale * Time.deltaTime;
             //Debug.Log("current skillCD: " + currentSkillCD);
-        } 
+        }
         if (Input.GetKeyDown(KeyCode.E) && !isSkillCasting && currentSkillCD <= 0)
         {
             spawnedDart = Instantiate(darts, transform.position, transform.rotation);
@@ -96,17 +101,20 @@ public class PlayerController : MonoBehaviour
             isSkillCasting = true;
             currentSkillTime = skillTime;
         }
-        if (isSkillCasting) {
-            if (currentSkillTime > 0) {
+        if (isSkillCasting)
+        {
+            if (currentSkillTime > 0)
+            {
                 currentSkillTime -= Time.timeScale * Time.deltaTime;
-            } else
+            }
+            else
             {
                 //Debug.Log("Skill ended");
                 Destroy(spawnedDart);
                 isSkillCasting = false;
                 currentSkillCD = skillCD;
-            }         
-        }       
+            }
+        }
     }
 
     private void FixedUpdate()
