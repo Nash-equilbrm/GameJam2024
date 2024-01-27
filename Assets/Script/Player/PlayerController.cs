@@ -121,6 +121,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!photonView.IsMine) { return; }
+        if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            return;
+        }
         if (touchDirection.isOnWall)
         {
             FlipPlayer();
