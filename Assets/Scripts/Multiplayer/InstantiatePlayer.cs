@@ -9,7 +9,7 @@ public class InstantiatePlayer : MonoBehaviour
     public Transform[] posSpawn;
     void Start()
     {
-        int playerID = PhotonNetwork.LocalPlayer.ActorNumber % 4;
+        int playerID = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
         PhotonNetwork.Instantiate(players[playerID].name, posSpawn[playerID].position,Quaternion.identity);
     }
 }

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5571967344044951215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8390161631519819194}
+  - component: {fileID: 6308947163925386084}
+  m_Layer: 0
+  m_Name: '@LevelController'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8390161631519819194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571967344044951215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6308947163925386084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571967344044951215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f283def46228cbb4084dc8a36fbcda56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapPosition: {fileID: 0}
+  level: 5
+  terrain: 1
+  maxFloor: 5
+  player: {fileID: 0}
+  thornPref: {fileID: 2294303991517542432, guid: 7f4bbcdea8b57e2469235f8c3fd55e32, type: 3}
+  tilesetWells:
+  - {fileID: 11400000, guid: 04aad0c672c28b642be780380f841a9d, type: 2}
+  - {fileID: 11400000, guid: 6c94b58151035a24e8b72623c3365ea0, type: 2}
+  - {fileID: 11400000, guid: b253a692a31f1144d8b87b837af94e8a, type: 2}
+  - {fileID: 11400000, guid: 4d0df0dbe9c4ec943822a5ba51e50cdb, type: 2}
+  - {fileID: 11400000, guid: 2f378507c9716354c8dfbdc73cdd1902, type: 2}
+  - {fileID: 11400000, guid: c29dca227942c834b91d7deb7d047e40, type: 2}
+  - {fileID: 11400000, guid: f0f61dfbfe94b954aa3801bfc54cb1eb, type: 2}
+  - {fileID: 11400000, guid: 08f486bcf59477d43a17e6f10e3100b0, type: 2}
+  - {fileID: 11400000, guid: 3c0471f60fd66e849aaed0401a2994f8, type: 2}
+  tilesetNatural:
+  - {fileID: 11400000, guid: bcf3118a0cca9434c9b4ee3e16eaca78, type: 2}
+  - {fileID: 11400000, guid: 7787f06d6eef01d43b8d7e8431957e88, type: 2}
+  - {fileID: 11400000, guid: 144712fc8b6b222418dd4b3df790754f, type: 2}
+  - {fileID: 11400000, guid: 21e354ff46e307642a4bf506f132dc40, type: 2}
+  - {fileID: 11400000, guid: 5eb40519d0680b84ba3c96cc75d59bcd, type: 2}
+  - {fileID: 11400000, guid: 94f789f4571e1244cb8520698cf2c3bd, type: 2}
+  - {fileID: 11400000, guid: 6bea0e5b80ab407428c9c61909ee520e, type: 2}
+  - {fileID: 11400000, guid: aa74315d311860748853413c09543492, type: 2}
+  - {fileID: 11400000, guid: fcf7c440142dd2a4aa8ddd5adc30e93a, type: 2}
