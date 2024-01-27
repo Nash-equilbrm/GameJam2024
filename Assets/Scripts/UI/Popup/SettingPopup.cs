@@ -19,14 +19,11 @@ namespace HaloKero.UI.Popup
         [SerializeField] private TMP_Text _settingTitleTxt;
         [SerializeField] private TMP_Text _musicSettingTitleTxt;
         [SerializeField] private TMP_Text _soundFxSettingTitleTxt;
-        [SerializeField] private TMP_Text _languageSettingTitleTxt;
-
         [SerializeField] private Button _exitBtn;
-        [SerializeField] private TMP_Text _languageSettingTxt;
-        [SerializeField] private Button _languageSettingLeftBtn;
-        [SerializeField] private Button _languageSettingRightBtn;
+        [SerializeField] private Button _exitBtn2;
         [SerializeField] private Slider _musicSettingSlider;
         [SerializeField] private Slider _soundFXSettingSlider;
+        [SerializeField] private Button _aboutUsBtn;
 
 
         [Header("Show pop up anim")]
@@ -51,14 +48,13 @@ namespace HaloKero.UI.Popup
             base.Show(null);
 
             _exitBtn.onClick.AddListener(Hide);
-            _languageSettingLeftBtn.onClick.AddListener(OnLanguageSettingSwitchLeft);
-            _languageSettingRightBtn.onClick.AddListener(OnLanguageSettingSwitchRight);
+            _exitBtn2.onClick.AddListener(Hide);
             _musicSettingSlider.onValueChanged.AddListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.AddListener(SetSoundFx);
-            this.Register(EventID.OnLanguageChange, Relocalize);
+            _aboutUsBtn.onClick.AddListener(ShowAboutUsPopup);
+
 
             _timer = 0f;
-            Relocalize();
             GameSettings gameSettings = (GameSettings)data;
             _musicSettingSlider.value = gameSettings.Music;
             _soundFXSettingSlider.value = gameSettings.SoundFx;
@@ -68,29 +64,22 @@ namespace HaloKero.UI.Popup
         public override void Hide()
         {
             _exitBtn.onClick.RemoveListener(Hide);
-            _languageSettingLeftBtn.onClick.RemoveListener(OnLanguageSettingSwitchLeft);
-            _languageSettingRightBtn.onClick.RemoveListener(OnLanguageSettingSwitchRight);
+            _exitBtn2.onClick.RemoveListener(Hide);
             _musicSettingSlider.onValueChanged.RemoveListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.RemoveListener(SetSoundFx);
-            this.Unregister(EventID.OnLanguageChange, Relocalize);
+            _aboutUsBtn.onClick.RemoveListener(ShowAboutUsPopup);
+
 
 
             _timer = 0f;
             StartCoroutine(HidePopup());
         }
 
-
-        private void OnLanguageSettingSwitchLeft()
+        private void ShowAboutUsPopup()
         {
-            GameSettingManager.Instance.SetNewSettings(increaseLanguageIdx: -1);
-            this.Broadcast(EventID.OnLanguageChange);
+            UIManager.Instance.ShowPopup<AboutUsPopup>(forceShowData: true);
         }
 
-        private void OnLanguageSettingSwitchRight()
-        {
-            GameSettingManager.Instance.SetNewSettings(increaseLanguageIdx: 1);
-            this.Broadcast(EventID.OnLanguageChange);
-        }
 
         private IEnumerator ShowPopup()
         {
@@ -130,16 +119,6 @@ namespace HaloKero.UI.Popup
             GameSettingManager.Instance.SetNewSettings(soundFx: value);
         }
 
-
-        private void Relocalize(object data = null)
-        {
-            _settingTitleTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.SETTING_TITLE;
-            _languageSettingTitleTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.LANGUAGE_SETTING_TITLE;
-            _musicSettingTitleTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.MUSIC_SETTING_TITLE;
-            _soundFxSettingTitleTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.SOUND_FX_SETTING_TITLE;
-            _languageSettingTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.LANGUAGE_ID;
-
-        }
 
     }
 }

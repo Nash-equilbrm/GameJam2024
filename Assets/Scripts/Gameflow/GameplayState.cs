@@ -67,7 +67,7 @@ namespace HaloKero.Gameplay
                 _animTimer += Time.deltaTime;
                 yield return null;
             }
-            UIManager.Instance.ShowPopup<FinalWordsPopup>(forceShowData: true);
+            UIManager.Instance.ShowPopup<AboutUsPopup>(forceShowData: true);
         }
 
 

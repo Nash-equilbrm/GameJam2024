@@ -16,9 +16,9 @@ namespace HaloKero.UI
     public class LobbyScreen : BaseScreen
     {
         [Header("Widget")]
-        [SerializeField] private TMP_Text _settingBtnTxt;
-        [SerializeField] private TMP_Text _getReadyBtnTxt;
+        [SerializeField] private Button _backToMainMenuBtn;
         [SerializeField] private Button _getReadyBtn;
+        [SerializeField] private TMP_Text _getReadyBtnTxt;
         [SerializeField] private Button _openSettingBtn;
         [SerializeField] private GameObject[] _characters;
 
@@ -27,7 +27,6 @@ namespace HaloKero.UI
             base.Hide();
             this.Unregister(EventID.OnPlayerEnter, SetUpPlayerSlot);
             this.Unregister(EventID.SetPlayerID, SetUpPlayerSlot);
-            this.Unregister(EventID.OnLanguageChange, Relocalize);
         }
 
         public override void Init()
@@ -44,24 +43,11 @@ namespace HaloKero.UI
             _openSettingBtn.onClick.AddListener(OpenSettingPopup);
 
 
-            this.Register(EventID.OnLanguageChange, Relocalize);
-
-
-
-            Relocalize();
         }
 
         private void StartGameBtn()
         {
-            //this.Broadcast(EventID.StartGamePlay);
-            if (_getReadyBtnTxt.text == ready)
-            {
-                _getReadyBtnTxt.text = unready;
-            }
-            else
-            {
-                _getReadyBtnTxt.text = ready;
-            }
+            _getReadyBtnTxt.text = (_getReadyBtnTxt.text == _ready) ? _unready : _ready;
 
             if (!PhotonNetwork.IsMasterClient)
             {
@@ -70,6 +56,7 @@ namespace HaloKero.UI
             }
             else
             {
+                int cnt = 0;
                 foreach (var p in PhotonNetwork.PlayerList)
                 {
                     if (p.CustomProperties.TryGetValue("ready", out object readyObj))
@@ -85,12 +72,14 @@ namespace HaloKero.UI
                         // Handle the case where "ready" custom property is not found
                         Debug.LogWarning("Custom property 'ready' not found for player: " + p.ActorNumber);
                     }
+                    cnt++;
                 }
-                // start game
-                PhotonNetwork.RaiseEvent((byte)EventID.StartGamePlay, null, new RaiseEventOptions { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
 
-
-                
+                if(cnt == PhotonNetwork.PlayerList.Length)
+                {
+                    // start game
+                    PhotonNetwork.RaiseEvent((byte)EventID.StartGamePlay, null, new RaiseEventOptions { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
+                }
             }
         }
 
@@ -117,20 +106,17 @@ namespace HaloKero.UI
             {
                 obj.transform.SetParent(_characters[0].transform);
             }
+            RectTransform rectTransform = obj.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = Vector2.zero;
+            rectTransform.localScale = Vector2.one;
 
-            obj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
 
 
         }
-        private string ready = "ready";
-        private string unready = "unready";
-        private void Relocalize(object data = null)
-        {
-            _settingBtnTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.SETTING_TITLE;
-            //_getReadyBtnTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.GET_READY_BTN;
-            _getReadyBtnTxt.text = ready;
-        }
+        private string _ready = "ready";
+        private string _unready = "Wait for host";
+        
 
 
 

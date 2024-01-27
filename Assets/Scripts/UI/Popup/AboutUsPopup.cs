@@ -9,12 +9,10 @@ using UnityEngine.UI;
 
 namespace HaloKero.UI.Popup
 {
-    public class FinalWordsPopup : BasePopup
+    public class AboutUsPopup : BasePopup
     {
         [Header("Widget")]
         [SerializeField] private GameObject _popup;
-        [SerializeField] private TMP_Text _finishGameBtnTxt;
-        [SerializeField] private Button _finishGameBtn;
         [SerializeField] private Button _exitPopUpBtn;
 
 
@@ -33,9 +31,7 @@ namespace HaloKero.UI.Popup
 
         public override void Hide()
         {
-            _finishGameBtn.onClick.RemoveListener(BackToMenu);
             _exitPopUpBtn.onClick.RemoveListener(BackToMenu);
-            this.Unregister(EventID.OnLanguageChange, Relocalize);
 
             _timer = 0f;
             StartCoroutine(HidePopup());
@@ -49,11 +45,8 @@ namespace HaloKero.UI.Popup
         public override void Show(object data)
         {
             base.Show(data);
-            _finishGameBtn.onClick.AddListener(BackToMenu);
             _exitPopUpBtn.onClick.AddListener(BackToMenu);
-            this.Register(EventID.OnLanguageChange, Relocalize);
 
-            Relocalize();
 
             _timer = 0f;
             StartCoroutine(ShowPopup());
@@ -93,12 +86,7 @@ namespace HaloKero.UI.Popup
             _timer = 0f;
             base.Hide();
         }
-
-
-        private void Relocalize(object data = null)
-        {
-            _finishGameBtnTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.FINISH_GAME_BTN;
-        }
+        
     }
 
 }

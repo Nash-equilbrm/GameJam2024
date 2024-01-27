@@ -53,7 +53,6 @@ public class LevelController : MonoBehaviour
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                Debug.Log("RaiseEvent");
                 int mapGenerateCode = GenerateMapCode(maxFloor);
                 Hashtable prop = new Hashtable() { { "mapGenerateCode", mapGenerateCode } };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
