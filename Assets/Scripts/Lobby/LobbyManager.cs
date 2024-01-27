@@ -13,17 +13,17 @@ using Tools;
 
 namespace HaloKero.Lobby
 {
-    public class LobbyManager : MonoBehaviour
+    public class LobbyManager : Singleton<LobbyManager>
     {
         [Header("Lobby Management")]
         public GameObject playerLobbyRegisterPrefab;
-        [SerializeField] private GameObject[] _playerSlots;
         [SerializeField] private GameObject[] _playerDummyPrefabs;
         [SerializeField] private List<PlayerLobbyRegister> _playerLobbyRegisters;
 
         private int _localPlayerID = -1;
         private bool _gameSceneLoaded = false;
         public GameObject LocalPlayerDummyPrefabs => _playerDummyPrefabs[_localPlayerID];
+        public GameObject[] PlayerDummyPrefabs { get => _playerDummyPrefabs; }
 
         private void Start()
         {
@@ -31,8 +31,6 @@ namespace HaloKero.Lobby
             PhotonNetwork.Instantiate(playerLobbyRegisterPrefab.name, Vector3.zero, Quaternion.identity);
             GetAllLobbyRegister();
 
-            this.Register(EventID.OnPlayerEnter, SetUpPlayerSlot);
-            this.Register(EventID.SetPlayerID, SetUpPlayerSlot);
             this.Register(EventID.OnPlayerEnter, GetAllLobbyRegister);
             this.Register(EventID.StartGamePlay, CheckStartGameRequirements);
 
@@ -40,8 +38,6 @@ namespace HaloKero.Lobby
 
         private void OnDestroy()
         {
-            this.Unregister(EventID.OnPlayerEnter, SetUpPlayerSlot);
-            this.Unregister(EventID.SetPlayerID, SetUpPlayerSlot);
             this.Unregister(EventID.OnPlayerEnter, GetAllLobbyRegister);
             this.Unregister(EventID.StartGamePlay,CheckStartGameRequirements);
 
@@ -60,29 +56,7 @@ namespace HaloKero.Lobby
             }
 
             // go to new scene
-            Debug.Log("1");
-            LoadGameplayScene();
-        }
-
-        private void SetUpPlayerSlot(object data)
-        {
-            int actorNumber = (int)data;
-            _localPlayerID = actorNumber - 1;
-            GameObject obj = Instantiate(_playerDummyPrefabs[_localPlayerID]);
-            if (actorNumber < PhotonNetwork.LocalPlayer.ActorNumber)
-            {
-                obj.transform.SetParent(_playerSlots[actorNumber].transform);
-            }
-            else if (actorNumber > PhotonNetwork.LocalPlayer.ActorNumber)
-            {
-                obj.transform.SetParent(_playerSlots[actorNumber - 1].transform);
-            }
-            else
-            {
-                obj.transform.SetParent(_playerSlots[0].transform);
-            }
-            obj.transform.localPosition = Vector3.zero;
-           
+            StartGameplay();
         }
 
 
@@ -123,18 +97,16 @@ namespace HaloKero.Lobby
             }
 
             // go to new scene
-            Debug.Log("2");
-            LoadGameplayScene();
         }
 
 
-        private void LoadGameplayScene()
+        private void StartGameplay()
         {
             if (_playerLobbyRegisters.Count > 1 && !_gameSceneLoaded)
             {
-                Debug.Log("Start new Scene here");
-                PhotonNetwork.LoadLevel(2);
-                _gameSceneLoaded = true;
+                Debug.Log("Start new gameplay here");
+                PhotonNetwork.Instantiate(_playerDummyPrefabs[PhotonNetwork.LocalPlayer.ActorNumber].name, Vector3.zero, Quaternion.identity);
+
             }
         }
     }

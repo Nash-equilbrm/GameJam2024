@@ -7,6 +7,7 @@ using UnityEngine;
 using Photon.Pun;
 using HaloKero.Multiplayer;
 using Unity.VisualScripting;
+using HaloKero.UI;
 
 
 
@@ -26,7 +27,8 @@ namespace HaloKero.Gameplay
             UIManager.Instance.HideAllPopups();
             UIManager.Instance.HideAllNotifies();
 
-            UIManager.Instance.ShowOverlap<LobbyOverlap>(forceShowData: true);
+            UIManager.Instance.ShowScreen<LobbyScreen>(forceShowData: true);
+
 
 
             foreach (var p in PhotonNetwork.PlayerList)
