@@ -1283,9 +1283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - {fileID: 729128925693698033, guid: 2b8b189cd27f02f4cbe20e268d9a4285, type: 3}
-  - {fileID: 820411048121408038, guid: 13e1a2c04178a2d4d8af536b0737b4c3, type: 3}
-  - {fileID: 8604278076121890867, guid: 336cdd4076e699246a0bbfdb47c7a9ac, type: 3}
-  - {fileID: 1897698905081335752, guid: c21e8a216b469714a9726dea7fdcfa9c, type: 3}
+  - {fileID: 729128925693698033, guid: a976477a5e20b684da47791cb03966f0, type: 3}
+  - {fileID: 729128925693698033, guid: 38762c93a7919484781af5941959d33b, type: 3}
+  - {fileID: 729128925693698033, guid: de4bc8405a16d554da2c5a289b8b36e9, type: 3}
   posSpawn:
   - {fileID: 1542741406}
   - {fileID: 1188332983}
