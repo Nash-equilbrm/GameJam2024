@@ -291,6 +291,10 @@ PrefabInstance:
       value: '@LevelController'
       objectReference: {fileID: 0}
     - target: {fileID: 6308947163925386084, guid: 231949a4a772b884d824467e0d00022d, type: 3}
+      propertyPath: maxFloor
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308947163925386084, guid: 231949a4a772b884d824467e0d00022d, type: 3}
       propertyPath: mapPosition
       value: 
       objectReference: {fileID: 1256188250}

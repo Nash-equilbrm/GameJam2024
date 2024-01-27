@@ -1,9 +1,13 @@
-using System.Collections;
+using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utilities;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
+
 
 public enum TypeTerrain
 {
@@ -34,12 +38,44 @@ public class LevelController : MonoBehaviour
     private GameObject[] blocksEnd;
     private GameObject[] blocksBegin;
 
+    private bool _mapGenerated = false;
 
     private void Awake()
     {
         LoadDataBlocks();
         blocks = new();
-        GenerateMap();
+
+    }
+
+    private void Update()
+    {
+        if (!_mapGenerated)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Debug.Log("RaiseEvent");
+                int mapGenerateCode = GenerateMapCode(maxFloor);
+                Hashtable prop = new Hashtable() { { "mapGenerateCode", mapGenerateCode } };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
+
+                GenerateMap(mapGenerateCode);
+
+                _mapGenerated = true;
+            }
+
+            else
+            {
+                int mapCode = 0;
+                if (PhotonNetwork.MasterClient.CustomProperties.TryGetValue("mapGenerateCode", out object data))
+                {
+                    mapCode = (int)data;
+                    GenerateMap(mapCode);
+                    _mapGenerated = true;
+
+                }
+            }
+        }
+        
     }
 
     private void LoadDataBlocks()
@@ -50,10 +86,13 @@ public class LevelController : MonoBehaviour
 
     }     
 
-    private void GenerateBeginBlock()
+
+
+    private void GenerateBeginBlock(int index)
     {
         endPosY = 0;
-        GameObject blockBegin = blocksBegin[Random.Range(0, blocksBegin.Length)];
+        //GameObject blockBegin = blocksBegin[Random.Range(0, blocksBegin.Length)];
+        GameObject blockBegin = blocksBegin[index];
         Block begin = SimplePool.Spawn(blockBegin, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
         begin.transform.SetParent(mapPosition);
         endPosY += begin.GetBlockMapSize().y / 2f;
@@ -62,15 +101,16 @@ public class LevelController : MonoBehaviour
         ChangeTile(begin, begin.IFloor);
     }
 
-    private void GenerateBodyBlock(DifficultyLevel difficultyLevel, int floor)
+    private void GenerateBodyBlock(int index, int floor)
     {
         Block blockTemp;
-        do
-        {
-            int rd = Random.Range(0, blocksBody.Length);
-            blockTemp = blocksBody[rd].GetComponent<Block>();
-        } while (blockTemp.DifficultyLevel != difficultyLevel);
-        
+        //do
+        //{
+        //    int rd = Random.Range(0, blocksBody.Length);
+        //    blockTemp = blocksBody[rd].GetComponent<Block>();
+        //} while (blockTemp.DifficultyLevel != difficultyLevel);
+        blockTemp = blocksBody[index].GetComponent<Block>();
+
         endPosY += blockTemp.GetBlockMapSize().y / 2f;
         Block block = SimplePool.Spawn(blockTemp.gameObject, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
         block.transform.SetParent(mapPosition);
@@ -83,9 +123,21 @@ public class LevelController : MonoBehaviour
         ChangeTile(block, block.IFloor);
     }
 
-    private void GenerateEndBlock()
+
+    private int GenerateBodyBlockID(DifficultyLevel difficultyLevel, int floor)
     {
-        GameObject blockEnd = blocksEnd[Random.Range(0, blocksEnd.Length)];
+        int res = -1;
+        do
+        {
+            res = UnityEngine.Random.Range(0, blocksBody.Length);
+        } while (blocksBody[res].GetComponent<Block>().DifficultyLevel != difficultyLevel);
+        return res;
+    }
+
+    private void GenerateEndBlock(int index)
+    {
+        //GameObject blockEnd = blocksEnd[Random.Range(0, blocksEnd.Length)];
+        GameObject blockEnd = blocksEnd[index];
         endPosY += blockEnd.GetComponent<Block>().GetBlockMapSize().y / 2f;
         Block finish = Instantiate(blockEnd, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
         finish.transform.SetParent(mapPosition);
@@ -106,20 +158,46 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void GenerateMap()
+
+    public int GenerateMapCode(int size)
     {
-        GenerateBeginBlock();
+        int res = 0;
+        // begin block
+        res += UnityEngine.Random.Range(0, blocksBegin.Length);
+        res *= 10;
+
+        for (int i = 1; i < maxFloor - 1; i++)
+        {
+            if (i < 2)
+                res += GenerateBodyBlockID(DifficultyLevel.Easy, i);
+            else if (i < maxFloor - 1)
+                res += GenerateBodyBlockID(DifficultyLevel.Normal, i);
+            else
+                res += GenerateBodyBlockID(DifficultyLevel.Hard, i);
+            res *= 10;
+
+        }
+
+
+        // end block
+        res += UnityEngine.Random.Range(0, blocksEnd.Length);
+        return res;
+    }
+
+
+
+    public void GenerateMap(int mapCode)
+    {
+        Debug.Log("GenerateMap");
+        GenerateBeginBlock(mapCode % 10);
+        mapCode /= 10;
 
         for(int i = 1; i < maxFloor; i++)
         {
-            if(i < 2)
-                GenerateBodyBlock(DifficultyLevel.Easy, i);
-            else if (i < maxFloor - 1)
-                GenerateBodyBlock(DifficultyLevel.Normal, i);
-            else
-                GenerateBodyBlock(DifficultyLevel.Hard, i);
+            GenerateBodyBlock(mapCode % 10, i);
+            mapCode /= 10;
         }
 
-        GenerateEndBlock();
+        GenerateEndBlock(mapCode);
     }
 }

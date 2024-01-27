@@ -38,6 +38,7 @@ public enum EventID
     LostGame,
     BackToMenu,
     OnTimeChanged,
+    OnMapGenerate,
 
     // AUDIO
     StopAudio
