@@ -72,7 +72,6 @@ namespace Photon.Pun.Demo.Asteroids
             {
                 return;
             }
-
             rotation = Input.GetAxis("Horizontal");
             acceleration = Input.GetAxis("Vertical");
 
