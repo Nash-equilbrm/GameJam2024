@@ -28,23 +28,28 @@ public class CollideWithObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PhotonNetwork.RemoveBufferedRPCs(photonView.ViewID, "DartCollide");
-            photonView.RPC("DartCollide", RpcTarget.AllBuffered, colli);
+            photonView.RPC("DartCollide", RpcTarget.AllBuffered, this.gameObject as object);
             PhotonNetwork.SendAllOutgoingCommands();
         }
         if (collision.CompareTag("Darts"))
         {
             PhotonNetwork.RemoveBufferedRPCs(photonView.ViewID, "DartCollide");
-            photonView.RPC("DartCollide", RpcTarget.AllBuffered, collision);
+            photonView.RPC("DartCollide", RpcTarget.AllBuffered, collision.gameObject as object);
             PhotonNetwork.SendAllOutgoingCommands();
         }
 
     }
     [PunRPC]
-    public void DartCollide(Collider2D collider)
+    public void DartCollide(object obj)
     {
-        if (collider != null)
+        if (obj is GameObject o)
         {
-            collider.gameObject.SetActive(false);
+            Collider2D collider = o.GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.gameObject.SetActive(false);
+            }
         }
+        
     }
 }
