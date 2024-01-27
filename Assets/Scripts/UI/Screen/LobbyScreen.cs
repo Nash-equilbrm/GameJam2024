@@ -3,11 +3,11 @@ using HaloKero.Lobby;
 using HaloKero.UI.Overlap;
 using HaloKero.UI.Popup;
 using Photon.Pun;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ExitGames.Client.Photon;
 
 
 
@@ -53,7 +53,7 @@ namespace HaloKero.UI
 
         private void StartGame()
         {
-            this.Broadcast(EventID.StartGamePlay);
+            //this.Broadcast(EventID.StartGamePlay);
             if (_getReadyBtnTxt.text == ready)
             {
                 _getReadyBtnTxt.text = unready;
@@ -61,6 +61,24 @@ namespace HaloKero.UI
             else
             {
                 _getReadyBtnTxt.text = ready;
+            }
+
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                Hashtable prop = new Hashtable() { { "ready", true } };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
+            }
+            else
+            {
+                foreach(var p in PhotonNetwork.PlayerList)
+                {
+                    if ((bool)p.CustomProperties["ready"] == false)
+                    {
+                        return;
+                    }
+                }
+                // start game
+                GameflowManager.Instance.StartGameplay();
             }
         }
 

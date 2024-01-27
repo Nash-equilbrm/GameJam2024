@@ -78,6 +78,8 @@ namespace HaloKero.Gameplay
 
         IEnumerator GetAllLobbyRegisterCoroutine()
         {
+            Debug.Log("Get player");
+
             //delay for network
             yield return new WaitForSeconds(.5f);
             _playerLobbyRegisters.Clear();
@@ -110,7 +112,7 @@ namespace HaloKero.Gameplay
         }
 
 
-        private void StartGameplay()
+        public void StartGameplay()
         {
             if (_playerLobbyRegisters.Count > 1 && !_gameSceneLoaded)
             {

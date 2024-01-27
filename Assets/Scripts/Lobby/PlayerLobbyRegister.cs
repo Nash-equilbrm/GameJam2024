@@ -18,6 +18,7 @@ namespace HaloKero.Lobby
         {
             DontDestroyOnLoad(this);
             this.Register(EventID.StartGamePlay, SetPlayerReady);
+            DEBUG();
         }
 
 
@@ -36,6 +37,18 @@ namespace HaloKero.Lobby
         private void SetPlayerReady_RPC(bool isReady)
         {
             _isReady = isReady;
+        }
+
+        private void DEBUG()
+        {
+            NetworkManager.CallRPC(_photonView, "DEBUG_RPC", onlyForLocalPlayer: false);
+        }
+
+
+        [PunRPC]
+        private void DEBUG_RPC()
+        {
+            Debug.Log("PLAYER CREATE");
         }
     }
 }
