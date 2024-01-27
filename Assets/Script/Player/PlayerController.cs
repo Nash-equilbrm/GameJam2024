@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour
             photonView = GetComponent<PhotonView>();
         if (!photonView.IsMine)
         {
+            Destroy(rb);
             return;
         }
         if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
         {
+            Destroy(rb);
             return;
         }
 
