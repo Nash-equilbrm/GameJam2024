@@ -9,6 +9,12 @@ public class CollideWithObject : MonoBehaviour
     private float impactForce;
     [SerializeField]
     private PhotonView photonView;
+    [SerializeField]
+    private Collider2D colli;
+    private void Start()
+    {
+        colli = GetComponent<Collider2D>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -18,7 +24,12 @@ public class CollideWithObject : MonoBehaviour
             //Debug.Log("Collision Position: " + collisionPosition.normalized);
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.AddForce(collisionPosition * impactForce, ForceMode2D.Impulse);
-            Destroy(gameObject);
+        }
+        if (collision.CompareTag("Player"))
+        {
+            PhotonNetwork.RemoveBufferedRPCs(photonView.ViewID, "DartCollide");
+            photonView.RPC("DartCollide", RpcTarget.AllBuffered, colli);
+            PhotonNetwork.SendAllOutgoingCommands();
         }
         if (collision.CompareTag("Darts"))
         {
