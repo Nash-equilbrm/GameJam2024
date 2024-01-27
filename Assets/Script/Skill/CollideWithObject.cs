@@ -23,8 +23,8 @@ public class CollideWithObject : MonoBehaviour
         }
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerController>().SetActiveObject(false);
-           
+            photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
+
         }
         if (collision.CompareTag("Darts"))
         {
