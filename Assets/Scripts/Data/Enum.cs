@@ -29,7 +29,7 @@ public enum EventID
     OnJoinRoomSuccess,
     OnPlayerEnter,
     SetPlayerID,
-
+    TimeUp,
 
     // GAMEPLAY
     StartGamePlay,
@@ -37,7 +37,7 @@ public enum EventID
     WonGame,
     LostGame,
     BackToMenu,
-
+    OnTimeChanged,
 
     // AUDIO
     StopAudio

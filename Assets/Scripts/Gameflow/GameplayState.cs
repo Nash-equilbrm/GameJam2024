@@ -10,51 +10,68 @@ namespace HaloKero.Gameplay
 {
     public class GameplayState : State<GameflowManager>
     {
+        private float _gameDuration = 65;
+        private float _timer;
         public GameplayState(GameflowManager context) : base(context)
         {
         }
 
         public override void Enter()
         {
+            _timer = _gameDuration;
             UIManager.Instance.HideAllScreens();
             UIManager.Instance.ShowOverlap<GameplayOverlap>(forceShowData: true);
 
-            _context.Register(EventID.EndGamePlay, (data) => OnEndGame((EventID)data));
-            _context.Register(EventID.OpenMainMenu, (data) => GoBackToMainMenu());
+            _context.Register(EventID.EndGamePlay, OnEndGame);
+            _context.Register(EventID.OpenMainMenu, GoBackToMainMenu);
         }
 
         public override void Exit()
         {
-            _timer = 0;
+            _animTimer = 0;
 
             // Save game result
             //...
 
 
             // Unregister Game events
-            _context.Unregister(EventID.EndGamePlay, (data) => OnEndGame((EventID)data));
-            _context.Unregister(EventID.OpenMainMenu, (data) => GoBackToMainMenu());
+            _context.Unregister(EventID.EndGamePlay, OnEndGame);
+            _context.Unregister(EventID.OpenMainMenu, GoBackToMainMenu);
         }
 
-        private void OnEndGame(EventID result)
+        public override void LogicUpdate()
         {
+            if(_timer > 0)
+            {
+                _timer -= Time.deltaTime;
+                _context.Broadcast(EventID.OnTimeChanged, _timer);
+            }
+            else
+            {
+                _context.Broadcast(EventID.TimeUp);
+            }
+        }
+
+        private void OnEndGame(object data)
+        {
+            EventID result = (EventID)data;
             _context.StartCoroutine(OnEndGameCoroutine());
         }
 
         private float _showResultPopupDuration = 1.5f;
-        private float _timer = 0f;
+        private float _animTimer = 0f;
         private IEnumerator OnEndGameCoroutine()
         {
-            while(_timer < _showResultPopupDuration)
+            while(_animTimer < _showResultPopupDuration)
             {
-                _timer += Time.deltaTime;
+                _animTimer += Time.deltaTime;
                 yield return null;
             }
             UIManager.Instance.ShowPopup<FinalWordsPopup>(forceShowData: true);
         }
 
 
-        private void GoBackToMainMenu()
+        private void GoBackToMainMenu(object data)
         {
             _context.ChangeState(GameFlowState.MainMenu);
         }

@@ -41,7 +41,10 @@ namespace HaloKero.Gameplay
         private void Update()
         {
             Debug.Log(s);
+            _stateMachine.CurrentState.LogicUpdate();
         }
+
+
         string s = "menu";
         public void ChangeState(GameFlowState state)
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,8 +18,8 @@ namespace HaloKero.UI.Overlap
         {
             base.Hide();
             _resultTxt.gameObject.SetActive(false);
-            this.Unregister(EventID.WonGame, (data) => ShowWinResult());
-            this.Unregister(EventID.LostGame, (data) => ShowLostResult());
+            this.Unregister(EventID.WonGame, ShowWinResult);
+            this.Unregister(EventID.LostGame, ShowLostResult);
         }
 
         public override void Init()
@@ -30,22 +31,41 @@ namespace HaloKero.UI.Overlap
         public override void Show(object data)
         {
             base.Show(data);
-            this.Register(EventID.WonGame, (data) => ShowWinResult());
-            this.Register(EventID.LostGame, (data) => ShowLostResult());
+            this.Register(EventID.WonGame, ShowWinResult);
+            this.Register(EventID.LostGame, ShowLostResult);
+            this.Register(EventID.OnTimeChanged, SetTimer);
         }
 
-        private void ShowWinResult()
+        private void ShowWinResult(object data)
         {
             _resultTxt.gameObject.SetActive(true);
             _resultTxt.text = "CONGRATULATION!!!";
             this.Broadcast(EventID.EndGamePlay, EventID.WonGame);
         }
 
-        private void ShowLostResult()
+        private void ShowLostResult(object data)
         {
             _resultTxt.gameObject.SetActive(true);
             _resultTxt.text = "YOU FALL";
             this.Broadcast(EventID.EndGamePlay, EventID.LostGame);
+        }
+
+
+        private void SetTimer(object data)
+        {
+            float time = (float)data;
+            if(time > 60)
+            {
+                _timerTxt.text = TimeSpan.FromSeconds(time).ToString(@"mm\:ss");
+            }
+            else if(time <= 60f && time > 0)
+            {
+                _timerTxt.text = TimeSpan.FromSeconds(time).ToString(@"ss\,ff");
+            }
+            else
+            {
+                _timerTxt.text = "00:00";
+            }
         }
     }
 }
