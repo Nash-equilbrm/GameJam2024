@@ -78,7 +78,8 @@ namespace HaloKero.UI
                     }
                 }
                 // start game
-                GameflowManager.Instance.StartGameplay();
+                UIManager.Instance.HideAllScreens();
+                GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
             }
         }
 

@@ -23,8 +23,9 @@ namespace HaloKero.Gameplay
 
         public override void Enter()
         {
-            GameObject obj = PhotonNetwork.Instantiate(_context.playerLobbyRegisterPrefab.name, Vector3.zero, Quaternion.identity);
-            _context.PlayerLobbyRegisters.Add(obj.GetComponent<PlayerLobbyRegister>());
+            Debug.Log("Create player");
+            //GameObject obj = PhotonNetwork.Instantiate(_context.playerLobbyRegisterPrefab.name, Vector3.zero, Quaternion.identity);
+            //_context.PlayerLobbyRegisters.Add(obj.GetComponent<PlayerLobbyRegister>());
 
             UIManager.Instance.HideAllScreens();
             UIManager.Instance.HideAllOverlaps ();
@@ -52,20 +53,20 @@ namespace HaloKero.Gameplay
             _context.Unregister(EventID.StartGamePlay, _context.CheckStartGameRequirements);
         }
 
-        public override void LogicUpdate()
-        {
-            foreach (var register in _context.PlayerLobbyRegisters)
-            {
-                if (!register.IsReady)
-                {
-                    return;
-                }
-            }
+        //public override void LogicUpdate()
+        //{
+        //    foreach (var register in _context.PlayerLobbyRegisters)
+        //    {
+        //        if (!register.IsReady)
+        //        {
+        //            return;
+        //        }
+        //    }
 
-            // go to new scene
-            UIManager.Instance.HideAllScreens();
-            GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
-        }
+        //    // go to new scene
+        //    UIManager.Instance.HideAllScreens();
+        //    GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
+        //}
     }
 }
 
