@@ -119,7 +119,6 @@ public class LevelController : MonoBehaviour
             else
                 GenerateBodyBlock(DifficultyLevel.Hard, i);
         }
-
         GenerateEndBlock();
     }
 }
