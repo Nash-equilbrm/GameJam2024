@@ -383,6 +383,7 @@ MonoBehaviour:
   darts: {fileID: 4231154781321748556, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
   skillCD: 3
   skillTime: 3
+  photonView: {fileID: 0}
 --- !u!114 &641971828
 MonoBehaviour:
   m_ObjectHideFlags: 0

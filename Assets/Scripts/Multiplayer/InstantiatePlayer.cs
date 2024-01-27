@@ -12,10 +12,4 @@ public class InstantiatePlayer : MonoBehaviour
         int playerID = PhotonNetwork.LocalPlayer.ActorNumber % 4;
         PhotonNetwork.Instantiate(players[playerID].name, posSpawn[playerID].position,Quaternion.identity);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

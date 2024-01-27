@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,19 @@ public class PlayerController : MonoBehaviour
     private float currentSkillCD = 0f;
     private float currentSkillTime = 0f;
 
+    public PhotonView photonView;
+    private void Start()
+    {
+        if (photonView == null)
+            photonView = GetComponent<PhotonView>();
+        if (!photonView.IsMine) { return; }
+        if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            return;
+        }
+        Camera.main.GetComponent<CameraFollow>().SetupCamera(this.transform);
+    }
+
     public bool isFacingRight
     {
         get
@@ -49,18 +63,26 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!photonView.IsMine) { return; }
+        if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            return;
+        }
         PlayerMovement();
         DartSkill();      
     }
-
     private void PlayerMovement()
     {
+        if (!photonView.IsMine) { return; }
+        if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }
     }
-
     private void DartSkill()
     {
         if (currentSkillCD > 0 && !isSkillCasting) {

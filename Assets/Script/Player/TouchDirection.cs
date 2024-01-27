@@ -10,7 +10,7 @@ public class TouchDirection : MonoBehaviour
     public float wallDistance = 0.2f;
 
     private CircleCollider2D touchingCol;
-
+    private BoxCollider2D boxCollider2D;
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
     RaycastHit2D[] wallHits = new RaycastHit2D[5];
 
