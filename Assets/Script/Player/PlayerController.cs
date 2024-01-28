@@ -28,6 +28,13 @@ public class PlayerController : MonoBehaviour
     public PhotonView photonView;
     public bool canMove;
     public float time;
+
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManage").GetComponent<AudioManager>();
+    }
     private void OnDestroy()
     {
         Debug.Log(gameObject.name);
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             return _isFacingRight;
         }
-        set
+        private set
         {
             if (_isFacingRight != value)
             {
@@ -112,8 +119,9 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space)&&canMove)
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
+            audioManager.PlaySFX(audioManager.Jump);
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }
     }
@@ -132,7 +140,7 @@ public class PlayerController : MonoBehaviour
     [PunRPC]
     private void UseSkill()
     {
-        foreach(var dart in Darts)
+        foreach (var dart in Darts)
         {
             dart.SetActive(true);
         }
@@ -156,6 +164,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipPlayer()
     {
+        audioManager.PlaySFX(audioManager.PlayerFlip);
         isFacingRight = !isFacingRight;
     }
 
@@ -174,10 +183,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void OnTimeUp(object obj= null)
+    private void OnTimeUp(object obj = null)
     {
-        Debug.Log("OnTimeUp, set new hash "+ PhotonNetwork.LocalPlayer.ActorNumber.ToString()+" y: "+ this.transform.position.y);
-        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(),transform.position.y } };
+        Debug.Log("OnTimeUp, set new hash " + PhotonNetwork.LocalPlayer.ActorNumber.ToString() + " y: " + this.transform.position.y);
+        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(), transform.position.y } };
         PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
     }
 }
