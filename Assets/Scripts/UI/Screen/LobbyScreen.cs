@@ -57,6 +57,7 @@ namespace HaloKero.UI
 
         private void StartGameBtn()
         {
+            
             if (!PhotonNetwork.IsMasterClient)
             {
                 _getReadyBtnTxt.text = (_getReadyBtnTxt.text == _ready) ? _unready : _ready;

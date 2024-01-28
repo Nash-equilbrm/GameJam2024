@@ -15,7 +15,12 @@ namespace HaloKero.UI
         [SerializeField] private TMP_Text _resultTxt;
         [SerializeField] private Button _exitBtn;
 
+        private AudioManager audioManager;
 
+        private void Awake()
+        {
+            audioManager = GameObject.FindGameObjectWithTag("AudioManage").GetComponent<AudioManager>();
+        }
         public override void Hide()
         {
             base.Hide();
@@ -32,6 +37,7 @@ namespace HaloKero.UI
 
         public override void Show(object data)
         {
+            audioManager.PlaySFX(audioManager.FinishSound);
             base.Show(data);
             this.Register(EventID.WonGame, ShowWonResult);
             this.Register(EventID.LostGame, ShowLostResult);

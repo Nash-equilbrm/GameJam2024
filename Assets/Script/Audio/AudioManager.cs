@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tools;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
     [Header("------Audio Source-----")]
     [SerializeField] public AudioSource musicSource;
