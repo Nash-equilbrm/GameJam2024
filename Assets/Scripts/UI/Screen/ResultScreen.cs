@@ -52,23 +52,27 @@ namespace HaloKero.UI
 
         public void ExitButton_OnClick()
         {
-            if (PhotonNetwork.InRoom)
-            {
-                if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount > 1) MigrateMaster();
-                else
-                {
-                    PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-                    PhotonNetwork.LeaveRoom();
-                }
-            }
+            //if (PhotonNetwork.InRoom)
+            //{
+            //    if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount > 1) MigrateMaster();
+            //    else
+            //    {
+            //        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+            //        PhotonNetwork.LeaveRoom();
+            //    }
+            //}
+
+            PhotonNetwork.LeaveRoom();
+
+            this.Broadcast(EventID.BackToMenu);
         }
 
-        private void MigrateMaster()
-        {
-            var dict = PhotonNetwork.CurrentRoom.Players;
-            if (PhotonNetwork.SetMasterClient(dict[dict.Count - 1]))
-                PhotonNetwork.LeaveRoom();
-        }
+        //private void MigrateMaster()
+        //{
+        //    var dict = PhotonNetwork.CurrentRoom.Players;
+        //    if (PhotonNetwork.SetMasterClient(dict[dict.Count - 1]))
+        //        PhotonNetwork.LeaveRoom();
+        //}
 
 
         

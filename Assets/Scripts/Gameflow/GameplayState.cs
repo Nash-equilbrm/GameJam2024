@@ -14,7 +14,7 @@ namespace HaloKero.Gameplay
 {
     public class GameplayState : State<GameflowManager>
     {
-        private float _gameDuration = 300;
+        private float _gameDuration = 150;
         private float _timer;
         private bool _playing;
 
@@ -31,7 +31,7 @@ namespace HaloKero.Gameplay
 
 
             _context.Register(EventID.EndGamePlay, OnEndGame);
-            _context.Register(EventID.OpenMainMenu, GoBackToMainMenu);
+            _context.Register(EventID.BackToMenu, GoBackToMainMenu);
         }
 
         public override void Exit()
@@ -44,7 +44,7 @@ namespace HaloKero.Gameplay
 
             // Unregister Game events
             _context.Unregister(EventID.EndGamePlay, OnEndGame);
-            _context.Unregister(EventID.OpenMainMenu, GoBackToMainMenu);
+            _context.Unregister(EventID.BackToMenu, GoBackToMainMenu);
         }
 
         public override void LogicUpdate()
@@ -134,6 +134,10 @@ namespace HaloKero.Gameplay
 
         private void GoBackToMainMenu(object data)
         {
+            UIManager.Instance.HideAllScreens();
+            UIManager.Instance.HideAllOverlaps();
+            UIManager.Instance.HideAllPopups();
+
             _context.ChangeState(GameFlowState.MainMenu);
         }
     }

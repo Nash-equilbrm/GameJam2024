@@ -31,7 +31,7 @@ namespace HaloKero.UI.Popup
 
         public override void Hide()
         {
-            _exitPopUpBtn.onClick.RemoveListener(BackToMenu);
+            _exitPopUpBtn.onClick.RemoveListener(Hide);
 
             _timer = 0f;
             StartCoroutine(HidePopup());
@@ -45,18 +45,11 @@ namespace HaloKero.UI.Popup
         public override void Show(object data)
         {
             base.Show(data);
-            _exitPopUpBtn.onClick.AddListener(BackToMenu);
+            _exitPopUpBtn.onClick.AddListener(Hide);
 
 
             _timer = 0f;
             StartCoroutine(ShowPopup());
-        }
-
-
-        private void BackToMenu()
-        {
-            this.Broadcast(EventID.OpenMainMenu);
-            Hide();
         }
 
 

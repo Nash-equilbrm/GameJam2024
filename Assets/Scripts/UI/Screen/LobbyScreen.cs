@@ -27,6 +27,8 @@ namespace HaloKero.UI
             base.Hide();
             this.Unregister(EventID.OnPlayerEnter, SetUpPlayerSlot);
             this.Unregister(EventID.SetPlayerID, SetUpPlayerSlot);
+            this.Unregister(EventID.StartGamePlay, ResetPopup);
+
         }
 
         public override void Init()
@@ -39,18 +41,25 @@ namespace HaloKero.UI
             base.Show(data);
             this.Register(EventID.OnPlayerEnter, SetUpPlayerSlot);
             this.Register(EventID.SetPlayerID, SetUpPlayerSlot);
+            this.Register(EventID.StartGamePlay, ResetPopup);
+
             _getReadyBtn.onClick.AddListener(StartGameBtn);
             _openSettingBtn.onClick.AddListener(OpenSettingPopup);
 
 
         }
 
+
+        private void ResetPopup(object data)
+        {
+            _getReadyBtnTxt.text = _ready;
+        }
+
         private void StartGameBtn()
         {
-            _getReadyBtnTxt.text = (_getReadyBtnTxt.text == _ready) ? _unready : _ready;
-
             if (!PhotonNetwork.IsMasterClient)
             {
+                _getReadyBtnTxt.text = (_getReadyBtnTxt.text == _ready) ? _unready : _ready;
                 Hashtable prop = new Hashtable() { { "ready", true } };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
             }
@@ -115,7 +124,7 @@ namespace HaloKero.UI
 
         }
         private string _ready = "ready";
-        private string _unready = "Wait for host";
+        private string _unready = "wait for host";
         
 
 

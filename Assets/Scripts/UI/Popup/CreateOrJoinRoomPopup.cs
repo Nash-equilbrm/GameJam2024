@@ -18,6 +18,7 @@ namespace HaloKero.UI.Popup
         [SerializeField] private TMP_InputField _joinGameInputField;
         [SerializeField] private Button _exitBtn;
 
+
         public override void Hide()
         {
             base.Hide();

@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 using Utilities;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
+using System.Linq;
 
 
 public enum TypeTerrain
@@ -24,7 +25,7 @@ public class LevelController : MonoBehaviour
     [Space(2.0f)]
     [Header("TRANSFORM")]
     [SerializeField] private Transform player;
-    
+
     [Space(2.0f)]
     [Header("PREFAB")]
     [SerializeField] private GameObject thornPref;
@@ -49,41 +50,44 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Update: _mapGenerated = " + _mapGenerated);
         if (!_mapGenerated)
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                int mapGenerateCode = GenerateMapCode(maxFloor);
+                string mapGenerateCode = GenerateMapCode(maxFloor);
                 Hashtable prop = new Hashtable() { { "mapGenerateCode", mapGenerateCode } };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
-
+                Debug.Log("mapGenerateCode: " + mapGenerateCode);
                 GenerateMap(mapGenerateCode);
-
                 _mapGenerated = true;
+                Debug.Log("Update: _mapGenerated = " + _mapGenerated);
             }
 
             else
             {
-                int mapCode = 0;
+                string mapCode = "";
                 if (PhotonNetwork.MasterClient.CustomProperties.TryGetValue("mapGenerateCode", out object data))
                 {
-                    mapCode = (int)data;
+                    mapCode = (string)data;
                     GenerateMap(mapCode);
+
                     _mapGenerated = true;
+                    Debug.Log("Update: _mapGenerated = " + _mapGenerated);
 
                 }
             }
         }
-        
+
     }
 
     private void LoadDataBlocks()
     {
-        blocksBody  = Resources.LoadAll<GameObject>("Block");
-        blocksEnd   = Resources.LoadAll<GameObject>("BlockEnd");
+        blocksBody = Resources.LoadAll<GameObject>("Block");
+        blocksEnd = Resources.LoadAll<GameObject>("BlockEnd");
         blocksBegin = Resources.LoadAll<GameObject>("BlockBegin");
 
-    }     
+    }
 
 
 
@@ -147,7 +151,7 @@ public class LevelController : MonoBehaviour
 
     private void ChangeTile(Block block, int floor)
     {
-        if(floor < 2)
+        if (floor < 2)
         {
             for (int i = 0; i < tilesetNatural.Count; i++)
             {
@@ -158,46 +162,60 @@ public class LevelController : MonoBehaviour
     }
 
 
-    public int GenerateMapCode(int size)
+    public string GenerateMapCode(int size)
     {
-        int res = 0;
+        string res = "";
         // begin block
-        res += UnityEngine.Random.Range(0, blocksBegin.Length);
-        res *= 10;
+        res += (UnityEngine.Random.Range(0, blocksBegin.Length)).ToString() + "-";
+        Debug.Log(res);
 
         for (int i = 1; i < maxFloor - 1; i++)
         {
             if (i < 2)
-                res += GenerateBodyBlockID(DifficultyLevel.Easy, i);
-            else if (i < maxFloor - 1)
-                res += GenerateBodyBlockID(DifficultyLevel.Normal, i);
-            else
-                res += GenerateBodyBlockID(DifficultyLevel.Hard, i);
-            res *= 10;
+            {
+                res += GenerateBodyBlockID(DifficultyLevel.Easy, i).ToString() + "-";
+                Debug.Log(res);
 
+            }
+
+            else if (i < maxFloor - 1)
+            {
+                res += GenerateBodyBlockID(DifficultyLevel.Normal, i).ToString() + "-";
+                Debug.Log(res);
+
+            }
+            else
+            {
+                res += GenerateBodyBlockID(DifficultyLevel.Hard, i).ToString() + "-";
+                Debug.Log(res);
+
+            }
         }
 
 
         // end block
-        res += UnityEngine.Random.Range(0, blocksEnd.Length);
+        res += UnityEngine.Random.Range(0, blocksEnd.Length).ToString();
+        Debug.Log(res);
         return res;
     }
 
 
 
-    public void GenerateMap(int mapCode)
+    public void GenerateMap(string mapCode)
     {
-        Debug.Log("GenerateMap");
-        GenerateBeginBlock(mapCode % 10);
-        mapCode /= 10;
+        List<string> blockIdStr = mapCode.Split('-').ToList<string>();
 
-        for(int i = 1; i < maxFloor; i++)
+        List<int> blockId = blockIdStr.Select(x => Int32.Parse(x)).ToList();
+
+
+        GenerateBeginBlock(blockId[0]);
+
+        for (int i = 1; i < maxFloor; i++)
         {
-            GenerateBodyBlock(mapCode % 10, i);
-            mapCode /= 10;
+            GenerateBodyBlock(blockId[i], i);
         }
 
-        GenerateEndBlock(mapCode);
+        GenerateEndBlock(blockId[blockId.Count - 1]);
 
     }
 }
