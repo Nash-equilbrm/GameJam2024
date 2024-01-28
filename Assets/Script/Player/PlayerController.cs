@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         else canMove = true;
         PlayerMovement();
         DartSkill();
+        this.Broadcast(EventID.OnHeightChanged, transform.position.y);
     }
     private void PlayerMovement()
     {

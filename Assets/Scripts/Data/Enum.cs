@@ -39,6 +39,7 @@ public enum EventID
     BackToMenu,
     OnTimeChanged,
     OnMapGenerate,
+    OnHeightChanged,
 
     // AUDIO
     StopAudio

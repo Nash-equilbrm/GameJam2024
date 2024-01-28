@@ -19,6 +19,7 @@ namespace HaloKero.UI.Overlap
             base.Hide();
             _resultTxt.gameObject.SetActive(false);
             this.Unregister(EventID.OnTimeChanged, SetTimer);
+            this.Unregister(EventID.OnHeightChanged, SetHeight);
         }
 
         public override void Init()
@@ -31,9 +32,16 @@ namespace HaloKero.UI.Overlap
         {
             base.Show(data);
             this.Register(EventID.OnTimeChanged, SetTimer);
+            this.Register(EventID.OnHeightChanged, SetHeight);
+
         }
 
-        
+        private void SetHeight(object data)
+        {
+            float h = (float)data;
+            _heightTxt.text = string.Format("{0:#.00}", h);
+        }
+
 
 
         private void SetTimer(object data)
