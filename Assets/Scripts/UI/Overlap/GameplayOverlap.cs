@@ -18,8 +18,7 @@ namespace HaloKero.UI.Overlap
         {
             base.Hide();
             _resultTxt.gameObject.SetActive(false);
-            this.Unregister(EventID.WonGame, ShowWinResult);
-            this.Unregister(EventID.LostGame, ShowLostResult);
+            this.Unregister(EventID.OnTimeChanged, SetTimer);
         }
 
         public override void Init()
@@ -31,24 +30,10 @@ namespace HaloKero.UI.Overlap
         public override void Show(object data)
         {
             base.Show(data);
-            this.Register(EventID.WonGame, ShowWinResult);
-            this.Register(EventID.LostGame, ShowLostResult);
             this.Register(EventID.OnTimeChanged, SetTimer);
         }
 
-        private void ShowWinResult(object data)
-        {
-            _resultTxt.gameObject.SetActive(true);
-            _resultTxt.text = "CONGRATULATION!!!";
-            this.Broadcast(EventID.EndGamePlay, EventID.WonGame);
-        }
-
-        private void ShowLostResult(object data)
-        {
-            _resultTxt.gameObject.SetActive(true);
-            _resultTxt.text = "YOU FALL";
-            this.Broadcast(EventID.EndGamePlay, EventID.LostGame);
-        }
+        
 
 
         private void SetTimer(object data)

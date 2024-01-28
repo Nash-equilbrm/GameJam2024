@@ -1,6 +1,6 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         tag = "LocalPlayer";
         Camera.main.GetComponent<CameraFollow>().SetupCamera(this.transform);
+
+
+        // when time's up
+        this.Register(EventID.TimeUp, OnTimeUp);
     }
 
     public bool isFacingRight
@@ -160,5 +164,14 @@ public class PlayerController : MonoBehaviour
     public void SetActiveObject_RPC(bool active)
     {
         gameObject.SetActive(false);
+    }
+
+
+
+    private void OnTimeUp(object obj)
+    {
+        Debug.Log("OnTimeUp, set new hash");
+        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(), gameObject.transform.position.y } };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
     }
 }

@@ -40,30 +40,25 @@ namespace HaloKero.Gameplay
 
         private void Update()
         {
-            Debug.Log(s);
             _stateMachine.CurrentState.LogicUpdate();
         }
 
 
-        string s = "menu";
         public void ChangeState(GameFlowState state)
         {
             switch (state)
             {
                 case GameFlowState.MainMenu:
                     {
-                        s = "menu";
                         _stateMachine.ChangeState(_menuState); break;
                     }
                 case GameFlowState.Lobby:
                     {
-                        s = "Lobby";
 
                         _stateMachine.ChangeState(_lobbyState); break;
                     }
                 case GameFlowState.Gameplay:
                     {
-                        s = "Gameplay";
                         _stateMachine.ChangeState(_gameplayState); break;
                     }
                 default: break;

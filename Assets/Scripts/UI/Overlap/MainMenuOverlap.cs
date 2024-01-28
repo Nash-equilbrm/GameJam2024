@@ -24,7 +24,6 @@ namespace HaloKero.UI.Overlap
             _playBtn.onClick.RemoveListener(StartGame);
             _openSettingBtn.onClick.RemoveListener(OpenSettingPopup);
             this.Unregister(EventID.OnJoinRoomSuccess, OnJoinRoomSuccess);
-            this.Unregister(EventID.OnLanguageChange, Relocalize);
         }
 
         public override void Init()
@@ -40,9 +39,7 @@ namespace HaloKero.UI.Overlap
             _playBtn.onClick.AddListener(StartGame);
             _openSettingBtn.onClick.AddListener(OpenSettingPopup);
             this.Register(EventID.OnJoinRoomSuccess, OnJoinRoomSuccess);
-            this.Register(EventID.OnLanguageChange, Relocalize);
 
-            Relocalize();
         }
 
         private void OnJoinRoomSuccess(object data = null)
@@ -65,12 +62,7 @@ namespace HaloKero.UI.Overlap
             UIManager.Instance.ShowPopup<SettingPopup>(data: settingData, forceShowData:true);
         }
 
-
-        private void Relocalize(object data = null)
-        {
-            _startGameBtnTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.START_GAME_BTN;
-            _openSettingBtnTxt.text = GameSettingManager.Instance.CurrentSettings.CurrentLanguage.SETTING_TITLE;
-        }
+        
     }
 }
 

@@ -111,6 +111,11 @@ namespace HaloKero.Multiplayer
                 this.Broadcast(EventID.StartGamePlay);
             }
         }
+
+        public override void OnLeftRoom()
+        {
+            PhotonNetwork.LoadLevel(0);
+        }
     }
 }
 

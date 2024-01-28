@@ -4,23 +4,31 @@ using HaloKero.UI.Popup;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Photon.Realtime;
+using Photon.Pun;
+using HaloKero.UI;
 
 
 namespace HaloKero.Gameplay
 {
     public class GameplayState : State<GameflowManager>
     {
-        private float _gameDuration = 65;
+        private float _gameDuration = 5;
         private float _timer;
+        private bool _playing;
+
         public GameplayState(GameflowManager context) : base(context)
         {
         }
 
         public override void Enter()
         {
+            _playing = true;
             _timer = _gameDuration;
             UIManager.Instance.HideAllScreens();
             UIManager.Instance.ShowOverlap<GameplayOverlap>(forceShowData: true);
+
 
             _context.Register(EventID.EndGamePlay, OnEndGame);
             _context.Register(EventID.OpenMainMenu, GoBackToMainMenu);
@@ -28,7 +36,7 @@ namespace HaloKero.Gameplay
 
         public override void Exit()
         {
-            _animTimer = 0;
+            _checkResultTimer = 0;
 
             // Save game result
             //...
@@ -46,28 +54,81 @@ namespace HaloKero.Gameplay
                 _timer -= Time.deltaTime;
                 _context.Broadcast(EventID.OnTimeChanged, _timer);
             }
-            else
+            else if(_playing) 
             {
+                Debug.Log("time up");
                 _context.Broadcast(EventID.TimeUp);
+                OnTimeUp();
+                _playing = false;
             }
+        }
+
+        private void OnTimeUp()
+        {
+            UIManager.Instance.HideAllScreens();
+            UIManager.Instance.HideAllOverlaps();
+            UIManager.Instance.HideAllPopups();
+
+            Debug.Log("Show screen");
+            UIManager.Instance.ShowScreen<ResultScreen>(forceShowData: true);
+            _context.StartCoroutine(OnTimeUpCoRoutine());
         }
 
         private void OnEndGame(object data)
         {
             EventID result = (EventID)data;
-            _context.StartCoroutine(OnEndGameCoroutine());
+            // ... do something
         }
 
-        private float _showResultPopupDuration = 1.5f;
-        private float _animTimer = 0f;
-        private IEnumerator OnEndGameCoroutine()
+
+
+
+        private float _checkForResultDelay = 1f;
+        private float _checkResultTimer = 0f;
+        private IEnumerator OnTimeUpCoRoutine()
         {
-            while(_animTimer < _showResultPopupDuration)
+            while(_checkResultTimer < _checkForResultDelay)
             {
-                _animTimer += Time.deltaTime;
+                _checkResultTimer += Time.deltaTime;
                 yield return null;
             }
-            UIManager.Instance.ShowPopup<AboutUsPopup>(forceShowData: true);
+
+            CheckResult();
+        }
+
+        private void CheckResult()
+        {
+            Debug.Log("CheckResult");
+            float max = 0;
+            int winnerActorNumber = -1;
+            foreach (var p in PhotonNetwork.PlayerList)
+            {
+                if (p.CustomProperties.TryGetValue("p" + p.ActorNumber.ToString(), out object scoreObj))
+                {
+                    float score = (float)scoreObj;
+                    if (max < score)
+                    {
+                        max = score;
+                        winnerActorNumber = p.ActorNumber;
+                    }
+                }
+                else
+                {
+                    // Handle the case where "ready" custom property is not found
+                    Debug.LogWarning("Custom property 'ready' not found for player: " + p.ActorNumber);
+                }
+            }
+
+            if (PhotonNetwork.LocalPlayer.ActorNumber == winnerActorNumber)
+            {
+                Debug.Log("Broadcast won");
+                _context.Broadcast(EventID.WonGame);
+            }
+            else
+            {
+                Debug.Log("Broadcast lost");
+                _context.Broadcast(EventID.LostGame);
+            }
         }
 
 
