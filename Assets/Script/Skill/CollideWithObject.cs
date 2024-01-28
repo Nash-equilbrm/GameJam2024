@@ -9,13 +9,20 @@ public class CollideWithObject : MonoBehaviour
     private float impactForce;
     [SerializeField]
     private PhotonView photonView;
-    [SerializeField]
-    
+
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManage").GetComponent<AudioManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.CompareTag("LocalPlayer"))
         {
+            audioManager.PlaySFX(audioManager.PlayerHit);
             Vector3 collisionPosition = collision.transform.position - transform.position;
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.AddForce(new Vector2((collisionPosition.x>0?1:-1) * impactForce,-1*impactForce), ForceMode2D.Impulse);
@@ -28,10 +35,10 @@ public class CollideWithObject : MonoBehaviour
         {
             Debug.Log("Player");
             photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
-
         }
         if (collision.CompareTag("Darts"))
         {
+            audioManager.PlaySFX(audioManager.DartHit);
             Debug.Log("dart");
             photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
         }
