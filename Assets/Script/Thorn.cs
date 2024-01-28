@@ -23,6 +23,7 @@ public class Thorn : MonoBehaviour
             PlayerController playerController = collision.GetComponent<PlayerController>();
             playerController.canMove = false;
             playerController.time = 3f;
+            SetActiveObstacle_RPC(false);
         }
         if (collision.CompareTag("Player"))
         {
