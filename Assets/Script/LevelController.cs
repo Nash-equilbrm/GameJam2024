@@ -35,15 +35,15 @@ public class LevelController : MonoBehaviour
 
     private List<Block> blocks;
     private float endPosY;
-    private GameObject[] blocksBody;
-    private GameObject[] blocksEnd;
-    private GameObject[] blocksBegin;
+    public  GameObject[] blocksBody;
+    public GameObject[] blocksEnd;
+    public GameObject[] blocksBegin;
+
 
     private bool _mapGenerated = false;
 
     private void Awake()
     {
-        LoadDataBlocks();
         blocks = new();
 
     }
@@ -56,38 +56,31 @@ public class LevelController : MonoBehaviour
             if (PhotonNetwork.IsMasterClient)
             {
                 string mapGenerateCode = GenerateMapCode(maxFloor);
-                Hashtable prop = new Hashtable() { { "mapGenerateCode", mapGenerateCode } };
-                PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
-                Debug.Log("mapGenerateCode: " + mapGenerateCode);
                 GenerateMap(mapGenerateCode);
+                //Hashtable prop = new Hashtable() { { "mapGenerateCode", mapGenerateCode } };
+                //PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
+                //Debug.Log("mapGenerateCode: " + mapGenerateCode);
                 _mapGenerated = true;
-                Debug.Log("Update: _mapGenerated = " + _mapGenerated);
+                //Debug.Log("Update: _mapGenerated = " + _mapGenerated);
             }
 
-            else
-            {
-                string mapCode = "";
-                if (PhotonNetwork.MasterClient.CustomProperties.TryGetValue("mapGenerateCode", out object data))
-                {
-                    mapCode = (string)data;
-                    GenerateMap(mapCode);
+            //else
+            //{
+            //    string mapCode = "";
+            //    if (PhotonNetwork.MasterClient.CustomProperties.TryGetValue("mapGenerateCode", out object data))
+            //    {
+            //        mapCode = (string)data;
+            //        GenerateMap(mapCode);
 
-                    _mapGenerated = true;
-                    Debug.Log("Update: _mapGenerated = " + _mapGenerated);
+            //        _mapGenerated = true;
+            //        Debug.Log("Update: _mapGenerated = " + _mapGenerated);
 
-                }
-            }
+            //    }
+            //}
         }
 
     }
 
-    private void LoadDataBlocks()
-    {
-        blocksBody = Resources.LoadAll<GameObject>("Block");
-        blocksEnd = Resources.LoadAll<GameObject>("BlockEnd");
-        blocksBegin = Resources.LoadAll<GameObject>("BlockBegin");
-
-    }
 
 
 
@@ -96,7 +89,8 @@ public class LevelController : MonoBehaviour
         endPosY = 0;
         //GameObject blockBegin = blocksBegin[Random.Range(0, blocksBegin.Length)];
         GameObject blockBegin = blocksBegin[index];
-        Block begin = SimplePool.Spawn(blockBegin, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
+        //Block begin = SimplePool.Spawn(blockBegin, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
+        Block begin = PhotonNetwork.Instantiate(blockBegin.name, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
         begin.transform.SetParent(mapPosition);
         endPosY += begin.GetBlockMapSize().y / 2f;
         begin.IFloor = 0;
@@ -115,7 +109,8 @@ public class LevelController : MonoBehaviour
         blockTemp = blocksBody[index].GetComponent<Block>();
 
         endPosY += blockTemp.GetBlockMapSize().y / 2f;
-        Block block = SimplePool.Spawn(blockTemp.gameObject, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
+        //Block block = SimplePool.Spawn(blockTemp.gameObject, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
+        Block block = PhotonNetwork.Instantiate(blockTemp.gameObject.name, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
         block.transform.SetParent(mapPosition);
         block.IFloor = floor;
         endPosY += blockTemp.GetBlockMapSize().y / 2f;
@@ -142,7 +137,7 @@ public class LevelController : MonoBehaviour
         //GameObject blockEnd = blocksEnd[Random.Range(0, blocksEnd.Length)];
         GameObject blockEnd = blocksEnd[index];
         endPosY += blockEnd.GetComponent<Block>().GetBlockMapSize().y / 2f;
-        Block finish = Instantiate(blockEnd, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
+        Block finish = PhotonNetwork.Instantiate(blockEnd.name, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
         finish.transform.SetParent(mapPosition);
         finish.IFloor = maxFloor;
         finish.SpawnThorn(thornPref);
@@ -167,27 +162,23 @@ public class LevelController : MonoBehaviour
         string res = "";
         // begin block
         res += (UnityEngine.Random.Range(0, blocksBegin.Length)).ToString() + "-";
-        Debug.Log(res);
 
         for (int i = 1; i < maxFloor - 1; i++)
         {
             if (i < 2)
             {
                 res += GenerateBodyBlockID(DifficultyLevel.Easy, i).ToString() + "-";
-                Debug.Log(res);
 
             }
 
             else if (i < maxFloor - 1)
             {
                 res += GenerateBodyBlockID(DifficultyLevel.Normal, i).ToString() + "-";
-                Debug.Log(res);
 
             }
             else
             {
                 res += GenerateBodyBlockID(DifficultyLevel.Hard, i).ToString() + "-";
-                Debug.Log(res);
 
             }
         }
@@ -195,7 +186,6 @@ public class LevelController : MonoBehaviour
 
         // end block
         res += UnityEngine.Random.Range(0, blocksEnd.Length).ToString();
-        Debug.Log(res);
         return res;
     }
 

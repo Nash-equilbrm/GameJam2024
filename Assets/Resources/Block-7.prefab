@@ -1383,6 +1383,7 @@ GameObject:
   - component: {fileID: 4388525706204943351}
   - component: {fileID: 6212844880131565442}
   - component: {fileID: 7568557559333254826}
+  - component: {fileID: 622626409980594322}
   m_Layer: 0
   m_Name: Block-7
   m_TagString: Untagged
@@ -1439,6 +1440,28 @@ MonoBehaviour:
   obstacle: {fileID: 1627792545391896957}
   finish: {fileID: 0}
   tile: {fileID: 11400000, guid: bcf3118a0cca9434c9b4ee3e16eaca78, type: 2}
+--- !u!114 &622626409980594322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6858119826440697183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8947106958138933587
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,7 +51,7 @@ public class Block : MonoBehaviour
                 if (tb != null)
                 {
                     Vector3 tileWorldPos = this.thorn.CellToWorld(cellPosition);
-                    Thorn thorn = SimplePool.Spawn(prefab, tileWorldPos, Quaternion.identity).GetComponent<Thorn>();
+                    Thorn thorn = PhotonNetwork.Instantiate(prefab.name, tileWorldPos, Quaternion.identity).GetComponent<Thorn>();
                 }
             }
         }
