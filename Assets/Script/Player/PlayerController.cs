@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
     public PhotonView photonView;
     public bool canMove;
     public float time;
+    private void OnDestroy()
+    {
+        Debug.Log(gameObject.name);
+        this.Unregister(EventID.TimeUp, OnTimeUp);
+    }
     private void Start()
     {
         if (photonView == null)
@@ -168,10 +173,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void OnTimeUp(object obj)
+    private void OnTimeUp(object obj= null)
     {
-        Debug.Log("OnTimeUp, set new hash");
-        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(), gameObject.transform.position.y } };
+        Debug.Log("OnTimeUp, set new hash "+ PhotonNetwork.LocalPlayer.ActorNumber.ToString()+" y: "+ this.transform.position.y);
+        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(),transform.position.y } };
         PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
     }
 }
