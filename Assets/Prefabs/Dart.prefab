@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.51886785, b: 0.51886785, a: 1}
+  m_Sprite: {fileID: -2134336416, guid: 0d2b932d931988b4684debb2b8a845ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactForce: 10
+  photonView: {fileID: 0}
 --- !u!114 &5904480257702958451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,8 +289,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.51886785, b: 0.51886785, a: 1}
+  m_Sprite: {fileID: -2134336416, guid: 0d2b932d931988b4684debb2b8a845ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -364,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactForce: 10
+  photonView: {fileID: 0}
 --- !u!114 &5861502218104404777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,8 +535,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.51886785, b: 0.51886785, a: 1}
+  m_Sprite: {fileID: -2134336416, guid: 0d2b932d931988b4684debb2b8a845ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -609,6 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactForce: 10
+  photonView: {fileID: 0}
 --- !u!114 &7965914868799309681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,8 +746,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.51886785, b: 0.51886785, a: 1}
+  m_Sprite: {fileID: -2134336416, guid: 0d2b932d931988b4684debb2b8a845ac, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -819,6 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactForce: 10
+  photonView: {fileID: 0}
 --- !u!114 &504453659420771215
 MonoBehaviour:
   m_ObjectHideFlags: 0
