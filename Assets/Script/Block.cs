@@ -34,7 +34,7 @@ public class Block : MonoBehaviour
     {
         Vector3Int size = wall.size;
         Vector3 cellSize = Vector3.one * tile.sprite.bounds.size.x; //1.28f
-        Vector3 worldSize = new Vector3(size.x * cellSize.x, size.y * cellSize.y, size.z * cellSize.z);
+        Vector3 worldSize = new Vector3(size.x * cellSize.x, (size.y * cellSize.y) - -(tile.sprite.bounds.size.y * 4), size.z * cellSize.z);
         return worldSize;
     }
 
