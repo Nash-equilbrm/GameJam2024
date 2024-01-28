@@ -41,12 +41,12 @@ namespace HaloKero.UI
 
         private void ShowWonResult(object obj)
         {
-            _resultTxt.text = "YOU WIN";
+            _resultTxt.text = "you win";
         }
 
         private void ShowLostResult(object obj)
         {
-            _resultTxt.text = "BACK TO THE WELL YOU GO";
+            _resultTxt.text = "back to the well you go";
         }
 
 

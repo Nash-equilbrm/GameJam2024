@@ -13,9 +13,7 @@ namespace HaloKero.UI.Overlap
     public class MainMenuOverlap : BaseOverlap
     {
         [Header("Widgets")]
-        [SerializeField] private TMP_Text _startGameBtnTxt;
         [SerializeField] private Button _playBtn;
-        [SerializeField] private TMP_Text _openSettingBtnTxt;
         [SerializeField] private Button _openSettingBtn;
 
         public override void Hide()
