@@ -139,7 +139,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &678398170703583841
 MonoBehaviour:
@@ -275,6 +275,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3666801136628637248}
     m_Modifications:
+    - target: {fileID: 215509782493811563, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -807797516, guid: e99136979f2d5984b8714159a0f8129d, type: 3}
     - target: {fileID: 248498298129332287, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: photonView
       value: 
@@ -283,6 +287,10 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 424725093629852986, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -807797516, guid: e99136979f2d5984b8714159a0f8129d, type: 3}
     - target: {fileID: 1593057742377930498, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -335,6 +343,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2176123112409598986, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 36592d11edbc881459d996923bc8dd98, type: 2}
+    - target: {fileID: 2686845380179402332, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 36592d11edbc881459d996923bc8dd98, type: 2}
     - target: {fileID: 3174148838590618802, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -347,10 +363,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dart
       objectReference: {fileID: 0}
+    - target: {fileID: 4240823727662442300, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 36592d11edbc881459d996923bc8dd98, type: 2}
     - target: {fileID: 4352444648791253465, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4481358717366391826, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -807797516, guid: e99136979f2d5984b8714159a0f8129d, type: 3}
     - target: {fileID: 4605792083586555805, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: photonView
       value: 
@@ -359,6 +383,14 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4693094692381540520, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -807797516, guid: e99136979f2d5984b8714159a0f8129d, type: 3}
+    - target: {fileID: 4857596526476281493, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 36592d11edbc881459d996923bc8dd98, type: 2}
     - target: {fileID: 4913437530917309651, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 
