@@ -28,13 +28,6 @@ public class PlayerController : MonoBehaviour
     public PhotonView photonView;
     public bool canMove;
     public float time;
-
-    private AudioManager audioManager;
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("AudioManage").GetComponent<AudioManager>();
-    }
     private void OnDestroy()
     {
         Debug.Log(gameObject.name);
@@ -121,7 +114,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
-            audioManager.PlaySFX(audioManager.Jump);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.Jump);
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }
     }
@@ -164,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipPlayer()
     {
-        audioManager.PlaySFX(audioManager.PlayerFlip);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.PlayerFlip);
         isFacingRight = !isFacingRight;
     }
 
