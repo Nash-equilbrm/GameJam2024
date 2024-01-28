@@ -14,7 +14,7 @@ namespace HaloKero.Gameplay
 {
     public class GameplayState : State<GameflowManager>
     {
-        private float _gameDuration = 5;
+        private float _gameDuration = 300;
         private float _timer;
         private bool _playing;
 
