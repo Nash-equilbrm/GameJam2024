@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4605792083586555805}
   - component: {fileID: 5904480257702958451}
   - component: {fileID: 1762969172470763387}
+  - component: {fileID: 2176123112409598986}
   m_Layer: 0
   m_Name: Circle2
   m_TagString: Darts
@@ -211,6 +212,27 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!95 &2176123112409598986
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174148838590618802}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ceec4e798d7e5943b8dc6b17f7f8c6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3929682552611547989
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +248,7 @@ GameObject:
   - component: {fileID: 5666547405384146812}
   - component: {fileID: 5861502218104404777}
   - component: {fileID: 773538621083829318}
+  - component: {fileID: 4240823727662442300}
   m_Layer: 0
   m_Name: Circle3
   m_TagString: Darts
@@ -422,6 +445,27 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!95 &4240823727662442300
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929682552611547989}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ceec4e798d7e5943b8dc6b17f7f8c6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4231154781321748556
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +516,7 @@ GameObject:
   - component: {fileID: 6314661230764283120}
   - component: {fileID: 7965914868799309681}
   - component: {fileID: 3166595434355043735}
+  - component: {fileID: 2686845380179402332}
   m_Layer: 0
   m_Name: Circle4
   m_TagString: Darts
@@ -668,6 +713,27 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!95 &2686845380179402332
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546386974000559177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ceec4e798d7e5943b8dc6b17f7f8c6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8321398903647531157
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +749,7 @@ GameObject:
   - component: {fileID: 248498298129332287}
   - component: {fileID: 504453659420771215}
   - component: {fileID: 7159975525473964073}
+  - component: {fileID: 4857596526476281493}
   m_Layer: 0
   m_Name: Circle1
   m_TagString: Darts
@@ -879,3 +946,24 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!95 &4857596526476281493
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321398903647531157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ceec4e798d7e5943b8dc6b17f7f8c6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

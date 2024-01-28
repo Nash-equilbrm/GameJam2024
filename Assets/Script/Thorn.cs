@@ -37,4 +37,5 @@ public class Thorn : MonoBehaviour
     {
         gameObject.SetActive(active);
     }
+    
 }
