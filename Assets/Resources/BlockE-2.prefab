@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8412092105123266854}
   - component: {fileID: 551089519603773539}
   - component: {fileID: 1531941737198881755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Finish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 2232160150249969453}
   - component: {fileID: 2954176654220766934}
   - component: {fileID: 1256249526634230454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 1816936409663357028}
   - component: {fileID: 6313056274192989072}
   - component: {fileID: 2248682790702147831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1395,7 +1395,7 @@ GameObject:
   - component: {fileID: 1626178769552186508}
   - component: {fileID: 1059042238592486464}
   - component: {fileID: 989182265566572992}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Thorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1596,7 +1596,7 @@ GameObject:
   - component: {fileID: 3452926809125113460}
   - component: {fileID: 1228383907617957462}
   - component: {fileID: 1182843124376720684}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BlockE-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

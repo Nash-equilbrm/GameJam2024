@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7855058706434968126}
   - component: {fileID: 7855058706434968125}
   - component: {fileID: 4060512639404429959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 7855058706714239512}
   - component: {fileID: 7855058706714239519}
   - component: {fileID: 6297175475268474621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 7855058707063680431}
   - component: {fileID: 7855058707063680424}
   - component: {fileID: 2819299402646377478}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

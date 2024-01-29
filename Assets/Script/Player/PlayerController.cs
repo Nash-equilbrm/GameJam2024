@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     public PhotonView photonView;
     public bool canMove;
     public float time;
+    public Animator animator;
+    public LayerMask groundLayer;
+
 
     private Transform jumpEffect;
     private ParticleSystem JumpParticle;
@@ -110,7 +113,11 @@ public class PlayerController : MonoBehaviour
         {
             canMove = false;
         }
-        else canMove = true;
+        else
+        {
+            canMove = true;
+        }
+
         PlayerMovement();
         DartSkill();
         this.Broadcast(EventID.OnHeightChanged, transform.position.y);
@@ -122,8 +129,17 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
+        float rbSpeed = rb.velocity.magnitude;
+        animator.SetFloat("Speed", Mathf.Abs(rbSpeed));
+        animator.SetFloat("VY", rb.velocity.y);
+
+        Debug.Log(touchDirection.isGrounded);
+        animator.SetBool("IsGrounded", touchDirection.isGrounded);
+
         if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
+            animator.SetTrigger("IsJumping");
             //Adio and GFX
             lastJumpPosition = transform.position;
 
@@ -133,6 +149,8 @@ public class PlayerController : MonoBehaviour
             //Physic
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }
+
+
     }
     private void DartSkill()
     {
