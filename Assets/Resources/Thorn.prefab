@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4845780765897435079}
   m_Layer: 0
   m_Name: Thorn
-  m_TagString: Untagged
+  m_TagString: Darts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
