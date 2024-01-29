@@ -29,7 +29,6 @@ public class CollideWithObject : MonoBehaviour
             Debug.Log(rb.velocity);
             PlayerController playerController = collision.GetComponent<PlayerController>();
             playerController.canMove = false;
-            playerController.time = 3f;
         }
         if (collision.CompareTag("Player"))
         {

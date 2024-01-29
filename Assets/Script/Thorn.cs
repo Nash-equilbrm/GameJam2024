@@ -21,7 +21,6 @@ public class Thorn : MonoBehaviour
             rb.AddForce(new Vector2((collisionPosition.x > 0 ? 1 : -1) * impactForce, -1 * impactForce), ForceMode2D.Impulse);
             PlayerController playerController = collision.GetComponent<PlayerController>();
             playerController.canMove = false;
-            playerController.time = 3f;
             photonView.RPC("SetActiveObstacle_RPC", RpcTarget.All, false);
             SetActiveObstacle_RPC(false);
         }

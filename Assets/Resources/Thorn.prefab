@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1de633ad5c305428807fadd86f0fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactForce: 10
+  impactForce: 15
   photonView: {fileID: -8487160015404949228}
 --- !u!114 &-8487160015404949228
 MonoBehaviour:

@@ -201,7 +201,7 @@ MonoBehaviour:
   currentSkillCD: 0
   photonView: {fileID: 3715272576747707929}
   canMove: 0
-  time: 0
+  cantMoveTime: 0
   animator: {fileID: 8921619903564796025}
   groundLayer:
     serializedVersion: 2
