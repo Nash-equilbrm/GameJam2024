@@ -33,7 +33,7 @@ public class Block : MonoBehaviour
     public Vector3 GetBlockMapSize()
     {
         Vector3Int size = wall.size;
-        Vector3 cellSize = Vector3.one * tile.sprite.bounds.size.x; //1.28f
+        Vector3 cellSize = Vector3.one * tile.sprite.bounds.size.x; 
         Vector3 worldSize = new(size.x * cellSize.x, (size.y * cellSize.y) - (tile.sprite.bounds.size.y * 4), size.z * cellSize.z);
         return worldSize;
     }
