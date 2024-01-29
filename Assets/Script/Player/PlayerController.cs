@@ -28,10 +28,20 @@ public class PlayerController : MonoBehaviour
     public PhotonView photonView;
     public bool canMove;
     public float time;
+
+    private Transform jumpEffect;
+    private ParticleSystem JumpParticle;
+    private Vector3 lastJumpPosition;
     private void OnDestroy()
     {
         Debug.Log(gameObject.name);
         this.Unregister(EventID.TimeUp, OnTimeUp);
+    }
+
+    private void Awake()
+    {
+        jumpEffect = GameObject.Find("JumpParticle").transform;
+        JumpParticle = jumpEffect.GetComponent<ParticleSystem>();
     }
     private void Start()
     {
@@ -114,7 +124,13 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
+            //Adio and GFX
+            lastJumpPosition = transform.position;
+
+            jumpEffect.position = new Vector3(lastJumpPosition.x, lastJumpPosition.y - 0.556f, lastJumpPosition.z);
             AudioManager.Instance.PlaySFX(AudioManager.Instance.Jump);
+            JumpParticle.Play();
+            //Physic
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }
     }
