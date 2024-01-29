@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Darts
   - LocalPlayer
+  - Bullet
+  - AudioManage
   layers:
   - Default
   - TransparentFX
