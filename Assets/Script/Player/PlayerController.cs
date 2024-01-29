@@ -32,16 +32,19 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
 
-    private AudioManager audioManager;
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("AudioManage").GetComponent<AudioManager>();
-    }
+    private Transform jumpEffect;
+    private ParticleSystem JumpParticle;
+    private Vector3 lastJumpPosition;
     private void OnDestroy()
     {
         Debug.Log(gameObject.name);
         this.Unregister(EventID.TimeUp, OnTimeUp);
+    }
+
+    private void Awake()
+    {
+        jumpEffect = GameObject.Find("JumpParticle").transform;
+        JumpParticle = jumpEffect.GetComponent<ParticleSystem>();
     }
     private void Start()
     {
@@ -137,7 +140,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
             animator.SetTrigger("IsJumping");
-            audioManager.PlaySFX(audioManager.Jump);
+            //Adio and GFX
+            lastJumpPosition = transform.position;
+
+            jumpEffect.position = new Vector3(lastJumpPosition.x, lastJumpPosition.y - 0.556f, lastJumpPosition.z);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.Jump);
+            JumpParticle.Play();
+            //Physic
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }
 
@@ -182,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipPlayer()
     {
-        audioManager.PlaySFX(audioManager.PlayerFlip);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.PlayerFlip);
         isFacingRight = !isFacingRight;
     }
 
