@@ -39,7 +39,7 @@ namespace HaloKero.UI.Overlap
         private void SetHeight(object data)
         {
             float h = (float)data;
-            _heightTxt.text = string.Format("{0:#.00}", h);
+            _heightTxt.text = string.Format("{0:#0.00}", h);
         }
 
 
@@ -53,7 +53,7 @@ namespace HaloKero.UI.Overlap
             }
             else if(time <= 60f && time > 0)
             {
-                _timerTxt.text = TimeSpan.FromSeconds(time).ToString(@"ss\,ff");
+                _timerTxt.text = TimeSpan.FromSeconds(time).ToString(@"ss\.ff");
             }
             else
             {
