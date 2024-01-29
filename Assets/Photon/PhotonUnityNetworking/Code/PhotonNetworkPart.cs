@@ -295,7 +295,7 @@ namespace Photon.Pun
             if (destroyInstantiatedGameObjects)
             {
                 // Fill list with Instantiated objects
-                HashSet<GameObject> instantiatedGos = new HashSet<GameObject>();
+                HashSet<GameObject> instantiatedGos = new();
                 foreach (PhotonView view in photonViewList.Values)
                 {
                     if (view.isRuntimeInstantiated)
