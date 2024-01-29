@@ -16,7 +16,7 @@ namespace HaloKero.Gameplay
 {
     public class LobbyState : State<GameflowManager>
     {
-
+   
         public LobbyState(GameflowManager context) : base(context)
         {
         }
@@ -47,6 +47,7 @@ namespace HaloKero.Gameplay
 
         private void StartGameplay(object data = null)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.StartSound);
             UIManager.Instance.HideAllScreens();
             GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
         }

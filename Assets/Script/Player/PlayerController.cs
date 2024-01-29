@@ -28,10 +28,23 @@ public class PlayerController : MonoBehaviour
     public PhotonView photonView;
     public bool canMove;
     public float time;
+    public Animator animator;
+    public LayerMask groundLayer;
+
+
+    private Transform jumpEffect;
+    private ParticleSystem JumpParticle;
+    private Vector3 lastJumpPosition;
     private void OnDestroy()
     {
         Debug.Log(gameObject.name);
         this.Unregister(EventID.TimeUp, OnTimeUp);
+    }
+
+    private void Awake()
+    {
+        jumpEffect = GameObject.Find("JumpParticle").transform;
+        JumpParticle = jumpEffect.GetComponent<ParticleSystem>();
     }
     private void Start()
     {
@@ -62,7 +75,7 @@ public class PlayerController : MonoBehaviour
         {
             return _isFacingRight;
         }
-        set
+        private set
         {
             if (_isFacingRight != value)
             {
@@ -100,7 +113,11 @@ public class PlayerController : MonoBehaviour
         {
             canMove = false;
         }
-        else canMove = true;
+        else
+        {
+            canMove = true;
+        }
+
         PlayerMovement();
         DartSkill();
         float point = transform.position.y;
@@ -116,10 +133,28 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space)&&canMove)
+
+        float rbSpeed = rb.velocity.magnitude;
+        animator.SetFloat("Speed", Mathf.Abs(rbSpeed));
+        animator.SetFloat("VY", rb.velocity.y);
+
+        Debug.Log(touchDirection.isGrounded);
+        animator.SetBool("IsGrounded", touchDirection.isGrounded);
+
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
+            animator.SetTrigger("IsJumping");
+            //Adio and GFX
+            lastJumpPosition = transform.position;
+
+            jumpEffect.position = new Vector3(lastJumpPosition.x, lastJumpPosition.y - 0.556f, lastJumpPosition.z);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.Jump);
+            JumpParticle.Play();
+            //Physic
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
         }
+
+
     }
     private void DartSkill()
     {
@@ -136,7 +171,7 @@ public class PlayerController : MonoBehaviour
     [PunRPC]
     private void UseSkill()
     {
-        foreach(var dart in Darts)
+        foreach (var dart in Darts)
         {
             dart.SetActive(true);
         }
@@ -160,6 +195,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipPlayer()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.PlayerFlip);
         isFacingRight = !isFacingRight;
     }
 
@@ -178,10 +214,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void OnTimeUp(object obj= null)
+    private void OnTimeUp(object obj = null)
     {
-        Debug.Log("OnTimeUp, set new hash "+ PhotonNetwork.LocalPlayer.ActorNumber.ToString()+" y: "+ this.transform.position.y);
-        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(),transform.position.y } };
+        Debug.Log("OnTimeUp, set new hash " + PhotonNetwork.LocalPlayer.ActorNumber.ToString() + " y: " + this.transform.position.y);
+        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(), transform.position.y } };
         PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
     }
 }
