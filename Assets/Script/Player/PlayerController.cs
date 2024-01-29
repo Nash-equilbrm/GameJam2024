@@ -103,7 +103,11 @@ public class PlayerController : MonoBehaviour
         else canMove = true;
         PlayerMovement();
         DartSkill();
-        this.Broadcast(EventID.OnHeightChanged, transform.position.y);
+        float point = transform.position.y;
+
+        if (point < 0) point = 0;
+
+        this.Broadcast(EventID.OnHeightChanged, point);
     }
     private void PlayerMovement()
     {
