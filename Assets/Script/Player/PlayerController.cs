@@ -26,8 +26,10 @@ public class PlayerController : MonoBehaviour
     private float currentSkillTime = 0f;
 
     public PhotonView photonView;
+
     public bool canMove;
-    public float time;
+    public float cantMoveTime;
+
     public Animator animator;
     public LayerMask groundLayer;
 
@@ -63,8 +65,6 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         tag = "LocalPlayer";
         Camera.main.GetComponent<CameraFollow>().SetupCamera(this.transform);
-
-
         // when time's up
         this.Register(EventID.TimeUp, OnTimeUp);
     }
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //Casting Skill
         if (isSkillCasting)
         {
             if (currentSkillTime > 0)
@@ -103,21 +104,14 @@ public class PlayerController : MonoBehaviour
                 currentSkillCD = skillCD;
             }
         }
-        if (!photonView.IsMine) { return; }
+        //Check control permission
+        if (!photonView.IsMine) return; 
         if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
         {
             return;
         }
-        time -= Time.deltaTime;
-        if (time > 0)
-        {
-            canMove = false;
-        }
-        else
-        {
-            canMove = true;
-        }
 
+        CheckingCanMove();
         PlayerMovement();
         DartSkill();
         float point = transform.position.y;
@@ -126,6 +120,19 @@ public class PlayerController : MonoBehaviour
 
         this.Broadcast(EventID.OnHeightChanged, point);
     }
+
+    private void CheckingCanMove()
+    {
+        if (cantMoveTime > 0)
+        {
+            cantMoveTime -= Time.timeScale * Time.deltaTime;
+        }      
+        if (!canMove && touchDirection.isGrounded && cantMoveTime <= 0)
+        {
+            canMove = true;          
+        }
+    }
+
     private void PlayerMovement()
     {
         if (!photonView.IsMine) { return; }
@@ -136,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
         float rbSpeed = rb.velocity.magnitude;
         animator.SetFloat("Speed", Mathf.Abs(rbSpeed));
-        animator.SetFloat("VY", rb.velocity.y);
+        animator.SetFloat("VerticalY", rb.velocity.y);
 
         Debug.Log(touchDirection.isGrounded);
         animator.SetBool("IsGrounded", touchDirection.isGrounded);
@@ -186,10 +193,11 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
         if (touchDirection.isOnWall)
         {
             FlipPlayer();
-            rb.velocity = new Vector2(isFacingRight ? speed * 0.8f : -speed * 0.8f, rb.velocity.y);
+            rb.velocity = new Vector2(isFacingRight ? (speed * 0.9f) : (-speed * 0.9f), rb.velocity.y);
         }
     }
 
