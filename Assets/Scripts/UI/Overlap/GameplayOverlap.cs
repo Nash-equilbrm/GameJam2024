@@ -16,6 +16,8 @@ namespace HaloKero.UI.Overlap
         [SerializeField] private TMP_Text _timerTxt;
         [SerializeField] private TMP_Text _heightTxt;
         [SerializeField] private Button _openSettingBtn;
+        [SerializeField] private GameObject _tutorial;
+
 
 
         public override void Hide()
@@ -24,7 +26,6 @@ namespace HaloKero.UI.Overlap
             this.Unregister(EventID.OnTimeChanged, SetTimer);
             this.Unregister(EventID.OnHeightChanged, SetHeight);
             _openSettingBtn.onClick.RemoveListener(OpenSettingPopupOnClick);
-
         }
 
         public override void Init()
@@ -38,7 +39,9 @@ namespace HaloKero.UI.Overlap
             this.Register(EventID.OnTimeChanged, SetTimer);
             this.Register(EventID.OnHeightChanged, SetHeight);
             _openSettingBtn.onClick.AddListener(OpenSettingPopupOnClick);
-
+            _tutorial.SetActive(true);
+            _animTimer = 0f;
+            StartCoroutine(TutorialCoroutine());
         }
 
         private void SetHeight(object data)
@@ -72,6 +75,23 @@ namespace HaloKero.UI.Overlap
             this.Broadcast(EventID.OnBtnClick);
 
             UIManager.Instance?.ShowPopup<SettingPopup>(data: GameSettingManager.Instance?.CurrentSettings, forceShowData: true);
+        }
+
+
+        private float _tutorialDuration = 5f;
+        private float _animTimer = 0f;
+
+        private IEnumerator TutorialCoroutine()
+        {
+            while(_animTimer < _tutorialDuration)
+            {
+                _animTimer += Time.deltaTime;
+                yield return null;
+            }
+
+            _tutorial.SetActive(false);
+            _animTimer = 0f;
+
         }
     }
 }
