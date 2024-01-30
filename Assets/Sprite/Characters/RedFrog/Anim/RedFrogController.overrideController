@@ -7,7 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RedFrogController
-  m_Controller: {fileID: 9100000, guid: 362fc83d47c638c4cbcdf270728b6430, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58e45ae7ae862b74586ec1507a605806, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: af8d5c7846454b64aa4abaac46196c91, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: c7125847357d25d49b09ad8a954edd6c, type: 2}
@@ -19,3 +19,5 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: 8f99627df82c0074ab025bf89c6f1231, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: e161e7eca9362e745b2e4516b0df0cf8, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 988a2aac9d9ad144ab18e3d8330dd4b5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5ce1d202a0510e74c88568349cec66ca, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 053b50bac2eaa10428323871e9bf32fe, type: 2}
