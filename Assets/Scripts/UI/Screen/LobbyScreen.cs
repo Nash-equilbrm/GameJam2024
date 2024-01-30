@@ -67,14 +67,8 @@ namespace HaloKero.UI
         private void StartGameBtnOnClick()
         {
             this.Broadcast(EventID.OnBtnClick);
-#if UNITY_EDITOR
             CheckRequirementAndStartGame();
-#else
-            if(PhotonNetwork.PlayerList.Count() >= 2)
-            {
-                CheckRequirementAndStartGame();
-            }
-#endif         
+       
         }
         private void CheckRequirementAndStartGame()
         {
