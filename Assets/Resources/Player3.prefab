@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5090341017844259936}
   - component: {fileID: -1378608141047948024}
   - component: {fileID: 538648085751938572}
+  - component: {fileID: 2449409876320513823}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Player
@@ -198,7 +199,7 @@ MonoBehaviour:
   currentSkillCD: 0
   photonView: {fileID: 3715272576747707929}
   canMove: 0
-  time: 0
+  cantMoveTime: 0
   animator: {fileID: 0}
   groundLayer:
     serializedVersion: 2
@@ -271,6 +272,27 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!95 &2449409876320513823
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729128925693698033}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: d723e0a3d4ec15942a48758e86da5f28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7246130146212519642
 PrefabInstance:
   m_ObjectHideFlags: 0
