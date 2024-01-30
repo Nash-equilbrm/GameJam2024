@@ -46,13 +46,13 @@ namespace HaloKero.UI.Popup
         public override void Show(object data)
         {
             base.Show(null);
-            this.Broadcast(EventID.OnPopupShow);
+            this.Broadcast(EventID.OnBtnClick);
 
-            _exitBtn.onClick.AddListener(Hide);
-            _exitBtn2.onClick.AddListener(Hide);
+            _exitBtn.onClick.AddListener(ExitOnClick);
+            _exitBtn2.onClick.AddListener(ExitOnClick);
             _musicSettingSlider.onValueChanged.AddListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.AddListener(SetSoundFx);
-            _aboutUsBtn.onClick.AddListener(ShowAboutUsPopup);
+            _aboutUsBtn.onClick.AddListener(ShowAboutUsPopupOnClick);
 
 
             _timer = 0f;
@@ -64,11 +64,11 @@ namespace HaloKero.UI.Popup
 
         public override void Hide()
         {
-            _exitBtn.onClick.RemoveListener(Hide);
-            _exitBtn2.onClick.RemoveListener(Hide);
+            _exitBtn.onClick.RemoveListener(ExitOnClick);
+            _exitBtn2.onClick.RemoveListener(ExitOnClick);
             _musicSettingSlider.onValueChanged.RemoveListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.RemoveListener(SetSoundFx);
-            _aboutUsBtn.onClick.RemoveListener(ShowAboutUsPopup);
+            _aboutUsBtn.onClick.RemoveListener(ShowAboutUsPopupOnClick);
 
 
 
@@ -76,11 +76,17 @@ namespace HaloKero.UI.Popup
             StartCoroutine(HidePopup());
         }
 
-        private void ShowAboutUsPopup()
+        private void ShowAboutUsPopupOnClick()
         {
-            UIManager.Instance.ShowPopup<AboutUsPopup>(forceShowData: true);
+            this.Broadcast(EventID.OnBtnClick);
+            UIManager.Instance?.ShowPopup<AboutUsPopup>(forceShowData: true);
         }
 
+        private void ExitOnClick()
+        {
+            this.Broadcast(EventID.OnBtnClick);
+            Hide();
+        }
 
         private IEnumerator ShowPopup()
         {
@@ -113,13 +119,13 @@ namespace HaloKero.UI.Popup
         private void SetMusic(float value)
         {
             this.Broadcast(EventID.OnMusicVolumeChanged, value);
-            GameSettingManager.Instance.SetNewSettings(music: value);
+            GameSettingManager.Instance?.SetNewSettings(music: value);
         }
 
         private void SetSoundFx(float value)
         {
             this.Broadcast(EventID.OnSFXVolumeChanged, value);
-            GameSettingManager.Instance.SetNewSettings(soundFx: value);
+            GameSettingManager.Instance?.SetNewSettings(soundFx: value);
         }
 
 

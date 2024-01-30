@@ -24,15 +24,12 @@ namespace HaloKero.Gameplay
         public override void Enter()
         {
             Debug.Log("Create player");
-            //GameObject obj = PhotonNetwork.Instantiate(_context.playerLobbyRegisterPrefab.name, Vector3.zero, Quaternion.identity);
-            //_context.PlayerLobbyRegisters.Add(obj.GetComponent<PlayerLobbyRegister>());
+            UIManager.Instance?.HideAllScreens();
+            UIManager.Instance?.HideAllOverlaps ();
+            UIManager.Instance?.HideAllPopups();
+            UIManager.Instance?.HideAllNotifies();
 
-            UIManager.Instance.HideAllScreens();
-            UIManager.Instance.HideAllOverlaps ();
-            UIManager.Instance.HideAllPopups();
-            UIManager.Instance.HideAllNotifies();
-
-            UIManager.Instance.ShowScreen<LobbyScreen>(forceShowData: true);
+            UIManager.Instance?.ShowScreen<LobbyScreen>(forceShowData: true);
           
 
 
@@ -42,21 +39,32 @@ namespace HaloKero.Gameplay
             }
 
             _context.Register(EventID.StartGamePlay, StartGameplay);
+            _context.Register(EventID.BackToMenu, GoBackToMainMenu);
+
         }
 
 
         private void StartGameplay(object data = null)
         {
-            UIManager.Instance.HideAllScreens();
-            GameflowManager.Instance.ChangeState(GameFlowState.Gameplay);
+            UIManager.Instance?.HideAllScreens();
+            GameflowManager.Instance?.ChangeState(GameFlowState.Gameplay);
         }
 
         public override void Exit()
         {
             _context.Unregister(EventID.StartGamePlay, StartGameplay);
+            _context.Unregister(EventID.BackToMenu, GoBackToMainMenu);
+
         }
 
+        private void GoBackToMainMenu(object data)
+        {
+            UIManager.Instance?.HideAllScreens();
+            UIManager.Instance?.HideAllOverlaps();
+            UIManager.Instance?.HideAllPopups();
 
+            _context.ChangeState(GameFlowState.MainMenu);
+        }
 
     }
 }

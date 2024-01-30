@@ -1,20 +1,21 @@
 using Tools;
 using HaloKero.UI.Overlap;
 using HaloKero.UI.Popup;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Photon.Realtime;
 using Photon.Pun;
 using HaloKero.UI;
+using ExitGames.Client.Photon;
+using System.Collections;
 
 
 namespace HaloKero.Gameplay
 {
     public class GameplayState : State<GameflowManager>
     {
-        private float _gameDuration = 150;
+        private float _gameDuration;
         private float _timer;
         private bool _playing;
 
@@ -24,14 +25,19 @@ namespace HaloKero.Gameplay
 
         public override void Enter()
         {
+            _gameDuration = GameSettingManager.Instance.CurrentSettings.GameDuration;
             _playing = true;
             _timer = _gameDuration;
-            UIManager.Instance.HideAllScreens();
-            UIManager.Instance.ShowOverlap<GameplayOverlap>(forceShowData: true);
+            UIManager.Instance?.HideAllScreens();
+            UIManager.Instance?.ShowOverlap<GameplayOverlap>(forceShowData: true);
 
 
             _context.Register(EventID.EndGamePlay, OnEndGame);
             _context.Register(EventID.BackToMenu, GoBackToMainMenu);
+
+
+            ExitGames.Client.Photon.Hashtable prop = new ExitGames.Client.Photon.Hashtable() { { "canJoinRoom", false } };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
         }
 
         public override void Exit()
@@ -65,12 +71,12 @@ namespace HaloKero.Gameplay
 
         private void OnTimeUp()
         {
-            UIManager.Instance.HideAllScreens();
-            UIManager.Instance.HideAllOverlaps();
-            UIManager.Instance.HideAllPopups();
+            UIManager.Instance?.HideAllScreens();
+            UIManager.Instance?.HideAllOverlaps();
+            UIManager.Instance?.HideAllPopups();
 
             Debug.Log("Show screen");
-            UIManager.Instance.ShowScreen<ResultScreen>(forceShowData: true);
+            UIManager.Instance?.ShowScreen<ResultScreen>(forceShowData: true);
             _context.StartCoroutine(OnTimeUpCoRoutine());
         }
 
@@ -134,9 +140,9 @@ namespace HaloKero.Gameplay
 
         private void GoBackToMainMenu(object data)
         {
-            UIManager.Instance.HideAllScreens();
-            UIManager.Instance.HideAllOverlaps();
-            UIManager.Instance.HideAllPopups();
+            UIManager.Instance?.HideAllScreens();
+            UIManager.Instance?.HideAllOverlaps();
+            UIManager.Instance?.HideAllPopups();
 
             _context.ChangeState(GameFlowState.MainMenu);
         }

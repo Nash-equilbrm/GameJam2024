@@ -1069,9 +1069,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _popup: {fileID: 7800206142940642146}
   _exitPopUpBtn: {fileID: 7636156841174569597}
-  _popUpShowDuration: 0.3
+  _popUpShowDuration: 0.1
   _popUpShowStartScale: 0.7
   _popUpShowEndScale: 1
-  _popUpHideDuration: 0.3
+  _popUpHideDuration: 0.1
   _popUpHideStartScale: 1
-  _popUpHideEndScale: 0.5
+  _popUpHideEndScale: 0.7

@@ -13,6 +13,15 @@ namespace HaloKero.Gameplay
         [SerializeField] private GameSettings _settings;
         public GameSettings CurrentSettings { get => _settings; }
 
+
+        private void Start()
+        {
+            //set up data
+            this.Broadcast(EventID.OnMusicVolumeChanged, _settings.Music);
+            this.Broadcast(EventID.OnSFXVolumeChanged, _settings.SoundFx);
+
+        }
+
         public void SetNewSettings(float music = -1f, float soundFx = -1f)
         {
             _settings.SetNewSettings(music, soundFx);

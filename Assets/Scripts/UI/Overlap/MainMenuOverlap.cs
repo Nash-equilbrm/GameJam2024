@@ -1,6 +1,7 @@
 using HaloKero.Gameplay;
 using HaloKero.UI.Popup;
 using HaloKero.UI.Screen;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ namespace HaloKero.UI.Overlap
         public override void Hide()
         {
             base.Hide();
-            _playBtn.onClick.RemoveListener(StartGame);
-            _openSettingBtn.onClick.RemoveListener(OpenSettingPopup);
+            _playBtn.onClick.RemoveListener(StartGameOnClick);
+            _openSettingBtn.onClick.RemoveListener(OpenSettingPopupOnClick);
             this.Unregister(EventID.OnJoinRoomSuccess, OnJoinRoomSuccess);
         }
 
@@ -34,8 +35,8 @@ namespace HaloKero.UI.Overlap
         public override void Show(object data)
         {
             base.Show(data);
-            _playBtn.onClick.AddListener(StartGame);
-            _openSettingBtn.onClick.AddListener(OpenSettingPopup);
+            _playBtn.onClick.AddListener(StartGameOnClick);
+            _openSettingBtn.onClick.AddListener(OpenSettingPopupOnClick);
             this.Register(EventID.OnJoinRoomSuccess, OnJoinRoomSuccess);
 
         }
@@ -47,17 +48,25 @@ namespace HaloKero.UI.Overlap
 
 
 
-        private void StartGame()
+        private void StartGameOnClick()
         {
-            this.Broadcast(EventID.OnConnectToServer);
-            //this.Broadcast(EventID.StartLoadingGameplay);
-            //Hide();
+            this.Broadcast(EventID.OnBtnClick);
+            if (PhotonNetwork.IsConnected)
+            {
+                UIManager.Instance?.ShowPopup<CreateOrJoinRoomPopup>(forceShowData: true);
+            }
+            else
+            {
+                this.Broadcast(EventID.OnConnectToServer);
+            }
         }
 
-        private void OpenSettingPopup()
+        private void OpenSettingPopupOnClick()
         {
-            object settingData = GameSettingManager.Instance.CurrentSettings;
-            UIManager.Instance.ShowPopup<SettingPopup>(data: settingData, forceShowData:true);
+            this.Broadcast(EventID.OnBtnClick);
+
+            object settingData = GameSettingManager.Instance?.CurrentSettings;
+            UIManager.Instance?.ShowPopup<SettingPopup>(data: settingData, forceShowData:true);
         }
 
         

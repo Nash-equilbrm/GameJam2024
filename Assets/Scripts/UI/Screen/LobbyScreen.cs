@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
+using System;
 
 
 
@@ -29,6 +30,9 @@ namespace HaloKero.UI
             this.Unregister(EventID.SetPlayerID, SetUpPlayerSlot);
             this.Unregister(EventID.StartGamePlay, ResetPopup);
 
+            _getReadyBtn.onClick.RemoveListener(StartGameBtnOnClick);
+            _openSettingBtn.onClick.RemoveListener(OpenSettingPopupOnClick);
+            _backToMainMenuBtn.onClick.RemoveListener(BackToMenuOnClick);
         }
 
         public override void Init()
@@ -43,21 +47,25 @@ namespace HaloKero.UI
             this.Register(EventID.SetPlayerID, SetUpPlayerSlot);
             this.Register(EventID.StartGamePlay, ResetPopup);
 
-            _getReadyBtn.onClick.AddListener(StartGameBtn);
-            _openSettingBtn.onClick.AddListener(OpenSettingPopup);
-
-
+            _getReadyBtn.onClick.AddListener(StartGameBtnOnClick);
+            _openSettingBtn.onClick.AddListener(OpenSettingPopupOnClick);
+            _backToMainMenuBtn.onClick.AddListener(BackToMenuOnClick);
         }
-
+        private void BackToMenuOnClick()
+        {
+            this.Broadcast(EventID.OnBtnClick);
+            PhotonNetwork.LeaveRoom();
+            this.Broadcast(EventID.BackToMenu);
+        }
 
         private void ResetPopup(object data)
         {
             _getReadyBtnTxt.text = _ready;
         }
 
-        private void StartGameBtn()
+        private void StartGameBtnOnClick()
         {
-            
+            this.Broadcast(EventID.OnBtnClick);
             if (!PhotonNetwork.IsMasterClient)
             {
                 _getReadyBtnTxt.text = (_getReadyBtnTxt.text == _ready) ? _unready : _ready;
@@ -93,17 +101,19 @@ namespace HaloKero.UI
             }
         }
 
-        private void OpenSettingPopup()
+        private void OpenSettingPopupOnClick()
         {
-            object settingData = GameSettingManager.Instance.CurrentSettings;
-            UIManager.Instance.ShowPopup<SettingPopup>(data: settingData, forceShowData: true);
+            this.Broadcast(EventID.OnBtnClick);
+
+            object settingData = GameSettingManager.Instance?.CurrentSettings;
+            UIManager.Instance?.ShowPopup<SettingPopup>(data: settingData, forceShowData: true);
         }
 
 
         private void SetUpPlayerSlot(object data)
         {
             int actorNumber = (int)data;
-            GameObject obj = Instantiate(GameflowManager.Instance.PlayerDummyPrefabs[actorNumber - 1]);
+            GameObject obj = Instantiate(GameflowManager.Instance?.PlayerDummyPrefabs[actorNumber - 1]);
             if (actorNumber < PhotonNetwork.LocalPlayer.ActorNumber)
             {
                 obj.transform.SetParent(_characters[actorNumber].transform);

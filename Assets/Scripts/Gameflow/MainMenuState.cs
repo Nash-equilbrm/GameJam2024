@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 using System;
 using HaloKero.UI.Popup;
 using Photon.Pun;
+using HaloKero.UI;
 
 
 namespace HaloKero.Gameplay
 {
     public class MainMenuState : State<GameflowManager>
     {
+        private bool _firstConnectAttempt = true;
+
         public MainMenuState(GameflowManager context) : base(context)
         {
         }
@@ -20,40 +23,63 @@ namespace HaloKero.Gameplay
         public override void Enter()
         {
             _timer = 0f;
-            _context.Register(EventID.OnConnectToServerSuccess, OpenCreateOrJoinRoomPopup);
+
+            UIManager.Instance?.HideAllScreens();
+            UIManager.Instance?.HideAllOverlaps();
+            UIManager.Instance?.HideAllPopups();
+
+            _context.Register(EventID.OnConnectToServerSuccess, OnConnectToServerSuccess);
             _context.Register(EventID.OnJoinRoomSuccess, LoadLobbyScene);
+            _context.Register(EventID.OnJoinRoomFailed, OnJoinRoomFailed);
+
             InitApp();
         }
 
         public override void Exit()
         {
-            _context.Unregister(EventID.OnConnectToServerSuccess, OpenCreateOrJoinRoomPopup);
+            _context.Unregister(EventID.OnConnectToServerSuccess, OnConnectToServerSuccess);
             _context.Unregister(EventID.OnJoinRoomSuccess, LoadLobbyScene);
+            _context.Unregister(EventID.OnJoinRoomFailed, OnJoinRoomFailed);
+
         }
 
-        private void OpenCreateOrJoinRoomPopup(object data = null)
+        private void OnConnectToServerSuccess(object data = null)
         {
-            UIManager.Instance.ShowPopup<CreateOrJoinRoomPopup>(forceShowData: true);
+            if (_firstConnectAttempt)
+            {
+                UIManager.Instance?.ShowPopup<CreateOrJoinRoomPopup>(forceShowData: true);
+                _firstConnectAttempt = false;
+            }
+
+        }
+
+        private void OnConnectToServerFailed(object data = null)
+        {
+            _firstConnectAttempt = false;
+            UIManager.Instance?.ShowPopup<WarningPopup>(forceShowData: true);
         }
 
 
         private void InitApp()
         {
-            UIManager.Instance.HideAllScreens();
-            UIManager.Instance.HideAllOverlaps();
-            UIManager.Instance.HideAllPopups();
-            UIManager.Instance.HideAllNotifies();
+            UIManager.Instance?.HideAllScreens();
+            UIManager.Instance?.HideAllOverlaps();
+            UIManager.Instance?.HideAllPopups();
+            UIManager.Instance?.HideAllNotifies();
 
 
-            UIManager.Instance.ShowScreen<MainMenuScreen>(forceShowData: true);
+            UIManager.Instance?.ShowScreen<MainMenuScreen>(forceShowData: true);
         }
 
         private void LoadLobbyScene(object data = null)
         {
-            //UIManager.Instance.ShowScreen<LoadingScreen>(forceShowData: true);
-            //_context.StartCoroutine(LoadAsync(1));
+            Debug.Log("LoadGameplayScene");
             PhotonNetwork.LoadLevel(1);
             _context.ChangeState(GameFlowState.Lobby);
+        }
+
+        private void OnJoinRoomFailed(object data) {
+            UIManager.Instance?.ShowPopup<WarningPopup>((string)data, forceShowData: true);
         }
 
 

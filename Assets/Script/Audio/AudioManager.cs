@@ -10,6 +10,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _sFXSource;
 
+
     [Header("-------Audio Clip------")]
     [SerializeField] private AudioClip _music;
     [SerializeField] private AudioClip _jump;
@@ -44,7 +45,7 @@ public class AudioManager : Singleton<AudioManager>
         this.Register(EventID.DartHitDart, (data) => PlaySFX(_dartHit));
         this.Register(EventID.StartSummonSkill, (data) => PlaySFX(_summonStart));
         this.Register(EventID.SkillActive, (data) => PlaySFX(_summonActive));
-        this.Register(EventID.OnPopupShow, (data) => PlaySFX(_popup));
+        this.Register(EventID.OnBtnClick, (data) => PlaySFX(_popup));
 
         this.Register(EventID.OnMusicVolumeChanged, ChangeMusicVolume);
         this.Register(EventID.OnSFXVolumeChanged, ChangeSFXVolume);
@@ -69,7 +70,7 @@ public class AudioManager : Singleton<AudioManager>
         this.Unregister(EventID.DartHitDart, (data) => PlaySFX(_dartHit));
         this.Unregister(EventID.StartSummonSkill, (data) => PlaySFX(_summonStart));
         this.Unregister(EventID.SkillActive, (data) => PlaySFX(_summonActive));
-        this.Unregister(EventID.OnPopupShow, (data) => PlaySFX(_popup));
+        this.Unregister(EventID.OnBtnClick, (data) => PlaySFX(_popup));
 
         this.Unregister(EventID.OnMusicVolumeChanged, ChangeMusicVolume);
         this.Unregister(EventID.OnSFXVolumeChanged, ChangeSFXVolume);
