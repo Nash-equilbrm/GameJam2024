@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3596f05100d232a4186a5c6e7897a341
+guid: 550b284ec2c11a64cb7786430bf88006
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RIdle (32x32)_0
+      name: BIdle (32x32)1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b144e014838728743b2fd9849c1ff551
-      internalID: 1990832673
+      spriteID: 697dee1818593534c8dd1c3429e4c5b0
+      internalID: 1573892865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RIdle (32x32)_1
+      name: BIdle (32x32)1_1
       rect:
         serializedVersion: 2
         x: 330
@@ -158,8 +171,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1373ff16a13ce1340aca07d0bfbbf606
-      internalID: -871893852
+      spriteID: 381e2af5f7331d34194ef17e6dc2d1a5
+      internalID: -1996329853
       vertices: []
       indices: 
       edges: []
@@ -175,8 +188,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RIdle (32x32)_0: 1990832673
-      RIdle (32x32)_1: -871893852
+      BIdle (32x32)1_0: 1573892865
+      BIdle (32x32)1_1: -1996329853
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

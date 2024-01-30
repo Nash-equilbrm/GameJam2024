@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 811bafee4363b8b43aa987fbb79d3d43
+guid: 336ca8804dc212846bf571c566e30733
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,299 +119,228 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Summon (32x32)_0
+      name: Jump (32x32)1_0
       rect:
         serializedVersion: 2
-        x: 157
-        y: 158
-        width: 307
-        height: 307
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13c2b9e340b285a4cb19392c1aae2747
-      internalID: -193283356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Summon (32x32)_1
-      rect:
-        serializedVersion: 2
-        x: 796
-        y: 158
+        x: 156
+        y: 0
         width: 306
-        height: 293
+        height: 303
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f882863b9d80454e9c10894ae8111f2
-      internalID: -1420887888
+      spriteID: 2162e9703fd74d24f843db54a5264660
+      internalID: -1206060392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_2
+      name: Jump (32x32)1_1
       rect:
         serializedVersion: 2
-        x: 1435
-        y: 158
-        width: 311
-        height: 293
+        x: 797
+        y: 0
+        width: 306
+        height: 262
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c1ac92f1b07a944aae9904fa3e726f1
-      internalID: 679833361
+      spriteID: db0deeb4f4945104aaaab3be1778ba36
+      internalID: -816497131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_3
+      name: Jump (32x32)1_2
       rect:
         serializedVersion: 2
-        x: 2104
-        y: 167
-        width: 320
+        x: 1437
+        y: 0
+        width: 307
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96604968ab3e4674c8030546890d8df5
+      internalID: 347952891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump (32x32)1_3
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 6
+        width: 275
         height: 337
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c923aa4e25b14a443ade2ba507025c2e
-      internalID: 124868273
+      spriteID: fd6e5fd7f49a4444481caacacc527142
+      internalID: -1191458172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_4
+      name: Jump (32x32)1_4
       rect:
         serializedVersion: 2
-        x: 2726
-        y: 167
-        width: 319
-        height: 337
+        x: 2719
+        y: 78
+        width: 262
+        height: 343
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 627db7fc150d7914c9193f248fbf25f6
-      internalID: 1995017371
+      spriteID: 1965a6671fbf350459d88634ecc65921
+      internalID: -595737893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_5
+      name: Jump (32x32)1_5
       rect:
         serializedVersion: 2
-        x: 3386
-        y: 167
-        width: 320
-        height: 337
+        x: 3347
+        y: 56
+        width: 284
+        height: 347
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 239b12aaa92f8554b81c8776ea3deb55
-      internalID: 1715896753
+      spriteID: 067d49e2010fdaa428519e88a620718e
+      internalID: 1907510368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_6
+      name: Jump (32x32)1_6
       rect:
         serializedVersion: 2
-        x: 4007
-        y: 167
-        width: 315
-        height: 337
+        x: 3987
+        y: 28
+        width: 294
+        height: 344
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d41266a1d24f72b45a9ab32830eb6785
-      internalID: 993421854
+      spriteID: 6f3ae39aee943e4429e5a7314b08f991
+      internalID: -1688794514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_7
+      name: Jump (32x32)1_7
       rect:
         serializedVersion: 2
-        x: 4668
-        y: 167
-        width: 315
-        height: 337
+        x: 4628
+        y: 6
+        width: 303
+        height: 306
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 959477d4674a0d44c874ca4412c859d4
-      internalID: -1441088066
+      spriteID: 2d619be4c1ccb18418c88a12dbba3019
+      internalID: -648393074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_8
+      name: Jump (32x32)1_8
       rect:
         serializedVersion: 2
-        x: 5285
-        y: 167
-        width: 319
-        height: 337
+        x: 5269
+        y: 0
+        width: 303
+        height: 262
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55b1b801f516f4e4ab9110c8b0247a53
-      internalID: -1523652329
+      spriteID: faa26e169afa2d54c82c558926f5d423
+      internalID: -1545091308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Summon (32x32)_9
+      name: Jump (32x32)1_9
       rect:
         serializedVersion: 2
-        x: 5946
-        y: 167
-        width: 343
-        height: 328
+        x: 5919
+        y: 0
+        width: 303
+        height: 303
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43454f9a744e9db4cb37459c5a36000e
-      internalID: 123259738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Summon (32x32)_11
-      rect:
-        serializedVersion: 2
-        x: 6558
-        y: 158
-        width: 385
-        height: 315
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2be57c95774fd454b80e9ce740b226ca
-      internalID: 1880006958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Summon (32x32)_14
-      rect:
-        serializedVersion: 2
-        x: 7089
-        y: 158
-        width: 567
-        height: 285
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6cb5033d9b6317c4bbd114f126165b64
-      internalID: 1616991954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Summon (32x32)_17
-      rect:
-        serializedVersion: 2
-        x: 7844
-        y: 158
-        width: 311
-        height: 267
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc4b5175dd0e35d4581bf69ea0a3e30c
-      internalID: 158010477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Summon (32x32)_18
-      rect:
-        serializedVersion: 2
-        x: 8474
-        y: 158
-        width: 311
-        height: 307
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48e9295a23233db4ca1c1ecace886a98
-      internalID: 1645225238
+      spriteID: eb7b13b54860633488dd5632fdea4644
+      internalID: -2040698539
       vertices: []
       indices: 
       edges: []
@@ -427,25 +356,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Summon (32x32)_0: -193283356
-      Summon (32x32)_1: -1420887888
-      Summon (32x32)_10: -1268453322
-      Summon (32x32)_11: 1880006958
-      Summon (32x32)_12: 229797774
-      Summon (32x32)_13: 735004386
-      Summon (32x32)_14: 1616991954
-      Summon (32x32)_15: 189131835
-      Summon (32x32)_16: -896393046
-      Summon (32x32)_17: 158010477
-      Summon (32x32)_18: 1645225238
-      Summon (32x32)_2: 679833361
-      Summon (32x32)_3: 124868273
-      Summon (32x32)_4: 1995017371
-      Summon (32x32)_5: 1715896753
-      Summon (32x32)_6: 993421854
-      Summon (32x32)_7: -1441088066
-      Summon (32x32)_8: -1523652329
-      Summon (32x32)_9: 123259738
+      Jump (32x32)1_0: -1206060392
+      Jump (32x32)1_1: -816497131
+      Jump (32x32)1_2: 347952891
+      Jump (32x32)1_3: -1191458172
+      Jump (32x32)1_4: -595737893
+      Jump (32x32)1_5: 1907510368
+      Jump (32x32)1_6: -1688794514
+      Jump (32x32)1_7: -648393074
+      Jump (32x32)1_8: -1545091308
+      Jump (32x32)1_9: -2040698539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
