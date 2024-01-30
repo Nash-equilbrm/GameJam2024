@@ -15,14 +15,12 @@ namespace HaloKero.UI.Overlap
         [Header("Widget")]
         [SerializeField] private TMP_Text _timerTxt;
         [SerializeField] private TMP_Text _heightTxt;
-        [SerializeField] private TMP_Text _resultTxt;
         [SerializeField] private Button _openSettingBtn;
 
 
         public override void Hide()
         {
             base.Hide();
-            _resultTxt.gameObject.SetActive(false);
             this.Unregister(EventID.OnTimeChanged, SetTimer);
             this.Unregister(EventID.OnHeightChanged, SetHeight);
             _openSettingBtn.onClick.RemoveListener(OpenSettingPopupOnClick);
