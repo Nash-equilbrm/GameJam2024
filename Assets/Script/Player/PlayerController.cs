@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartSkill()
     {
-        photonView.RPC("UseSkill", RpcTarget.All);
+        photonView.RPC("UseSkill", RpcTarget.AllViaServer);
         this.Broadcast(EventID.SkillActive);
     }
     public void EndSummon()

@@ -401,10 +401,22 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 248498298129332287, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
     - target: {fileID: 424725093629852986, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1405462354, guid: 6f519f30834aff34f94c2229e0230c96, type: 3}
+    - target: {fileID: 504453659420771215, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 504453659420771215, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_PositionModel.ExtrapolateOption
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1593057742377930498, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.023
@@ -509,6 +521,10 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4605792083586555805, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
     - target: {fileID: 4693094692381540520, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -537,6 +553,26 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5666547405384146812, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
+    - target: {fileID: 5861502218104404777, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861502218104404777, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_PositionModel.ExtrapolateOption
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904480257702958451, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904480257702958451, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_PositionModel.ExtrapolateOption
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6101781432452861127, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 
@@ -549,6 +585,10 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 6314661230764283120, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
     - target: {fileID: 7527645011173038861, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 
@@ -556,6 +596,14 @@ PrefabInstance:
     - target: {fileID: 7590465447398252492, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965914868799309681, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965914868799309681, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: m_PositionModel.ExtrapolateOption
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8321398903647531157, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_Layer
@@ -623,7 +671,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &2916033930376718995 stripped
 GameObject:
@@ -655,7 +703,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &5225226103149724264 stripped
 GameObject:
@@ -687,7 +735,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &5727854409260741453 stripped
 MonoBehaviour:
@@ -730,7 +778,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &7940767254499580572 stripped
 MonoBehaviour:
