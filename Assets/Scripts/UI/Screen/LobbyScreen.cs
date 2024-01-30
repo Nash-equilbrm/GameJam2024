@@ -10,6 +10,7 @@ using ExitGames.Client.Photon;
 using Photon.Realtime;
 using System;
 using System.Linq;
+using UnityEngine.TextCore.Text;
 
 
 
@@ -23,17 +24,25 @@ namespace HaloKero.UI
         [SerializeField] private TMP_Text _getReadyBtnTxt;
         [SerializeField] private Button _openSettingBtn;
         [SerializeField] private GameObject[] _characters;
-
+        private List<int> _playerIds = new List<int>();
         public override void Hide()
         {
             base.Hide();
             this.Unregister(EventID.OnPlayerEnter, SetUpPlayerSlot);
-            this.Unregister(EventID.SetPlayerID, SetUpPlayerSlot);
-            this.Unregister(EventID.StartGamePlay, ResetPopup);
+            this.Unregister(EventID.OnPlayerLeft, SetUpPlayerSlot);
+            this.Unregister(EventID.StartGamePlay, StartGamePlayOnClick);
 
             _getReadyBtn.onClick.RemoveListener(StartGameBtnOnClick);
             _openSettingBtn.onClick.RemoveListener(OpenSettingPopupOnClick);
             _backToMainMenuBtn.onClick.RemoveListener(BackToMenuOnClick);
+
+            foreach (var character in _characters)
+            {
+                foreach (Transform child in character.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
         }
 
         public override void Init()
@@ -45,8 +54,8 @@ namespace HaloKero.UI
         {
             base.Show(data);
             this.Register(EventID.OnPlayerEnter, SetUpPlayerSlot);
-            this.Register(EventID.SetPlayerID, SetUpPlayerSlot);
-            this.Register(EventID.StartGamePlay, ResetPopup);
+            this.Register(EventID.OnPlayerLeft, SetUpPlayerSlot);
+            this.Register(EventID.StartGamePlay, StartGamePlayOnClick);
 
             _getReadyBtn.onClick.AddListener(StartGameBtnOnClick);
             _openSettingBtn.onClick.AddListener(OpenSettingPopupOnClick);
@@ -59,7 +68,7 @@ namespace HaloKero.UI
             this.Broadcast(EventID.BackToMenu);
         }
 
-        private void ResetPopup(object data)
+        private void StartGamePlayOnClick(object data)
         {
             _getReadyBtnTxt.text = _ready;
         }
@@ -117,28 +126,58 @@ namespace HaloKero.UI
 
         private void SetUpPlayerSlot(object data)
         {
-            int actorNumber = (int)data;
-            GameObject obj = Instantiate(GameflowManager.Instance?.PlayerDummyPrefabs[actorNumber - 1]);
-            if (actorNumber < PhotonNetwork.LocalPlayer.ActorNumber)
+            Debug.Log("SET UP");
+            foreach (var character in _characters)
             {
-                obj.transform.SetParent(_characters[actorNumber].transform);
+                foreach (Transform child in character.transform)
+                {
+                    Destroy(child.gameObject);
+                }
             }
-            else if (actorNumber > PhotonNetwork.LocalPlayer.ActorNumber)
+            int localId = GetPlayerIdFromActorNumber(PhotonNetwork.LocalPlayer);
+            foreach (var p in PhotonNetwork.PlayerList)
             {
-                obj.transform.SetParent(_characters[actorNumber - 1].transform);
+                int id = GetPlayerIdFromActorNumber(p);
+                GameObject obj = Instantiate(GameflowManager.Instance?.PlayerDummyPrefabs[id]);
+
+                if (id < localId)
+                {
+                    obj.transform.SetParent(_characters[id + 1].transform);
+                }
+                else if (id > localId)
+                {
+                    obj.transform.SetParent(_characters[id].transform);
+                }
+                else
+                {
+                    obj.transform.SetParent(_characters[0].transform);
+                }
+                RectTransform rectTransform = obj.GetComponent<RectTransform>();
+                rectTransform.anchoredPosition = Vector2.zero;
+                rectTransform.localScale = Vector2.one;
             }
-            else
-            {
-                obj.transform.SetParent(_characters[0].transform);
-            }
-            RectTransform rectTransform = obj.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = Vector2.zero;
-            rectTransform.localScale = Vector2.one;
 
-
-
-
+            
         }
+
+        private int GetPlayerIdFromActorNumber(Player p)
+        {
+            Debug.Log("p: " + p.ActorNumber);
+            int[] actorNumbers = PhotonNetwork.PlayerList.Select(x => x.ActorNumber).OrderBy(x => x).ToArray();
+            for (int i = 0; i < actorNumbers.Length; ++i)
+            {
+                if (p.ActorNumber == actorNumbers[i])
+                {
+                    Debug.Log("p return: " + i);
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+
+        
+
         private string _ready = "ready";
         private string _unready = "wait for host";
         

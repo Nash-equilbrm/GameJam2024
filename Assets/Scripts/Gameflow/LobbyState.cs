@@ -33,15 +33,9 @@ namespace HaloKero.Gameplay
             UIManager.Instance?.ShowScreen<LobbyScreen>(forceShowData: true);
           
 
-
-            foreach (var p in PhotonNetwork.PlayerList)
-            {
-                _context.Broadcast(EventID.SetPlayerID, p.ActorNumber);
-            }
-
             _context.Register(EventID.StartGamePlay, StartGameplay);
             _context.Register(EventID.BackToMenu, GoBackToMainMenu);
-
+            _context.Broadcast(EventID.OnPlayerEnter);
         }
 
 

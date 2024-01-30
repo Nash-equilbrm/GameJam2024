@@ -88,7 +88,6 @@ namespace HaloKero.UI.Popup
             }
             else
             {
-                Debug.Log("quitttt");
                 this.Broadcast(EventID.OnBtnClick);
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;

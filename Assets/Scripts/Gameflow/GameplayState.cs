@@ -1,7 +1,6 @@
 using Tools;
 using HaloKero.UI.Overlap;
 using HaloKero.UI.Popup;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Photon.Realtime;
@@ -9,6 +8,7 @@ using Photon.Pun;
 using HaloKero.UI;
 using ExitGames.Client.Photon;
 using System.Collections;
+
 
 
 namespace HaloKero.Gameplay
@@ -36,8 +36,15 @@ namespace HaloKero.Gameplay
             _context.Register(EventID.BackToMenu, GoBackToMainMenu);
 
 
-            ExitGames.Client.Photon.Hashtable prop = new ExitGames.Client.Photon.Hashtable() { { "canJoinRoom", false } };
-            PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
+            PhotonNetwork.CurrentRoom.SetCustomProperties(
+               new ExitGames.Client.Photon.Hashtable
+               {
+                    { "canJoinRoom", false }
+
+               }
+
+
+           );
         }
 
         public override void Exit()
@@ -67,7 +74,6 @@ namespace HaloKero.Gameplay
             }
             else if(_playing) 
             {
-                Debug.Log("time up");
                 _context.Broadcast(EventID.TimeUp);
                 OnTimeUp();
                 _playing = false;
@@ -80,8 +86,8 @@ namespace HaloKero.Gameplay
             UIManager.Instance?.HideAllOverlaps();
             UIManager.Instance?.HideAllPopups();
 
-            Debug.Log("Show screen");
             UIManager.Instance?.ShowScreen<ResultScreen>(forceShowData: true);
+            
             _context.StartCoroutine(OnTimeUpCoRoutine());
         }
 
@@ -114,7 +120,7 @@ namespace HaloKero.Gameplay
             int winnerActorNumber = -1;
             foreach (var p in PhotonNetwork.PlayerList)
             {
-                if (p.CustomProperties.TryGetValue("p" + p.ActorNumber.ToString(), out object scoreObj))
+                if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("p" + p.ActorNumber.ToString(), out object scoreObj))
                 {
                     float score = (float)scoreObj;
                     if (max < score)
@@ -122,11 +128,12 @@ namespace HaloKero.Gameplay
                         max = score;
                         winnerActorNumber = p.ActorNumber;
                     }
+                    Debug.Log("score " + p.ActorNumber.ToString() + ": " + score);
                 }
                 else
                 {
                     // Handle the case where "ready" custom property is not found
-                    Debug.LogWarning("Custom property 'ready' not found for player: " + p.ActorNumber);
+                    Debug.LogWarning("Custom property 'score' not found for player: " + p.ActorNumber);
                 }
             }
 

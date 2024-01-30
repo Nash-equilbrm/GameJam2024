@@ -1,4 +1,5 @@
 using HaloKero.UI.Overlap;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,11 @@ namespace HaloKero.UI.Screen
         {
             base.Show(data);
             UIManager.Instance?.ShowOverlap<MainMenuOverlap>(forceShowData: true);
+
+            if (PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.LeaveRoom();
+            }
         }
     }
 }

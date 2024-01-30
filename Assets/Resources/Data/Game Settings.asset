@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95fc02fbc8ec63f49b7c93906f92fd89, type: 3}
   m_Name: Game Settings
   m_EditorClassIdentifier: 
-  _music: 0.08636336
-  _soundFx: 0.39534473
-  _gameDuration: 120
+  _music: 0.19365132
+  _soundFx: 0.10635305
+  _gameDuration: 10

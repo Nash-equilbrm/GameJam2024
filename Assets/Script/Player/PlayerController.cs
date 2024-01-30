@@ -134,7 +134,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rbSpeed));
         animator.SetFloat("VerticalY", rb.velocity.y);
 
-        Debug.Log(touchDirection.isGrounded);
         animator.SetBool("IsGrounded", touchDirection.isGrounded);
 
         if (animator.GetBool("IsHurt") == true)
@@ -243,8 +242,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTimeUp(object obj = null)
     {
-        Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(), transform.position.y } };
-        PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
+        PhotonNetwork.CurrentRoom.SetCustomProperties(
+            new Hashtable
+            {
+                { "p" + PhotonNetwork.LocalPlayer.ActorNumber, transform.position.y }
+            }
+        );
     }
 
     public void StartSkill()

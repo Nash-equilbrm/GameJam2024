@@ -22,6 +22,8 @@ namespace HaloKero.UI
             this.Unregister(EventID.LostGame, ShowLostResult);
 
             _exitBtn.onClick.RemoveListener(ExitButton_OnClick);
+            _resultTxt.text = "";
+
         }
 
         public override void Init()
@@ -35,10 +37,6 @@ namespace HaloKero.UI
             this.Register(EventID.WonGame, ShowWonResult);
             this.Register(EventID.LostGame, ShowLostResult);
             _exitBtn.onClick.AddListener(ExitButton_OnClick);
-
-
-            Hashtable prop = new Hashtable() { { "canJoinRoom", false } };
-            PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
         }
 
 
@@ -55,8 +53,6 @@ namespace HaloKero.UI
 
         public void ExitButton_OnClick()
         {
-            PhotonNetwork.LeaveRoom();
-
             this.Broadcast(EventID.BackToMenu);
         }
 

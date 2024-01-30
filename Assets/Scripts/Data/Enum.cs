@@ -33,6 +33,8 @@ public enum EventID
     OnPlayerEnter,
     SetPlayerID,
     TimeUp,
+    OnPlayerLeft,
+
 
     // GAMEPLAY
     StartGamePlay,

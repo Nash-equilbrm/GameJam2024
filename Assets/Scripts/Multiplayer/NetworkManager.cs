@@ -1,4 +1,5 @@
 using ExitGames.Client.Photon;
+using HaloKero.Gameplay;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
@@ -72,8 +73,13 @@ namespace HaloKero.Multiplayer
 
         public override void OnCreatedRoom()
         {
-            Hashtable prop = new Hashtable() { { "canJoinRoom", true } };
-            PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
+            PhotonNetwork.CurrentRoom.SetCustomProperties(
+                new Hashtable
+                {
+                    { "canJoinRoom", true }
+
+                }
+            );
         }
 
 
@@ -109,17 +115,15 @@ namespace HaloKero.Multiplayer
                 this.Broadcast(EventID.OnJoinRoomFailed, "this room is full. \n please choose another room!");
                 return;
             }
-            foreach (var p in PhotonNetwork.PlayerList)
+
+            if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("canJoinRoom", out object obj))
             {
-                if (p.CustomProperties.TryGetValue("canJoinRoom", out object obj))
+                bool canJoin = (bool)obj;
+                if (!canJoin)
                 {
-                    bool canJoin = (bool)obj;
-                    if (!canJoin)
-                    {
-                        PhotonNetwork.LeaveRoom();
-                        this.Broadcast(EventID.OnJoinRoomFailed, "the game has already started \n please find another room");
-                        return;
-                    }
+                    PhotonNetwork.LeaveRoom();
+                    this.Broadcast(EventID.OnJoinRoomFailed, "the game has already started \n please find another room");
+                    return;
                 }
             }
 
@@ -136,22 +140,10 @@ namespace HaloKero.Multiplayer
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
-            Debug.Log("OnPlayerEnteredRoom");
 
             this.Broadcast(EventID.OnPlayerEnter, newPlayer.ActorNumber);
         }
 
-        public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
-        {
-            if (targetPlayer.CustomProperties.TryGetValue("canJoinRoom", out object obj))
-            {
-                Debug.Log("can join room: " + (bool)obj);
-            }
-            else
-            {
-                Debug.Log("cant get properties");
-            }
-        }
 
         public static void CallRPC(PhotonView photonView, string callback, object data = null, bool onlyForLocalPlayer = false)
         {
@@ -174,8 +166,23 @@ namespace HaloKero.Multiplayer
         public override void OnLeftRoom()
         {
             PhotonNetwork.LoadLevel(0);
+            if (GameflowManager.Instance.Player)
+            {
+                PhotonNetwork.Destroy(GameflowManager.Instance.Player);
+            }
         }
 
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            Debug.Log("OnPlayerLeftRoom");
+            this.Broadcast(EventID.OnPlayerLeft, otherPlayer);
+        }
+
+        private void Update()
+        {
+            
+            
+        }
 
     }
 }

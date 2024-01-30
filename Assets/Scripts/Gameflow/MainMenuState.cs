@@ -23,6 +23,11 @@ namespace HaloKero.Gameplay
         public override void Enter()
         {
             _timer = 0f;
+            if (PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+                PhotonNetwork.LeaveRoom();
+            }
 
             UIManager.Instance?.HideAllScreens();
             UIManager.Instance?.HideAllOverlaps();

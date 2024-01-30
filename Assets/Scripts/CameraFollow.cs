@@ -34,8 +34,10 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         if (!started) { return; }
-
-        transform.position = new Vector3(Mathf.Clamp(playerTransform.position.x, -2f, 2f), Mathf.Clamp(playerTransform.position.y, -1f, playerTransform.position.y), transform.position.z);
+        if (playerTransform)
+        {
+            transform.position = new Vector3(Mathf.Clamp(playerTransform.position.x, -2f, 2f), Mathf.Clamp(playerTransform.position.y, -1f, playerTransform.position.y), transform.position.z);
+        }
         //transform.position = Vector3.Lerp(transform.position, playerTransform.position + offset, speed * Time.deltaTime);
         //if (Vector3.Distance(transform.position, playerTransform.position) < 0.01f)
         //{

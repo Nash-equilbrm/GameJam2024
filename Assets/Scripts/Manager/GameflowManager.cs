@@ -10,17 +10,11 @@ namespace HaloKero.Gameplay
     public class GameflowManager : Singleton<GameflowManager>
     {
         [Header("Lobby Management")]
-        public GameObject playerLobbyRegisterPrefab;
         [SerializeField] private GameObject[] _playerDummyPrefabs;
-        //[SerializeField] private List<PlayerLobbyRegister> _playerLobbyRegisters;
-
-        private int _localPlayerID = -1;
-        private bool _gameSceneLoaded = false;
-        public GameObject LocalPlayerDummyPrefabs => _playerDummyPrefabs[_localPlayerID];
         public GameObject[] PlayerDummyPrefabs { get => _playerDummyPrefabs; }
-        //public List<PlayerLobbyRegister> PlayerLobbyRegisters { get => _playerLobbyRegisters; }
 
-
+        private GameObject _player = null;
+        public GameObject Player { get => _player; set => _player = value; }
 
 
         private StateMachine<GameflowManager> _stateMachine = new StateMachine<GameflowManager>();
@@ -40,7 +34,6 @@ namespace HaloKero.Gameplay
         string s = "MainMenu";
         private void Update()
         {
-            Debug.Log(s);
             _stateMachine.CurrentState.LogicUpdate();
         }
 
