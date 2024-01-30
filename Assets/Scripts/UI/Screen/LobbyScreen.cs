@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 using System;
+using System.Linq;
 
 
 
@@ -66,6 +67,17 @@ namespace HaloKero.UI
         private void StartGameBtnOnClick()
         {
             this.Broadcast(EventID.OnBtnClick);
+#if UNITY_EDITOR
+            CheckRequirementAndStartGame();
+#else
+            if(PhotonNetwork.PlayerList.Count() >= 2)
+            {
+                CheckRequirementAndStartGame();
+            }
+#endif         
+        }
+        private void CheckRequirementAndStartGame()
+        {
             if (!PhotonNetwork.IsMasterClient)
             {
                 _getReadyBtnTxt.text = (_getReadyBtnTxt.text == _ready) ? _unready : _ready;
@@ -93,7 +105,7 @@ namespace HaloKero.UI
                     cnt++;
                 }
 
-                if(cnt == PhotonNetwork.PlayerList.Length)
+                if (cnt == PhotonNetwork.PlayerList.Length)
                 {
                     // start game
                     PhotonNetwork.RaiseEvent((byte)EventID.StartGamePlay, null, new RaiseEventOptions { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
