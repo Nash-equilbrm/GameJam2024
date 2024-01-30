@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 336ca8804dc212846bf571c566e30733
+guid: aee3adebf369ab44d82c6f3b3fc70c20
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,6 +81,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jump (32x32)1_0
+      name: halofrogblue-summon-Recovered-Sheet_0
       rect:
         serializedVersion: 2
-        x: 156
+        x: 0
         y: 0
-        width: 306
-        height: 303
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2162e9703fd74d24f843db54a5264660
-      internalID: -1206060392
+      spriteID: a4c880ab03dcaa246bf280538e0ceadd
+      internalID: 1861092132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump (32x32)1_1
+      name: halofrogblue-summon-Recovered-Sheet_1
       rect:
         serializedVersion: 2
-        x: 797
+        x: 640
         y: 0
-        width: 306
-        height: 262
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db0deeb4f4945104aaaab3be1778ba36
-      internalID: -816497131
+      spriteID: 8e0bde22319757e44b70ef7c379847e4
+      internalID: 492474844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump (32x32)1_2
+      name: halofrogblue-summon-Recovered-Sheet_2
       rect:
         serializedVersion: 2
-        x: 1437
+        x: 1280
         y: 0
-        width: 307
-        height: 303
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,125 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96604968ab3e4674c8030546890d8df5
-      internalID: 347952891
+      spriteID: a5cd8e21926b11e4382170b6c4f62eaa
+      internalID: 1686840064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump (32x32)1_3
+      name: halofrogblue-summon-Recovered-Sheet_3
       rect:
         serializedVersion: 2
-        x: 2078
-        y: 6
-        width: 275
-        height: 337
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd6e5fd7f49a4444481caacacc527142
-      internalID: -1191458172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump (32x32)1_4
-      rect:
-        serializedVersion: 2
-        x: 2719
-        y: 78
-        width: 262
-        height: 343
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1965a6671fbf350459d88634ecc65921
-      internalID: -595737893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump (32x32)1_5
-      rect:
-        serializedVersion: 2
-        x: 3347
-        y: 56
-        width: 284
-        height: 347
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 067d49e2010fdaa428519e88a620718e
-      internalID: 1907510368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump (32x32)1_6
-      rect:
-        serializedVersion: 2
-        x: 3987
-        y: 28
-        width: 294
-        height: 344
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f3ae39aee943e4429e5a7314b08f991
-      internalID: -1688794514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump (32x32)1_7
-      rect:
-        serializedVersion: 2
-        x: 4628
-        y: 6
-        width: 303
-        height: 306
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d619be4c1ccb18418c88a12dbba3019
-      internalID: -648393074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jump (32x32)1_8
-      rect:
-        serializedVersion: 2
-        x: 5269
+        x: 1920
         y: 0
-        width: 303
-        height: 262
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: faa26e169afa2d54c82c558926f5d423
-      internalID: -1545091308
+      spriteID: 7daea83f7db77724c9a8c7329fb8c805
+      internalID: 43985449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump (32x32)1_9
+      name: halofrogblue-summon-Recovered-Sheet_4
       rect:
         serializedVersion: 2
-        x: 5919
+        x: 2560
         y: 0
-        width: 303
-        height: 303
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,8 +234,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb7b13b54860633488dd5632fdea4644
-      internalID: -2040698539
+      spriteID: 9e677532bfda94f41a195f86c9e24916
+      internalID: -1506160617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e66900f3c2a31064291eb2a271edfe22
+      internalID: -187452297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a871232fb9d35744b6314b7c480842d
+      internalID: -2095141294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99787b3d5663134e9956ab826469b47
+      internalID: -1507229024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11e264e2e6bb83544ac95d34569b81e8
+      internalID: -1925245198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4c5d39db6f07447b46f8df7a60ad0f
+      internalID: 1795720669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 6400
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab5dbb5590f6ba44807970b4cdcfef2
+      internalID: -2131372170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 7040
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6ec7a831dc0eb419e2558a0abf19e6
+      internalID: 112723564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73cce76a40c570141bf7a16d1166d5bd
+      internalID: 1884487579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: halofrogblue-summon-Recovered-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 8320
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd18053c64f8c584aa782ee21928cbe2
+      internalID: 950972018
       vertices: []
       indices: 
       edges: []
@@ -343,16 +440,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jump (32x32)1_0: -1206060392
-      Jump (32x32)1_1: -816497131
-      Jump (32x32)1_2: 347952891
-      Jump (32x32)1_3: -1191458172
-      Jump (32x32)1_4: -595737893
-      Jump (32x32)1_5: 1907510368
-      Jump (32x32)1_6: -1688794514
-      Jump (32x32)1_7: -648393074
-      Jump (32x32)1_8: -1545091308
-      Jump (32x32)1_9: -2040698539
+      halofrogblue-summon-Recovered-Sheet_0: 1861092132
+      halofrogblue-summon-Recovered-Sheet_1: 492474844
+      halofrogblue-summon-Recovered-Sheet_10: -2131372170
+      halofrogblue-summon-Recovered-Sheet_11: 112723564
+      halofrogblue-summon-Recovered-Sheet_12: 1884487579
+      halofrogblue-summon-Recovered-Sheet_13: 950972018
+      halofrogblue-summon-Recovered-Sheet_2: 1686840064
+      halofrogblue-summon-Recovered-Sheet_3: 43985449
+      halofrogblue-summon-Recovered-Sheet_4: -1506160617
+      halofrogblue-summon-Recovered-Sheet_5: -187452297
+      halofrogblue-summon-Recovered-Sheet_6: -2095141294
+      halofrogblue-summon-Recovered-Sheet_7: -1507229024
+      halofrogblue-summon-Recovered-Sheet_8: -1925245198
+      halofrogblue-summon-Recovered-Sheet_9: 1795720669
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

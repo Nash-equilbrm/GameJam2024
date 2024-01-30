@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     public float cantMoveTime;
 
     public Animator animator;
-    public LayerMask groundLayer;
 
 
     private Transform jumpEffect;
@@ -113,7 +112,7 @@ public class PlayerController : MonoBehaviour
         }      
         if (!canMove && touchDirection.isGrounded && cantMoveTime <= 0)
         {
-            canMove = true;          
+            canMove = true;
         }
     }
 
@@ -129,8 +128,13 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rbSpeed));
         animator.SetFloat("VerticalY", rb.velocity.y);
 
-        //Debug.Log(touchDirection.isGrounded);
+        Debug.Log(touchDirection.isGrounded);
         animator.SetBool("IsGrounded", touchDirection.isGrounded);
+
+        if (animator.GetBool("IsHurt") == true)
+        {
+            animator.SetBool("IsHurt", !touchDirection.isGrounded);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {

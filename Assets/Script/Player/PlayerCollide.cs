@@ -8,13 +8,14 @@ public class PlayerCollide : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Darts") && collision.gameObject == gameObject)
+        if (collision.CompareTag("Darts"))
         {
             Debug.Log("On Trigger: " + collision.tag);
-            animator.SetBool("IsHurt", true);
             animator.SetTrigger("Hurt");
+            animator.SetBool("IsHurt", true);
         }
     }
+
     public void EndHurt()
     {
         animator.SetBool("IsHurt", false);

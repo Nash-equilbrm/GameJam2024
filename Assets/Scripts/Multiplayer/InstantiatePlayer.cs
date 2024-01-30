@@ -35,5 +35,6 @@ public class InstantiatePlayer : MonoBehaviour
             int playerID = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % 4;
             _spawnedPlayer = PhotonNetwork.Instantiate(players[playerID].name, posSpawn[playerID].position, Quaternion.identity);
         }
+
     }
 }
