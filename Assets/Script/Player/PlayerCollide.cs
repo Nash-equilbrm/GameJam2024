@@ -10,6 +10,12 @@ public class PlayerCollide : MonoBehaviour
     {
         if (collision.CompareTag("Darts"))
         {
+            CollideWithObject collide = collision.GetComponent<CollideWithObject>();
+            if (collide != null)
+            {
+                if (this.gameObject.Equals(collide.parentController.gameObject)) { return; }
+            }
+            
             Debug.Log("On Trigger: " + collision.tag);
             animator.SetTrigger("Hurt");
             animator.SetBool("IsHurt", true);
