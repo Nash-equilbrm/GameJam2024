@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rbSpeed));
         animator.SetFloat("VerticalY", rb.velocity.y);
 
-        Debug.Log(touchDirection.isGrounded);
+        //Debug.Log(touchDirection.isGrounded);
         animator.SetBool("IsGrounded", touchDirection.isGrounded);
 
         if (Input.GetKeyDown(KeyCode.Space) && canMove)

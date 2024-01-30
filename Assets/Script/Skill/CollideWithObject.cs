@@ -38,7 +38,7 @@ public class CollideWithObject : MonoBehaviour
         if (collision.CompareTag("Darts"))
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.DartHit);
-            Debug.Log("dart");
+            //Debug.Log("dart");
             photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
         }
 

@@ -50,7 +50,7 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Update: _mapGenerated = " + _mapGenerated);
+        //Debug.Log("Update: _mapGenerated = " + _mapGenerated);
         if (!_mapGenerated)
         {
             if (PhotonNetwork.IsMasterClient)

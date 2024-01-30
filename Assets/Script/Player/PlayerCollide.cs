@@ -5,17 +5,14 @@ using UnityEngine;
 public class PlayerCollide : MonoBehaviour
 {
     public Animator animator;
-    [SerializeField]
-    private TouchDirection touchDirection;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Darts"))
+        if (collision.CompareTag("Darts") && collision.gameObject == gameObject)
         {
             Debug.Log("On Trigger: " + collision.tag);
             animator.SetBool("IsHurt", true);
             animator.SetTrigger("Hurt");
-
         }
     }
     public void EndHurt()

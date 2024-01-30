@@ -343,7 +343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8921619903564796025}
-  touchDirection: {fileID: 678398170703583841}
 --- !u!1001 &7246130146212519642
 PrefabInstance:
   m_ObjectHideFlags: 0
