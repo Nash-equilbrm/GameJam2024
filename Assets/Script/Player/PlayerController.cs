@@ -134,7 +134,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rbSpeed));
         animator.SetFloat("VerticalY", rb.velocity.y);
 
-        Debug.Log(touchDirection.isGrounded);
         animator.SetBool("IsGrounded", touchDirection.isGrounded);
 
         if (animator.GetBool("IsHurt") == true)
@@ -249,7 +248,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartSkill()
     {
-        photonView.RPC("UseSkill", RpcTarget.All);
+        photonView.RPC("UseSkill", RpcTarget.AllViaServer);
         this.Broadcast(EventID.SkillActive);
     }
     public void EndSummon()

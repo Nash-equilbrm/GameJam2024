@@ -22,14 +22,14 @@ public class Thorn : MonoBehaviour
             PlayerController playerController = collision.GetComponent<PlayerController>();
             playerController.canMove = false;
             playerController.cantMoveTime = 3;
-            photonView.RPC("SetActiveObstacle_RPC", RpcTarget.All, false);
+            photonView.RPC("SetActiveObstacle_RPC", RpcTarget.Others, false);
             SetActiveObstacle_RPC(false);
         }
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player");
-            photonView.RPC("SetActiveObstacle_RPC", RpcTarget.All, false);
-
+            photonView.RPC("SetActiveObstacle_RPC", RpcTarget.Others, false);
+            SetActiveObstacle_RPC(false);
         }
     }
     [PunRPC]

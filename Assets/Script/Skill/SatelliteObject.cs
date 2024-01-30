@@ -18,6 +18,11 @@ public class SatelliteObject : MonoBehaviour
 
     private void OnEnable()
     {
+        //if (!playerController.photonView.IsMine) { return; }
+        //if (playerController.photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
+        //{
+        //    return;
+        //}
         float f = (float)Math.PI / 2f;
         curentAngle = startAngle * f;
     }
@@ -35,11 +40,11 @@ public class SatelliteObject : MonoBehaviour
     }
     void Update()
     {
-        if (!playerController.photonView.IsMine) { return; }
-        if (playerController.photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
-        {
-            return;
-        }
+        //if (!playerController.photonView.IsMine) { return; }
+        //if (playerController.photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
+        //{
+        //    return;
+        //}
         curentAngle += speed * Time.deltaTime;
 
         float x = center.position.x + Mathf.Cos(curentAngle) * radius;

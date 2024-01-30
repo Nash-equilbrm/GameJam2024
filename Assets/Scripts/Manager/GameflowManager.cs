@@ -40,7 +40,6 @@ namespace HaloKero.Gameplay
         string s = "MainMenu";
         private void Update()
         {
-            Debug.Log(s);
             _stateMachine.CurrentState.LogicUpdate();
         }
 

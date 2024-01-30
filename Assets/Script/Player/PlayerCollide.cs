@@ -13,7 +13,7 @@ public class PlayerCollide : MonoBehaviour
             CollideWithObject collide = collision.GetComponent<CollideWithObject>();
             if (collide != null)
             {
-                if (this.gameObject.Equals(collide.parentController.gameObject)) { return; }
+                if (this.gameObject == collide.parentController.gameObject) { return; }
             }
             
             Debug.Log("On Trigger: " + collision.tag);

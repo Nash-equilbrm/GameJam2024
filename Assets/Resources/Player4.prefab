@@ -316,7 +316,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729128925693698033}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
@@ -401,6 +401,10 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 248498298129332287, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
     - target: {fileID: 424725093629852986, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -497,6 +501,10 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4605792083586555805, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
     - target: {fileID: 4693094692381540520, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -521,6 +529,10 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5666547405384146812, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
     - target: {fileID: 6101781432452861127, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 
@@ -533,6 +545,10 @@ PrefabInstance:
       propertyPath: impactForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 6314661230764283120, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
+      propertyPath: parentController
+      value: 
+      objectReference: {fileID: 5090341017844259936}
     - target: {fileID: 7527645011173038861, guid: 58bc3070c65e8fb4dbc2760de246c50c, type: 3}
       propertyPath: playerController
       value: 
