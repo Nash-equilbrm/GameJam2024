@@ -41,6 +41,8 @@ public class CollideWithObject : MonoBehaviour
             Debug.Log("localPlayer");
             playerController.cantMoveTime = 3;
             playerController.canMove = false;
+            photonView.RPC("SetActiveObject_RPC", RpcTarget.Others, false);
+            SetActiveObject_RPC(false);
         }
         if (collision.CompareTag("Player"))
         {
