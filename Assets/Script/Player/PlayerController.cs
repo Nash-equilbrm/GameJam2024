@@ -250,5 +250,8 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("IsSummoning", false);
     }
-
+    public void HitGroundSound()
+    {
+        this.Broadcast(EventID.PlayerHitGround);
+    }
 }
