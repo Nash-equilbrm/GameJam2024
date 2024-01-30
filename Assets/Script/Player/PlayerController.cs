@@ -144,7 +144,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
-            animator.SetTrigger("IsJumping");
+            photonView.RPC("SetTriggerJumping", RpcTarget.Others);
+            SetTriggerJumping();
             //Adio and GFX
             lastJumpPosition = transform.position;
 
@@ -157,6 +158,12 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    [PunRPC]
+    public void SetTriggerJumping()
+    {
+        animator.SetTrigger("IsJumping");
+    }
+
     private void DartSkill()
     {
         if (isSkillCasting)
@@ -182,7 +189,6 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && !isSkillCasting && currentSkillCD <= 0)
         {
-            animator.SetTrigger("Summon");
             animator.SetBool("IsSummoning", true);
             this.Broadcast(EventID.StartSummonSkill);
 

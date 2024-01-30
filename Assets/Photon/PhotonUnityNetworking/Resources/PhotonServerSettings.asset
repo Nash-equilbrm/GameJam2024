@@ -46,6 +46,8 @@ MonoBehaviour:
   - SetActiveObject_RPC
   - SetActiveObbstacle_RPC
   - SetActiveObstacle_RPC
+  - setTriggerSummon
+  - SetTriggerJumping
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

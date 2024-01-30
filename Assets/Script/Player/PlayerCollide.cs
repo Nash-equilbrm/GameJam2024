@@ -17,7 +17,6 @@ public class PlayerCollide : MonoBehaviour
             }
             
             Debug.Log("On Trigger: " + collision.tag);
-            animator.SetTrigger("Hurt");
             animator.SetBool("IsHurt", true);
         }
     }
