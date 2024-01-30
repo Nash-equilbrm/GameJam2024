@@ -16,11 +16,10 @@ namespace HaloKero.UI.Popup
     {
         [Header("Widgets")]
         [SerializeField] private GameObject _popup;
-        [SerializeField] private TMP_Text _settingTitleTxt;
         [SerializeField] private TMP_Text _musicSettingTitleTxt;
         [SerializeField] private TMP_Text _soundFxSettingTitleTxt;
         [SerializeField] private Button _exitBtn;
-        [SerializeField] private Button _exitBtn2;
+        [SerializeField] private Button _exitGameBtn;
         [SerializeField] private Slider _musicSettingSlider;
         [SerializeField] private Slider _soundFXSettingSlider;
         [SerializeField] private Button _aboutUsBtn;
@@ -46,13 +45,13 @@ namespace HaloKero.UI.Popup
         public override void Show(object data)
         {
             base.Show(null);
-            this.Broadcast(EventID.OnPopupShow);
+            this.Broadcast(EventID.OnBtnClick);
 
-            _exitBtn.onClick.AddListener(Hide);
-            _exitBtn2.onClick.AddListener(Hide);
+            _exitBtn.onClick.AddListener(ExitOnClick);
+            _exitGameBtn.onClick.AddListener(ExitAppOnClick);
             _musicSettingSlider.onValueChanged.AddListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.AddListener(SetSoundFx);
-            _aboutUsBtn.onClick.AddListener(ShowAboutUsPopup);
+            _aboutUsBtn.onClick.AddListener(ShowAboutUsPopupOnClick);
 
 
             _timer = 0f;
@@ -64,11 +63,11 @@ namespace HaloKero.UI.Popup
 
         public override void Hide()
         {
-            _exitBtn.onClick.RemoveListener(Hide);
-            _exitBtn2.onClick.RemoveListener(Hide);
+            _exitBtn.onClick.RemoveListener(ExitOnClick);
+            _exitGameBtn.onClick.RemoveListener(ExitAppOnClick);
             _musicSettingSlider.onValueChanged.RemoveListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.RemoveListener(SetSoundFx);
-            _aboutUsBtn.onClick.RemoveListener(ShowAboutUsPopup);
+            _aboutUsBtn.onClick.RemoveListener(ShowAboutUsPopupOnClick);
 
 
 
@@ -76,11 +75,34 @@ namespace HaloKero.UI.Popup
             StartCoroutine(HidePopup());
         }
 
-        private void ShowAboutUsPopup()
+        private void ShowAboutUsPopupOnClick()
         {
-            UIManager.Instance.ShowPopup<AboutUsPopup>(forceShowData: true);
+            this.Broadcast(EventID.OnBtnClick);
+            UIManager.Instance?.ShowPopup<AboutUsPopup>(forceShowData: true);
+        }
+        private void ExitAppOnClick()
+        {
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                ExitOnClick();
+            }
+            else
+            {
+                Debug.Log("quitttt");
+                this.Broadcast(EventID.OnBtnClick);
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
         }
 
+        private void ExitOnClick()
+        {
+            this.Broadcast(EventID.OnBtnClick);
+            Hide();
+        }
 
         private IEnumerator ShowPopup()
         {
@@ -113,13 +135,13 @@ namespace HaloKero.UI.Popup
         private void SetMusic(float value)
         {
             this.Broadcast(EventID.OnMusicVolumeChanged, value);
-            GameSettingManager.Instance.SetNewSettings(music: value);
+            GameSettingManager.Instance?.SetNewSettings(music: value);
         }
 
         private void SetSoundFx(float value)
         {
             this.Broadcast(EventID.OnSFXVolumeChanged, value);
-            GameSettingManager.Instance.SetNewSettings(soundFx: value);
+            GameSettingManager.Instance?.SetNewSettings(soundFx: value);
         }
 
 

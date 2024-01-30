@@ -1,19 +1,19 @@
-using HaloKero.Gameplay;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-namespace HaloKero.UI.Popup
+namespace HaloKero.UI
 {
-    public class AboutUsPopup : BasePopup
-    {
+    public class WarningPopup : BasePopup 
+    { 
         [Header("Widget")]
         [SerializeField] private GameObject _popup;
         [SerializeField] private Button _exitPopUpBtn;
+        [SerializeField] private TMP_Text _warningTxt;
+
 
 
         [Header("Show pop up anim")]
@@ -46,9 +46,9 @@ namespace HaloKero.UI.Popup
         {
             base.Show(data);
             this.Broadcast(EventID.OnBtnClick);
+            _warningTxt.text = (string)data;
+
             _exitPopUpBtn.onClick.AddListener(ExitOnClick);
-
-
 
             _timer = 0f;
             StartCoroutine(ShowPopup());
@@ -87,7 +87,7 @@ namespace HaloKero.UI.Popup
             _timer = 0f;
             base.Hide();
         }
-        
+
     }
 
 }

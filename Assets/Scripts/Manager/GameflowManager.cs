@@ -37,9 +37,10 @@ namespace HaloKero.Gameplay
             _stateMachine.Initialize(_menuState);
         }
 
-
+        string s = "MainMenu";
         private void Update()
         {
+            Debug.Log(s);
             _stateMachine.CurrentState.LogicUpdate();
         }
 
@@ -50,16 +51,21 @@ namespace HaloKero.Gameplay
             {
                 case GameFlowState.MainMenu:
                     {
-                        _stateMachine.ChangeState(_menuState); break;
+                        s = "MainMenu";
+                        _stateMachine.ChangeState(_menuState); 
+                        break;
                     }
                 case GameFlowState.Lobby:
                     {
-
-                        _stateMachine.ChangeState(_lobbyState); break;
+                        s = "Lobby";
+                        _stateMachine.ChangeState(_lobbyState);
+                        break;
                     }
                 case GameFlowState.Gameplay:
                     {
-                        _stateMachine.ChangeState(_gameplayState); break;
+                        s = "Gameplay";
+                        _stateMachine.ChangeState(_gameplayState); 
+                        break;
                     }
                 default: break;
             }

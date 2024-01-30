@@ -1034,12 +1034,12 @@ MonoBehaviour:
   _joinGameBtn: {fileID: 6357770381294746751}
   _joinGameInputField: {fileID: 2978363600742135444}
   _exitBtn: {fileID: 4709921111394536611}
-  _popUpShowDuration: 0.2
+  _popUpShowDuration: 0.1
   _popUpShowStartScale: 0.7
   _popUpShowEndScale: 1
-  _popUpHideDuration: 0.2
+  _popUpHideDuration: 0.1
   _popUpHideStartScale: 1
-  _popUpHideEndScale: 0.3
+  _popUpHideEndScale: 0.7
 --- !u!1 &5033047808385438660
 GameObject:
   m_ObjectHideFlags: 0

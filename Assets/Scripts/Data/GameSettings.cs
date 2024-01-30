@@ -11,9 +11,10 @@ namespace HaloKero.Settings
     {
         [SerializeField][Range(0f, 1f)] private float _music = 0.5f;
         [SerializeField][Range(0f, 1f)] private float _soundFx = 0.5f;
-
+        [SerializeField] private float _gameDuration = 1200;
         public float Music { get => _music; }
         public float SoundFx { get => _soundFx; }
+        public float GameDuration { get => _gameDuration; }
 
         public void SetNewSettings(float music, float soundFx)
         {

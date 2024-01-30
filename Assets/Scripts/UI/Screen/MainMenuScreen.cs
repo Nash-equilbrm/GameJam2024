@@ -21,7 +21,7 @@ namespace HaloKero.UI.Screen
         public override void Show(object data)
         {
             base.Show(data);
-            UIManager.Instance.ShowOverlap<MainMenuOverlap>(forceShowData: true);
+            UIManager.Instance?.ShowOverlap<MainMenuOverlap>(forceShowData: true);
         }
     }
 }

@@ -1,6 +1,6 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -35,6 +35,10 @@ namespace HaloKero.UI
             this.Register(EventID.WonGame, ShowWonResult);
             this.Register(EventID.LostGame, ShowLostResult);
             _exitBtn.onClick.AddListener(ExitButton_OnClick);
+
+
+            Hashtable prop = new Hashtable() { { "canJoinRoom", false } };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
         }
 
 
@@ -51,30 +55,11 @@ namespace HaloKero.UI
 
         public void ExitButton_OnClick()
         {
-            //if (PhotonNetwork.InRoom)
-            //{
-            //    if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount > 1) MigrateMaster();
-            //    else
-            //    {
-            //        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-            //        PhotonNetwork.LeaveRoom();
-            //    }
-            //}
-
             PhotonNetwork.LeaveRoom();
 
             this.Broadcast(EventID.BackToMenu);
         }
 
-        //private void MigrateMaster()
-        //{
-        //    var dict = PhotonNetwork.CurrentRoom.Players;
-        //    if (PhotonNetwork.SetMasterClient(dict[dict.Count - 1]))
-        //        PhotonNetwork.LeaveRoom();
-        //}
-
-
-        
     }
 }
 
