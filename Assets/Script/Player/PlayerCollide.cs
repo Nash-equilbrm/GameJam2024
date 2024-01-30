@@ -18,12 +18,8 @@ public class PlayerCollide : MonoBehaviour
 
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
+    public void EndHurt()
     {
-        if (collision.CompareTag("Darts"))
-        {
-            animator.SetBool("IsHurt", false);
-        }
+        animator.SetBool("IsHurt", false);
     }
 }
