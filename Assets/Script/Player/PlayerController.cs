@@ -109,10 +109,16 @@ public class PlayerController : MonoBehaviour
         if (cantMoveTime > 0)
         {
             cantMoveTime -= Time.timeScale * Time.deltaTime;
+            if (!canMove)
+            {
+                animator.SetBool("Stun", true);
+            }
+            
         }      
         if (!canMove && touchDirection.isGrounded && cantMoveTime <= 0)
         {
             canMove = true;
+            animator.SetBool("Stun", false);
         }
     }
 
