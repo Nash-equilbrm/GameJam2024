@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95fc02fbc8ec63f49b7c93906f92fd89, type: 3}
   m_Name: Game Settings
   m_EditorClassIdentifier: 
-  _localizationConfig: {fileID: 11400000, guid: 6ed8f9c869e62af4d899ccda00720a7d, type: 2}
-  _languageIdx: 0
-  _music: 0.5
-  _soundFx: 0.5
+  _music: 0.08636336
+  _soundFx: 0.39534473

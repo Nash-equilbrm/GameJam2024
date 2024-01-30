@@ -5816,18 +5816,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74ec901b53cdaa40a14436ff377d1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 1767216880}
-  SFXSource: {fileID: 643227794}
-  Music: {fileID: 8300000, guid: e8cb00566f82df74e873a4f9a4c0d78e, type: 3}
-  Jump: {fileID: 8300000, guid: 84fdc174297bba74c81b4a72ff22cce5, type: 3}
-  DartHit: {fileID: 8300000, guid: 9154480fcbad2d54bb2946a7ecf02d4a, type: 3}
-  PlayerFlip: {fileID: 8300000, guid: 5165c9ef1e4d05e40b781b0675c76672, type: 3}
-  PlayerHit: {fileID: 8300000, guid: c7d3a91ac32abbe47a8931a8ffc37bc6, type: 3}
-  GroundHit: {fileID: 8300000, guid: 34fca350443a4b24db614584d3f1965c, type: 3}
-  StartSound: {fileID: 8300000, guid: 7c285a0e2d57f0344b28425654963387, type: 3}
-  FinishSound: {fileID: 8300000, guid: d88a197d7751c9a448eea078220825db, type: 3}
-  SummonStart: {fileID: 8300000, guid: 385e86ae58f91af4c9cb2bf62cb26ae3, type: 3}
-  SummonActive: {fileID: 8300000, guid: 1d4738e0e30b63d4c91e3cc81a8609b6, type: 3}
+  _musicSource: {fileID: 1767216880}
+  _sFXSource: {fileID: 643227794}
+  _music: {fileID: 8300000, guid: e8cb00566f82df74e873a4f9a4c0d78e, type: 3}
+  _jump: {fileID: 8300000, guid: 84fdc174297bba74c81b4a72ff22cce5, type: 3}
+  _dartHit: {fileID: 8300000, guid: 9154480fcbad2d54bb2946a7ecf02d4a, type: 3}
+  _playerFlip: {fileID: 8300000, guid: 5165c9ef1e4d05e40b781b0675c76672, type: 3}
+  playerHit: {fileID: 8300000, guid: c7d3a91ac32abbe47a8931a8ffc37bc6, type: 3}
+  _groundHit: {fileID: 8300000, guid: 34fca350443a4b24db614584d3f1965c, type: 3}
+  _startSound: {fileID: 8300000, guid: 7c285a0e2d57f0344b28425654963387, type: 3}
+  _finishSound: {fileID: 8300000, guid: d88a197d7751c9a448eea078220825db, type: 3}
+  _summonStart: {fileID: 8300000, guid: 385e86ae58f91af4c9cb2bf62cb26ae3, type: 3}
+  _summonActive: {fileID: 8300000, guid: 1d4738e0e30b63d4c91e3cc81a8609b6, type: 3}
+  _popup: {fileID: 8300000, guid: dfb8196aa1283254d80f89a297373139, type: 3}
 --- !u!1 &1290236443
 GameObject:
   m_ObjectHideFlags: 0
