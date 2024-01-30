@@ -20,7 +20,8 @@ public enum EventID
     OpenMainMenu,
     OnLanguageChange,
     OnGameLoading,
-    OnPopupShow,
+    OnBtnClick,
+
 
     // MULTIPLAYER
     OnConnectToServer,
@@ -28,6 +29,7 @@ public enum EventID
     OnCreateRoom,
     OnJoinRoom,
     OnJoinRoomSuccess,
+    OnJoinRoomFailed,
     OnPlayerEnter,
     SetPlayerID,
     TimeUp,

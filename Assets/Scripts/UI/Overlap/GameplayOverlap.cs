@@ -1,8 +1,11 @@
+using HaloKero.Gameplay;
+using HaloKero.UI.Popup;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace HaloKero.UI.Overlap
@@ -13,6 +16,8 @@ namespace HaloKero.UI.Overlap
         [SerializeField] private TMP_Text _timerTxt;
         [SerializeField] private TMP_Text _heightTxt;
         [SerializeField] private TMP_Text _resultTxt;
+        [SerializeField] private Button _openSettingBtn;
+
 
         public override void Hide()
         {
@@ -20,12 +25,13 @@ namespace HaloKero.UI.Overlap
             _resultTxt.gameObject.SetActive(false);
             this.Unregister(EventID.OnTimeChanged, SetTimer);
             this.Unregister(EventID.OnHeightChanged, SetHeight);
+            _openSettingBtn.onClick.RemoveListener(OpenSettingPopupOnClick);
+
         }
 
         public override void Init()
         {
             base.Init();
-            _resultTxt.gameObject.SetActive(false);
         }
 
         public override void Show(object data)
@@ -33,6 +39,7 @@ namespace HaloKero.UI.Overlap
             base.Show(data);
             this.Register(EventID.OnTimeChanged, SetTimer);
             this.Register(EventID.OnHeightChanged, SetHeight);
+            _openSettingBtn.onClick.AddListener(OpenSettingPopupOnClick);
 
         }
 
@@ -59,6 +66,14 @@ namespace HaloKero.UI.Overlap
             {
                 _timerTxt.text = "00:00";
             }
+        }
+
+
+        private void OpenSettingPopupOnClick()
+        {
+            this.Broadcast(EventID.OnBtnClick);
+
+            UIManager.Instance?.ShowPopup<SettingPopup>(data: GameSettingManager.Instance?.CurrentSettings, forceShowData: true);
         }
     }
 }

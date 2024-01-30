@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastJumpPosition;
     private void OnDestroy()
     {
-        Debug.Log(gameObject.name);
         this.Unregister(EventID.TimeUp, OnTimeUp);
     }
 
@@ -232,7 +231,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTimeUp(object obj = null)
     {
-        Debug.Log("OnTimeUp, set new hash " + PhotonNetwork.LocalPlayer.ActorNumber.ToString() + " y: " + this.transform.position.y);
         Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(), transform.position.y } };
         PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
     }

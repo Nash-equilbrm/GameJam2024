@@ -21,13 +21,13 @@ namespace HaloKero.UI.Popup
 
         public override void Hide()
         {
-            base.Hide();
-            _createGameBtn.onClick.RemoveListener(CreateGame);
-            _joinGameBtn.onClick.RemoveListener(JoinGame);
-            _exitBtn.onClick.RemoveListener(Hide);
+            _createGameBtn.onClick.RemoveListener(CreateGameOnClick);
+            _joinGameBtn.onClick.RemoveListener(JoinGameOnClick);
+            _exitBtn.onClick.RemoveListener(ExitOnClick);
 
             this.Unregister(EventID.OnJoinRoomSuccess, OnJoinRoomSuccess);
-
+            _timer = 0f;
+            StartCoroutine(HidePopup());
         }
 
         public override void Init()
@@ -38,24 +38,40 @@ namespace HaloKero.UI.Popup
         public override void Show(object data)
         {
             base.Show(data);
-            _createGameBtn.onClick.AddListener(CreateGame);
-            _joinGameBtn.onClick.AddListener(JoinGame);
-            _exitBtn.onClick.AddListener(Hide);
-            this.Broadcast(EventID.OnPopupShow);
+            _createGameBtn.onClick.AddListener(CreateGameOnClick);
+            _joinGameBtn.onClick.AddListener(JoinGameOnClick);
+            _exitBtn.onClick.AddListener(ExitOnClick);
 
             this.Register(EventID.OnJoinRoomSuccess, OnJoinRoomSuccess);
+            _timer = 0f;
+            StartCoroutine(ShowPopup());
 
         }
 
-        private void JoinGame()
+        private void JoinGameOnClick()
         {
-            this.Broadcast(EventID.OnJoinRoom, _joinGameInputField.text);
+            this.Broadcast(EventID.OnBtnClick);
+            if (_joinGameInputField.text != string.Empty)
+            {
+                this.Broadcast(EventID.OnJoinRoom, _joinGameInputField.text);
+            }
         }
 
-        private void CreateGame()
+        private void CreateGameOnClick()
         {
-            this.Broadcast(EventID.OnCreateRoom, _createGameInputField.text);
+            this.Broadcast(EventID.OnBtnClick);
+            if(_createGameInputField.text != string.Empty)
+            {
+                this.Broadcast(EventID.OnCreateRoom, _createGameInputField.text);
+            }
         }
+
+        private void ExitOnClick()
+        {
+            this.Broadcast(EventID.OnBtnClick);
+            Hide();
+        }
+
 
         private void OnJoinRoomSuccess(object data = null)
         {
