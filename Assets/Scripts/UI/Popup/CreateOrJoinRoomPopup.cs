@@ -41,6 +41,7 @@ namespace HaloKero.UI.Popup
             _createGameBtn.onClick.AddListener(CreateGame);
             _joinGameBtn.onClick.AddListener(JoinGame);
             _exitBtn.onClick.AddListener(Hide);
+            this.Broadcast(EventID.OnPopupShow);
 
             this.Register(EventID.OnJoinRoomSuccess, OnJoinRoomSuccess);
 

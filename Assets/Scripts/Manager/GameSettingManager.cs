@@ -13,9 +13,9 @@ namespace HaloKero.Gameplay
         [SerializeField] private GameSettings _settings;
         public GameSettings CurrentSettings { get => _settings; }
 
-        public void SetNewSettings(int increaseLanguageIdx = 0, float music = -1f, float soundFx = -1f)
+        public void SetNewSettings(float music = -1f, float soundFx = -1f)
         {
-            _settings.SetNewSettings(increaseLanguageIdx, music, soundFx);
+            _settings.SetNewSettings(music, soundFx);
         }
     }
 }

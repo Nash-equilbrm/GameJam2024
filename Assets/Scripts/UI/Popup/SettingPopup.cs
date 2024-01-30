@@ -46,6 +46,7 @@ namespace HaloKero.UI.Popup
         public override void Show(object data)
         {
             base.Show(null);
+            this.Broadcast(EventID.OnPopupShow);
 
             _exitBtn.onClick.AddListener(Hide);
             _exitBtn2.onClick.AddListener(Hide);
@@ -111,11 +112,13 @@ namespace HaloKero.UI.Popup
 
         private void SetMusic(float value)
         {
+            this.Broadcast(EventID.OnMusicVolumeChanged, value);
             GameSettingManager.Instance.SetNewSettings(music: value);
         }
 
         private void SetSoundFx(float value)
         {
+            this.Broadcast(EventID.OnSFXVolumeChanged, value);
             GameSettingManager.Instance.SetNewSettings(soundFx: value);
         }
 

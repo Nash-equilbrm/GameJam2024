@@ -22,7 +22,7 @@ public class CollideWithObject : MonoBehaviour
 
         if (collision.CompareTag("LocalPlayer"))
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.PlayerHit);
+            this.Broadcast(EventID.PlayerHitDart);
             Vector3 collisionPosition = collision.transform.position - transform.position;
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.AddForce(new Vector2((collisionPosition.x>0?1:-1) * impactForce,-1*impactForce), ForceMode2D.Impulse);
@@ -37,8 +37,7 @@ public class CollideWithObject : MonoBehaviour
         }
         if (collision.CompareTag("Darts"))
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.DartHit);
-            //Debug.Log("dart");
+            this.Broadcast(EventID.DartHitDart);
             photonView.RPC("SetActiveObject_RPC", RpcTarget.All, false);
         }
 

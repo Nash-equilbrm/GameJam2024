@@ -20,6 +20,7 @@ public enum EventID
     OpenMainMenu,
     OnLanguageChange,
     OnGameLoading,
+    OnPopupShow,
 
     // MULTIPLAYER
     OnConnectToServer,
@@ -41,8 +42,21 @@ public enum EventID
     OnMapGenerate,
     OnHeightChanged,
 
+    //PLAYER
+    PlayerJump,
+    PlayerHitDart,
+    PlayerHitGround,
+    PlayerFlip,
+    DartHitDart,
+    StartSummonSkill,
+    SkillActive,
+
+
     // AUDIO
-    StopAudio
+    StopAudio,
+    OnMusicVolumeChanged,
+    OnSFXVolumeChanged,
+
 }
 
 

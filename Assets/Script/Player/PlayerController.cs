@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             lastJumpPosition = transform.position;
 
             jumpEffect.position = new Vector3(lastJumpPosition.x, lastJumpPosition.y - 0.556f, lastJumpPosition.z);
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.Jump);
+            this.Broadcast(EventID.PlayerJump);
             JumpParticle.Play();
             //Physic
             rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Summon");
             animator.SetBool("IsSummoning", true);
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.SummonStart);
+            this.Broadcast(EventID.StartSummonSkill);
 
             //photonView.RPC("UseSkill", RpcTarget.All);
         }
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipPlayer()
     {
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.PlayerFlip);
+        this.Broadcast(EventID.PlayerFlip);
         isFacingRight = !isFacingRight;
     }
 
@@ -236,7 +236,7 @@ public class PlayerController : MonoBehaviour
     public void StartSkill()
     {
         photonView.RPC("UseSkill", RpcTarget.All);
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.SummonActive);
+        this.Broadcast(EventID.SkillActive);
     }
     public void EndSummon()
     {

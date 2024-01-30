@@ -31,9 +31,6 @@ namespace HaloKero.UI
 
         public override void Show(object data)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.FinishSound);
-            AudioManager.Instance.musicSource.Stop();
-
             base.Show(data);
             this.Register(EventID.WonGame, ShowWonResult);
             this.Register(EventID.LostGame, ShowLostResult);

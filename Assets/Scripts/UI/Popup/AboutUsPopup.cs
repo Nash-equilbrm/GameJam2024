@@ -45,7 +45,9 @@ namespace HaloKero.UI.Popup
         public override void Show(object data)
         {
             base.Show(data);
+            this.Broadcast(EventID.OnPopupShow);
             _exitPopUpBtn.onClick.AddListener(Hide);
+
 
 
             _timer = 0f;
