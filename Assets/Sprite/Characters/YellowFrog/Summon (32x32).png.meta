@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ebffb1574469864c8df1499f08292f8
+guid: 811bafee4363b8b43aa987fbb79d3d43
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,215 +119,312 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RJump (32x32)_0
+      name: Summon (32x32)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 303
-        height: 303
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca8842e6e2c5a094aa3f3273149aa936
-      internalID: 1690554753
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RJump (32x32)_1
-      rect:
-        serializedVersion: 2
-        x: 637
-        y: 0
+        x: 157
+        y: 158
         width: 307
-        height: 262
+        height: 307
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d70037d82f73da4fba6ef22f109978a
-      internalID: -325248260
+      spriteID: 13c2b9e340b285a4cb19392c1aae2747
+      internalID: -193283356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_2
+      name: Summon (32x32)_1
       rect:
         serializedVersion: 2
-        x: 1287
-        y: 0
-        width: 307
-        height: 303
+        x: 796
+        y: 158
+        width: 306
+        height: 293
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb96a017d5ab6b04f9d3a7262bdc1129
-      internalID: -637064109
+      spriteID: 3f882863b9d80454e9c10894ae8111f2
+      internalID: -1420887888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_3
+      name: Summon (32x32)_2
       rect:
         serializedVersion: 2
-        x: 1956
-        y: 6
-        width: 275
+        x: 1435
+        y: 158
+        width: 311
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1ac92f1b07a944aae9904fa3e726f1
+      internalID: 679833361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summon (32x32)_3
+      rect:
+        serializedVersion: 2
+        x: 2104
+        y: 167
+        width: 320
         height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 271b652ddcf0e9e499fbcc5d429d49a6
-      internalID: 957021310
+      spriteID: c923aa4e25b14a443ade2ba507025c2e
+      internalID: 124868273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_4
+      name: Summon (32x32)_4
       rect:
         serializedVersion: 2
-        x: 2678
-        y: 78
-        width: 266
-        height: 343
+        x: 2726
+        y: 167
+        width: 319
+        height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e22eee7243b56440af4495788f4ce59
-      internalID: 1576563122
+      spriteID: 627db7fc150d7914c9193f248fbf25f6
+      internalID: 1995017371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_5
+      name: Summon (32x32)_5
       rect:
         serializedVersion: 2
-        x: 3397
-        y: 56
-        width: 284
-        height: 347
+        x: 3386
+        y: 167
+        width: 320
+        height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6270a887f061e264bae262e47825954a
-      internalID: 1919706889
+      spriteID: 239b12aaa92f8554b81c8776ea3deb55
+      internalID: 1715896753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_6
+      name: Summon (32x32)_6
       rect:
         serializedVersion: 2
-        x: 4037
-        y: 28
-        width: 294
-        height: 344
+        x: 4007
+        y: 167
+        width: 315
+        height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6df3be758232d14d82de6a73726282e
-      internalID: 1206266107
+      spriteID: d41266a1d24f72b45a9ab32830eb6785
+      internalID: 993421854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_7
+      name: Summon (32x32)_7
       rect:
         serializedVersion: 2
-        x: 4778
-        y: 6
-        width: 303
-        height: 306
+        x: 4668
+        y: 167
+        width: 315
+        height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0af6b5223116c14aaf8aeb096a6fe42
-      internalID: 669777432
+      spriteID: 959477d4674a0d44c874ca4412c859d4
+      internalID: -1441088066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_8
+      name: Summon (32x32)_8
       rect:
         serializedVersion: 2
-        x: 5428
-        y: 0
-        width: 303
-        height: 262
+        x: 5285
+        y: 167
+        width: 319
+        height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bed8807d8ceee984398f546920b0132f
-      internalID: -622228150
+      spriteID: 55b1b801f516f4e4ab9110c8b0247a53
+      internalID: -1523652329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RJump (32x32)_9
+      name: Summon (32x32)_9
       rect:
         serializedVersion: 2
-        x: 6087
-        y: 0
-        width: 307
-        height: 303
+        x: 5946
+        y: 167
+        width: 343
+        height: 328
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b8e8b3f484df7545bbae4616d521a04
-      internalID: -1216677842
+      spriteID: 43454f9a744e9db4cb37459c5a36000e
+      internalID: 123259738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summon (32x32)_11
+      rect:
+        serializedVersion: 2
+        x: 6558
+        y: 158
+        width: 385
+        height: 315
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2be57c95774fd454b80e9ce740b226ca
+      internalID: 1880006958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summon (32x32)_14
+      rect:
+        serializedVersion: 2
+        x: 7089
+        y: 158
+        width: 567
+        height: 285
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb5033d9b6317c4bbd114f126165b64
+      internalID: 1616991954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summon (32x32)_17
+      rect:
+        serializedVersion: 2
+        x: 7844
+        y: 158
+        width: 311
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc4b5175dd0e35d4581bf69ea0a3e30c
+      internalID: 158010477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Summon (32x32)_18
+      rect:
+        serializedVersion: 2
+        x: 8474
+        y: 158
+        width: 311
+        height: 307
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e9295a23233db4ca1c1ecace886a98
+      internalID: 1645225238
       vertices: []
       indices: 
       edges: []
@@ -343,16 +440,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RJump (32x32)_0: 1690554753
-      RJump (32x32)_1: -325248260
-      RJump (32x32)_2: -637064109
-      RJump (32x32)_3: 957021310
-      RJump (32x32)_4: 1576563122
-      RJump (32x32)_5: 1919706889
-      RJump (32x32)_6: 1206266107
-      RJump (32x32)_7: 669777432
-      RJump (32x32)_8: -622228150
-      RJump (32x32)_9: -1216677842
+      Summon (32x32)_0: -193283356
+      Summon (32x32)_1: -1420887888
+      Summon (32x32)_10: -1268453322
+      Summon (32x32)_11: 1880006958
+      Summon (32x32)_12: 229797774
+      Summon (32x32)_13: 735004386
+      Summon (32x32)_14: 1616991954
+      Summon (32x32)_15: 189131835
+      Summon (32x32)_16: -896393046
+      Summon (32x32)_17: 158010477
+      Summon (32x32)_18: 1645225238
+      Summon (32x32)_2: 679833361
+      Summon (32x32)_3: 124868273
+      Summon (32x32)_4: 1995017371
+      Summon (32x32)_5: 1715896753
+      Summon (32x32)_6: 993421854
+      Summon (32x32)_7: -1441088066
+      Summon (32x32)_8: -1523652329
+      Summon (32x32)_9: 123259738
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

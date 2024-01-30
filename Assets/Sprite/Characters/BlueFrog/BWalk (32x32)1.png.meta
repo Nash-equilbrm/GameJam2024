@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 07f79bee7f89d1e43bc00911643a3b30
+guid: 0833cf246afc1a04b925e5f43efc893c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle (32x32)1_0
+      name: BWalk (32x32)1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88e7a17b9241e8645956fb79b8c2d3fe
-      internalID: -1889319821
+      spriteID: a56f214381df55b43a3c653450da66f9
+      internalID: 196850600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle (32x32)1_1
+      name: BWalk (32x32)1_1
       rect:
         serializedVersion: 2
         x: 330
@@ -158,8 +171,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77b7066df40cbfc4c9fbea4740d4788f
-      internalID: -1929973940
+      spriteID: bf8ae6c7b3a9ace40a1c10a0bdd11c16
+      internalID: -1100281761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BWalk (32x32)1_2
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 280
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecd826a9df7e3cf448478731807f33ef
+      internalID: 932401159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BWalk (32x32)1_3
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 0
+        width: 280
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17caebd48894b44a95422550e2e44fd
+      internalID: 1122190493
       vertices: []
       indices: 
       edges: []
@@ -175,8 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle (32x32)1_0: -1889319821
-      Idle (32x32)1_1: -1929973940
+      BWalk (32x32)1_0: 196850600
+      BWalk (32x32)1_1: -1100281761
+      BWalk (32x32)1_2: 932401159
+      BWalk (32x32)1_3: 1122190493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

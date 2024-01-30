@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d817f0534618b4e4bac858d9afb98887
+guid: 6ebffb1574469864c8df1499f08292f8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,17 +119,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RGet hit (32x32)_0
+      name: RJump (32x32)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 311
-        height: 311
+        width: 303
+        height: 303
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d9aa8477dd99804cb04887b3c629369
-      internalID: 746327952
+      spriteID: ca8842e6e2c5a094aa3f3273149aa936
+      internalID: 1690554753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_1
+      name: RJump (32x32)_1
       rect:
         serializedVersion: 2
-        x: 318
+        x: 637
         y: 0
-        width: 313
-        height: 311
+        width: 307
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed25499db4d60154f9b5103e3ea4e198
-      internalID: 1139039453
+      spriteID: 8d70037d82f73da4fba6ef22f109978a
+      internalID: -325248260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_2
+      name: RJump (32x32)_2
       rect:
         serializedVersion: 2
-        x: 639
+        x: 1287
         y: 0
-        width: 311
-        height: 311
+        width: 307
+        height: 303
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee142936505bde44c8ed349b4f102d52
-      internalID: 152784587
+      spriteID: bb96a017d5ab6b04f9d3a7262bdc1129
+      internalID: -637064109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_3
+      name: RJump (32x32)_3
       rect:
         serializedVersion: 2
-        x: 959
-        y: 0
-        width: 313
-        height: 311
+        x: 1956
+        y: 6
+        width: 275
+        height: 337
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43e4bd72c0e0ffd48a8ba0494a528e97
-      internalID: 69472260
+      spriteID: 271b652ddcf0e9e499fbcc5d429d49a6
+      internalID: 957021310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_4
+      name: RJump (32x32)_4
       rect:
         serializedVersion: 2
-        x: 1279
-        y: 0
-        width: 313
-        height: 311
+        x: 2678
+        y: 78
+        width: 266
+        height: 343
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d840bcdc66181ad4c883d3ce962cc777
-      internalID: 959720362
+      spriteID: 8e22eee7243b56440af4495788f4ce59
+      internalID: 1576563122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_5
+      name: RJump (32x32)_5
       rect:
         serializedVersion: 2
-        x: 1598
-        y: 0
-        width: 313
-        height: 311
+        x: 3397
+        y: 56
+        width: 284
+        height: 347
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 426b866b64ede314b80329eb6d6d9ce0
-      internalID: -591306949
+      spriteID: 6270a887f061e264bae262e47825954a
+      internalID: 1919706889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_6
+      name: RJump (32x32)_6
       rect:
         serializedVersion: 2
-        x: 1918
-        y: 0
-        width: 313
-        height: 311
+        x: 4037
+        y: 28
+        width: 294
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +276,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6ad01a1d283a144193a2c72f68034f3
-      internalID: -1975028716
+      spriteID: c6df3be758232d14d82de6a73726282e
+      internalID: 1206266107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_7
+      name: RJump (32x32)_7
       rect:
         serializedVersion: 2
-        x: 2240
-        y: 0
-        width: 311
-        height: 311
+        x: 4778
+        y: 6
+        width: 303
+        height: 306
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +297,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44f746d35d4b3bc4ebe059236c27b4c2
-      internalID: 2078233265
+      spriteID: d0af6b5223116c14aaf8aeb096a6fe42
+      internalID: 669777432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_8
+      name: RJump (32x32)_8
       rect:
         serializedVersion: 2
-        x: 2559
+        x: 5428
         y: 0
-        width: 313
-        height: 311
+        width: 303
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +318,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad6facb4e790d449b6e8f7d2458ffed
-      internalID: -1445187214
+      spriteID: bed8807d8ceee984398f546920b0132f
+      internalID: -622228150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RGet hit (32x32)_9
+      name: RJump (32x32)_9
       rect:
         serializedVersion: 2
-        x: 2879
+        x: 6087
         y: 0
-        width: 313
-        height: 311
+        width: 307
+        height: 303
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,29 +339,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 022ae9169f7ba304cb57742ed461d245
-      internalID: -435448920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RGet hit (32x32)_10
-      rect:
-        serializedVersion: 2
-        x: 3199
-        y: 0
-        width: 312
-        height: 311
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 727c78a0dc565df4aa643eb8dffa2782
-      internalID: -495030151
+      spriteID: 9b8e8b3f484df7545bbae4616d521a04
+      internalID: -1216677842
       vertices: []
       indices: 
       edges: []
@@ -364,17 +356,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RGet hit (32x32)_0: 746327952
-      RGet hit (32x32)_1: 1139039453
-      RGet hit (32x32)_10: -495030151
-      RGet hit (32x32)_2: 152784587
-      RGet hit (32x32)_3: 69472260
-      RGet hit (32x32)_4: 959720362
-      RGet hit (32x32)_5: -591306949
-      RGet hit (32x32)_6: -1975028716
-      RGet hit (32x32)_7: 2078233265
-      RGet hit (32x32)_8: -1445187214
-      RGet hit (32x32)_9: -435448920
+      RJump (32x32)_0: 1690554753
+      RJump (32x32)_1: -325248260
+      RJump (32x32)_2: -637064109
+      RJump (32x32)_3: 957021310
+      RJump (32x32)_4: 1576563122
+      RJump (32x32)_5: 1919706889
+      RJump (32x32)_6: 1206266107
+      RJump (32x32)_7: 669777432
+      RJump (32x32)_8: -622228150
+      RJump (32x32)_9: -1216677842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

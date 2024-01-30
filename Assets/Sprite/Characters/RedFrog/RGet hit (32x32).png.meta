@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cac4f7b80ab7fac44b7aba3d0a07a396
+guid: d817f0534618b4e4bac858d9afb98887
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BGet hit (32x32)1_0
+      name: RGet hit (32x32)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a396e790c39f234d9a00e9a8e2d78a5
-      internalID: -657327214
+      spriteID: 8d9aa8477dd99804cb04887b3c629369
+      internalID: 746327952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_1
+      name: RGet hit (32x32)_1
       rect:
         serializedVersion: 2
         x: 318
@@ -158,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edf427d3a0fb86e448ede87fd4cca694
-      internalID: 1560526645
+      spriteID: ed25499db4d60154f9b5103e3ea4e198
+      internalID: 1139039453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_2
+      name: RGet hit (32x32)_2
       rect:
         serializedVersion: 2
         x: 639
@@ -179,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95dcba22a8472244088cd46aa23309c5
-      internalID: -2021317427
+      spriteID: ee142936505bde44c8ed349b4f102d52
+      internalID: 152784587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_3
+      name: RGet hit (32x32)_3
       rect:
         serializedVersion: 2
         x: 959
@@ -200,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3546c88c3a21e6b41b2b54468737f032
-      internalID: -2030167863
+      spriteID: 43e4bd72c0e0ffd48a8ba0494a528e97
+      internalID: 69472260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_4
+      name: RGet hit (32x32)_4
       rect:
         serializedVersion: 2
         x: 1279
@@ -221,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 166df329fe2bca14db6fd843e58e6601
-      internalID: 898138405
+      spriteID: d840bcdc66181ad4c883d3ce962cc777
+      internalID: 959720362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_5
+      name: RGet hit (32x32)_5
       rect:
         serializedVersion: 2
         x: 1598
@@ -242,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a23874a1bbbb95488c4708453100bf2
-      internalID: -1319177796
+      spriteID: 426b866b64ede314b80329eb6d6d9ce0
+      internalID: -591306949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_6
+      name: RGet hit (32x32)_6
       rect:
         serializedVersion: 2
         x: 1918
@@ -263,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89d4d04dd799aa646ac7676d49f3927b
-      internalID: 2053068271
+      spriteID: f6ad01a1d283a144193a2c72f68034f3
+      internalID: -1975028716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_7
+      name: RGet hit (32x32)_7
       rect:
         serializedVersion: 2
         x: 2240
@@ -284,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d03078bdb5cfbe14e8d8e3a24336290b
-      internalID: -2118478784
+      spriteID: 44f746d35d4b3bc4ebe059236c27b4c2
+      internalID: 2078233265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_8
+      name: RGet hit (32x32)_8
       rect:
         serializedVersion: 2
         x: 2559
@@ -305,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d77ca7681521c7a45a32511ca5f613db
-      internalID: 551848243
+      spriteID: dad6facb4e790d449b6e8f7d2458ffed
+      internalID: -1445187214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_9
+      name: RGet hit (32x32)_9
       rect:
         serializedVersion: 2
         x: 2879
@@ -326,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0eba75c40faca34f918ce38c1432421
-      internalID: -1904880793
+      spriteID: 022ae9169f7ba304cb57742ed461d245
+      internalID: -435448920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BGet hit (32x32)1_10
+      name: RGet hit (32x32)_10
       rect:
         serializedVersion: 2
         x: 3199
@@ -347,8 +360,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07743f2b880809b41aa5447d0d3fc5b4
-      internalID: -437257099
+      spriteID: 727c78a0dc565df4aa643eb8dffa2782
+      internalID: -495030151
       vertices: []
       indices: 
       edges: []
@@ -364,17 +377,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BGet hit (32x32)1_0: -657327214
-      BGet hit (32x32)1_1: 1560526645
-      BGet hit (32x32)1_10: -437257099
-      BGet hit (32x32)1_2: -2021317427
-      BGet hit (32x32)1_3: -2030167863
-      BGet hit (32x32)1_4: 898138405
-      BGet hit (32x32)1_5: -1319177796
-      BGet hit (32x32)1_6: 2053068271
-      BGet hit (32x32)1_7: -2118478784
-      BGet hit (32x32)1_8: 551848243
-      BGet hit (32x32)1_9: -1904880793
+      RGet hit (32x32)_0: 746327952
+      RGet hit (32x32)_1: 1139039453
+      RGet hit (32x32)_10: -495030151
+      RGet hit (32x32)_2: 152784587
+      RGet hit (32x32)_3: 69472260
+      RGet hit (32x32)_4: 959720362
+      RGet hit (32x32)_5: -591306949
+      RGet hit (32x32)_6: -1975028716
+      RGet hit (32x32)_7: 2078233265
+      RGet hit (32x32)_8: -1445187214
+      RGet hit (32x32)_9: -435448920
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
