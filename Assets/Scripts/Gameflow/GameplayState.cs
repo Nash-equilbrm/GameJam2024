@@ -55,7 +55,12 @@ namespace HaloKero.Gameplay
 
         public override void LogicUpdate()
         {
-            if(_timer > 0)
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                UIManager.Instance?.ShowPopup<SettingPopup>(data: GameSettingManager.Instance?.CurrentSettings, forceShowData: true);
+            }
+
+            if (_timer > 0)
             {
                 _timer -= Time.deltaTime;
                 _context.Broadcast(EventID.OnTimeChanged, _timer);

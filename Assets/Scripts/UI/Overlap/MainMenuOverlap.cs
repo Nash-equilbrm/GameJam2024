@@ -65,8 +65,7 @@ namespace HaloKero.UI.Overlap
         {
             this.Broadcast(EventID.OnBtnClick);
 
-            object settingData = GameSettingManager.Instance?.CurrentSettings;
-            UIManager.Instance?.ShowPopup<SettingPopup>(data: settingData, forceShowData:true);
+            UIManager.Instance?.ShowPopup<SettingPopup>(data: GameSettingManager.Instance?.CurrentSettings, forceShowData:true);
         }
 
         

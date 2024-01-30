@@ -9,6 +9,7 @@ using HaloKero.Multiplayer;
 using Unity.VisualScripting;
 using HaloKero.UI;
 using ExitGames.Client.Photon;
+using HaloKero.UI.Popup;
 
 
 
@@ -55,6 +56,14 @@ namespace HaloKero.Gameplay
             _context.Unregister(EventID.StartGamePlay, StartGameplay);
             _context.Unregister(EventID.BackToMenu, GoBackToMainMenu);
 
+        }
+
+        public override void LogicUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                UIManager.Instance?.ShowPopup<SettingPopup>(data: GameSettingManager.Instance?.CurrentSettings, forceShowData: true);
+            }
         }
 
         private void GoBackToMainMenu(object data)

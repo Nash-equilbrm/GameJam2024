@@ -783,11 +783,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popup: {fileID: 6900570415957087663}
-  _settingTitleTxt: {fileID: 0}
   _musicSettingTitleTxt: {fileID: 28168079874822754}
   _soundFxSettingTitleTxt: {fileID: 8348964448555917199}
   _exitBtn: {fileID: 7739914686274592420}
-  _exitBtn2: {fileID: 5167733814511487607}
+  _exitGameBtn: {fileID: 5167733814511487607}
   _musicSettingSlider: {fileID: 4040448410388599320}
   _soundFXSettingSlider: {fileID: 2439553481763738403}
   _aboutUsBtn: {fileID: 7163012212623351755}

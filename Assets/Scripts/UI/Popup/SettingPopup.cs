@@ -16,11 +16,10 @@ namespace HaloKero.UI.Popup
     {
         [Header("Widgets")]
         [SerializeField] private GameObject _popup;
-        [SerializeField] private TMP_Text _settingTitleTxt;
         [SerializeField] private TMP_Text _musicSettingTitleTxt;
         [SerializeField] private TMP_Text _soundFxSettingTitleTxt;
         [SerializeField] private Button _exitBtn;
-        [SerializeField] private Button _exitBtn2;
+        [SerializeField] private Button _exitGameBtn;
         [SerializeField] private Slider _musicSettingSlider;
         [SerializeField] private Slider _soundFXSettingSlider;
         [SerializeField] private Button _aboutUsBtn;
@@ -49,7 +48,7 @@ namespace HaloKero.UI.Popup
             this.Broadcast(EventID.OnBtnClick);
 
             _exitBtn.onClick.AddListener(ExitOnClick);
-            _exitBtn2.onClick.AddListener(ExitOnClick);
+            _exitGameBtn.onClick.AddListener(ExitAppOnClick);
             _musicSettingSlider.onValueChanged.AddListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.AddListener(SetSoundFx);
             _aboutUsBtn.onClick.AddListener(ShowAboutUsPopupOnClick);
@@ -65,7 +64,7 @@ namespace HaloKero.UI.Popup
         public override void Hide()
         {
             _exitBtn.onClick.RemoveListener(ExitOnClick);
-            _exitBtn2.onClick.RemoveListener(ExitOnClick);
+            _exitGameBtn.onClick.RemoveListener(ExitAppOnClick);
             _musicSettingSlider.onValueChanged.RemoveListener(SetMusic);
             _soundFXSettingSlider.onValueChanged.RemoveListener(SetSoundFx);
             _aboutUsBtn.onClick.RemoveListener(ShowAboutUsPopupOnClick);
@@ -80,6 +79,23 @@ namespace HaloKero.UI.Popup
         {
             this.Broadcast(EventID.OnBtnClick);
             UIManager.Instance?.ShowPopup<AboutUsPopup>(forceShowData: true);
+        }
+        private void ExitAppOnClick()
+        {
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                ExitOnClick();
+            }
+            else
+            {
+                Debug.Log("quitttt");
+                this.Broadcast(EventID.OnBtnClick);
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
         }
 
         private void ExitOnClick()

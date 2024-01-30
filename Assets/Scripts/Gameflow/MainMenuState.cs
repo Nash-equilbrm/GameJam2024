@@ -43,6 +43,15 @@ namespace HaloKero.Gameplay
 
         }
 
+        public override void LogicUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                UIManager.Instance?.ShowPopup<SettingPopup>(data: GameSettingManager.Instance?.CurrentSettings, forceShowData: true);
+
+            }
+        }
+
         private void OnConnectToServerSuccess(object data = null)
         {
             if (_firstConnectAttempt)
