@@ -88,22 +88,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //Casting Skill
-        if (isSkillCasting)
-        {
-            if (currentSkillTime > 0)
-            {
-                currentSkillTime -= Time.timeScale * Time.deltaTime;
-            }
-            else
-            {
-                foreach (var dart in Darts)
-                {
-                    dart.SetActive(false);
-                }
-                isSkillCasting = false;
-                currentSkillCD = skillCD;
-            }
-        }
+        
         //Check control permission
         if (!photonView.IsMine) return; 
         if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
@@ -165,16 +150,37 @@ public class PlayerController : MonoBehaviour
     }
     private void DartSkill()
     {
+        if (isSkillCasting)
+        {
+            if (currentSkillTime > 0)
+            {
+                currentSkillTime -= Time.timeScale * Time.deltaTime;
+            }
+            else
+            {
+                foreach (var dart in Darts)
+                {
+                    dart.SetActive(false);
+                }
+                isSkillCasting = false;
+                currentSkillCD = skillCD;
+            }
+        }
+
         if (currentSkillCD > 0 && !isSkillCasting)
         {
             currentSkillCD -= Time.timeScale * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.E) && !isSkillCasting && currentSkillCD <= 0)
         {
-            photonView.RPC("UseSkill", RpcTarget.All);
-        }
+            animator.SetTrigger("Summon");
+            animator.SetBool("IsSummoning", true);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.SummonStart);
 
+            //photonView.RPC("UseSkill", RpcTarget.All);
+        }
     }
+
     [PunRPC]
     private void UseSkill()
     {
@@ -220,12 +226,21 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-
-
     private void OnTimeUp(object obj = null)
     {
         Debug.Log("OnTimeUp, set new hash " + PhotonNetwork.LocalPlayer.ActorNumber.ToString() + " y: " + this.transform.position.y);
         Hashtable prop = new Hashtable() { { "p" + PhotonNetwork.LocalPlayer.ActorNumber.ToString(), transform.position.y } };
         PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
     }
+
+    public void StartSkill()
+    {
+        photonView.RPC("UseSkill", RpcTarget.All);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.SummonActive);
+    }
+    public void EndSummon()
+    {
+        animator.SetBool("IsSummoning", false);
+    }
+
 }

@@ -18,6 +18,8 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] public AudioClip GroundHit;
     [SerializeField] public AudioClip StartSound;
     [SerializeField] public AudioClip FinishSound;
+    [SerializeField] public AudioClip SummonStart;
+    [SerializeField] public AudioClip SummonActive;
 
     private void Start()
     {
