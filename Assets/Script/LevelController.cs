@@ -8,6 +8,7 @@ using Utilities;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 using System.Linq;
+using System.Drawing;
 
 
 public enum TypeTerrain
@@ -26,7 +27,6 @@ public class LevelController : MonoBehaviour
     [Space(2.0f)]
     [Header("PREFAB")]
     [SerializeField] private GameObject thornPref;
-    [SerializeField] private GameObject cloudPref;
 
     [SerializeField] List<Tile> tilesetWells = new();
     [SerializeField] List<Tile> tilesetNatural = new();
@@ -36,6 +36,8 @@ public class LevelController : MonoBehaviour
     public  GameObject[] blocksBody;
     public GameObject[] blocksEnd;
     public GameObject[] blocksBegin;
+    public  GameObject blocksBoundary;
+    public List<string> blockIdStr;
 
 
     private bool _mapGenerated = false;
@@ -104,11 +106,6 @@ public class LevelController : MonoBehaviour
         //    int rd = Random.Range(0, blocksBody.Length);
         //    blockTemp = blocksBody[rd].GetComponent<Block>();
         //} while (blockTemp.DifficultyLevel != difficultyLevel);
-        if (floor == maxWell)
-        {
-            Vector3 posCloud = new Vector3(0, endPosY, 0);
-            GetOutOfTheWell(posCloud);
-        }
         blockTemp = blocksBody[index].GetComponent<Block>();
 
         endPosY += blockTemp.GetBlockMapSize().y / 2f;
@@ -123,6 +120,17 @@ public class LevelController : MonoBehaviour
         this.blocks.Add(block);
         ChangeTile(block, block.IFloor);
     }
+
+    public void GenerateBoundaryBlock(int index)
+    {
+        Block blockB = blocksBoundary.GetComponent<Block>();
+        endPosY += blockB.GetBlockMapSize().y / 2f;
+        Block block = PhotonNetwork.Instantiate(blocksBoundary.gameObject.name, new Vector2(0, endPosY), Quaternion.identity).GetComponent<Block>();
+        block.transform.SetParent(mapPosition);
+        block.IFloor = maxWell;
+        endPosY += blockB.GetBlockMapSize().y / 2f;
+        block.SpawnThorn(thornPref);
+    }    
 
 
     private int GenerateBodyBlockID(DifficultyLevel difficultyLevel, int floor)
@@ -171,8 +179,12 @@ public class LevelController : MonoBehaviour
             if (i < maxWell)
             {
                 res += GenerateBodyBlockID(DifficultyLevel.Easy, i).ToString() + "-";
-
-            }
+            } 
+            
+            else if (i == maxWell)
+            {
+                res += maxWell.ToString() + "-";
+            }    
 
             else if (i < (maxFloor - 1) * 2 / 3)
             {
@@ -196,7 +208,8 @@ public class LevelController : MonoBehaviour
 
     public void GenerateMap(string mapCode)
     {
-        List<string> blockIdStr = mapCode.Split('-').ToList<string>();
+        //List<string> blockIdStr = mapCode.Split('-').ToList<string>();
+        blockIdStr = mapCode.Split('-').ToList<string>();
 
         List<int> blockId = blockIdStr.Select(x => Int32.Parse(x)).ToList();
 
@@ -205,15 +218,16 @@ public class LevelController : MonoBehaviour
 
         for (int i = 1; i < maxFloor; i++)
         {
-            GenerateBodyBlock(blockId[i], i);
+            if (i == maxWell)
+            {
+                GenerateBoundaryBlock(blockId[maxWell]);
+            } else
+            {
+                GenerateBodyBlock(blockId[i], i);
+            }
         }
 
         GenerateEndBlock(blockId[blockId.Count - 1]);
 
-    }
-
-    private void GetOutOfTheWell(Vector3 posSpawn)
-    {
-        GameObject cloud = PhotonNetwork.Instantiate(cloudPref.name, posSpawn, Quaternion.identity);
     }    
 }

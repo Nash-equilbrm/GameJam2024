@@ -630,6 +630,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 107686176}
     - target: {fileID: 6308947163925386084, guid: 231949a4a772b884d824467e0d00022d, type: 3}
+      propertyPath: blocksBoundary
+      value: 
+      objectReference: {fileID: 5831701286078442848, guid: ec4b8d5bb379d8e428ab781123cc7db6, type: 3}
+    - target: {fileID: 6308947163925386084, guid: 231949a4a772b884d824467e0d00022d, type: 3}
       propertyPath: blocksBody.Array.data[1]
       value: 
       objectReference: {fileID: 4078411387255569364, guid: dbfcb4e99a28bb0409a3f58afb241c67, type: 3}

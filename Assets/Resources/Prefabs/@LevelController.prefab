@@ -50,7 +50,6 @@ MonoBehaviour:
   maxFloor: 5
   maxWell: 2
   thornPref: {fileID: 2294303991517542432, guid: 7f4bbcdea8b57e2469235f8c3fd55e32, type: 3}
-  cloudPref: {fileID: 6808597048495421660, guid: efeee2fbfd35dc64e9f1bfcac0d47db6, type: 3}
   tilesetWells:
   - {fileID: 11400000, guid: 87ed51da7cebaf343a453120b17ad0cf, type: 2}
   - {fileID: 11400000, guid: fb1d76691748ac048a081b3de0ed77ba, type: 2}
@@ -108,3 +107,4 @@ MonoBehaviour:
   - {fileID: 3867395177597900200, guid: d65d88cd9635b8f4086143c510a80a01, type: 3}
   - {fileID: 7596588953227703807, guid: aba2cbbbac56cda4dbb2bee4383eb547, type: 3}
   - {fileID: 4884268571848520614, guid: e5224a5bd59ba6846b8483f81648cdb8, type: 3}
+  blocksBoundary: {fileID: 5831701286078442848, guid: ec4b8d5bb379d8e428ab781123cc7db6, type: 3}
