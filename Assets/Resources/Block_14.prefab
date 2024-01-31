@@ -880,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iFloor: 0
-  difficultyLevel: 1
+  difficultyLevel: 2
   wall: {fileID: 5994307794289368535}
   thorn: {fileID: 406757865054175990}
   obstacle: {fileID: 6945072730483029729}
