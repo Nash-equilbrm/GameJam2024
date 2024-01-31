@@ -37,7 +37,6 @@ public class LevelController : MonoBehaviour
     public GameObject[] blocksEnd;
     public GameObject[] blocksBegin;
     public  GameObject blocksBoundary;
-    public List<string> blockIdStr;
 
 
     private bool _mapGenerated = false;
@@ -208,8 +207,7 @@ public class LevelController : MonoBehaviour
 
     public void GenerateMap(string mapCode)
     {
-        //List<string> blockIdStr = mapCode.Split('-').ToList<string>();
-        blockIdStr = mapCode.Split('-').ToList<string>();
+        List<string> blockIdStr = mapCode.Split('-').ToList<string>();
 
         List<int> blockId = blockIdStr.Select(x => Int32.Parse(x)).ToList();
 
