@@ -123,337 +123,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_40
+      name: Ninja_Tileset_stone_path_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 404
+        y: 532
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f49e0736bdb57f4daab305d12ddf27a
-      internalID: 736211276
+      spriteID: 80a5ba31106e61449a18b5b1493cf5df
+      internalID: 901664322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_41
+      name: Ninja_Tileset_stone_path_1
       rect:
         serializedVersion: 2
         x: 16
-        y: 404
+        y: 532
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c42184c4eafe4b4aa8d7376fd4f1854
-      internalID: 405945236
+      spriteID: c291a18396c8c8443bb4d65091e9b7ac
+      internalID: 390434812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_42
+      name: Ninja_Tileset_stone_path_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 404
+        y: 532
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c41cc17c61a93a7449f232e9f48dfd1c
-      internalID: 1483966865
+      spriteID: 45f5f33b07c0d3b4ea46caa6de3c72de
+      internalID: 2071597288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_43
+      name: Ninja_Tileset_stone_path_3
       rect:
         serializedVersion: 2
         x: 48
-        y: 404
+        y: 532
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d1fd6a34af35f140b2cb9e84fa9a3cf
-      internalID: 517021626
+      spriteID: c3c909d0e1df5d94299196b83531095f
+      internalID: -683031403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_46
+      name: Ninja_Tileset_stone_path_11
       rect:
         serializedVersion: 2
         x: 0
-        y: 388
+        y: 516
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f41181586a1f6384189cc5d125e901cd
-      internalID: -956698830
+      spriteID: 0682831307dd20e41ac0c491beab8014
+      internalID: -572296959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_47
+      name: Ninja_Tileset_stone_path_12
       rect:
         serializedVersion: 2
         x: 16
-        y: 388
+        y: 516
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f25e1e14f96b4e4b96a3e4a5fa8f787
-      internalID: 1216641597
+      spriteID: 84dd4d7c66ec704469049bf5aad3ad17
+      internalID: -416868159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_48
+      name: Ninja_Tileset_stone_path_13
       rect:
         serializedVersion: 2
         x: 32
-        y: 388
+        y: 516
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0e9d3aac4da4de49a41fc8e0b6cde57
-      internalID: 1968326243
+      spriteID: 09d4f3443a1119948a8919fe77995208
+      internalID: 278650996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_49
+      name: Ninja_Tileset_stone_path_14
       rect:
         serializedVersion: 2
         x: 48
-        y: 388
+        y: 516
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60d60a03ad381a84eaf3507a0b9dee15
-      internalID: 925516690
+      spriteID: f7353e61365c9c94194e5500afbec8ef
+      internalID: 1505278951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_52
+      name: Ninja_Tileset_stone_path_22
       rect:
         serializedVersion: 2
         x: 0
-        y: 372
+        y: 500
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 546817e10add8bf46a0467537a6c2e13
-      internalID: -1371784024
+      spriteID: 7dd2241c4c01a3642b1b57bccd0c4d6a
+      internalID: 90698820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_53
+      name: Ninja_Tileset_stone_path_23
       rect:
         serializedVersion: 2
         x: 16
-        y: 372
+        y: 500
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40e00e4271e52a649b1eec25ec1527fe
-      internalID: -1490520280
+      spriteID: 022b911e2f1b11042b35865d23995699
+      internalID: -426541261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_54
+      name: Ninja_Tileset_stone_path_24
       rect:
         serializedVersion: 2
         x: 32
-        y: 372
+        y: 500
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55baf516818621149bf4bcd0f3ba1f0d
-      internalID: 1146276771
+      spriteID: 21139244a361fa34587a081bbde1d743
+      internalID: 1057771661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_55
+      name: Ninja_Tileset_stone_path_25
       rect:
         serializedVersion: 2
         x: 48
-        y: 372
+        y: 500
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0271b951066adef489c2c9442b065059
-      internalID: 1704424394
+      spriteID: aef051446f630b7408cf97917f068995
+      internalID: -1972548060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_56
+      name: Ninja_Tileset_stone_path_29
       rect:
         serializedVersion: 2
         x: 0
-        y: 356
+        y: 484
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08e2217f1476c9b4680761c3466dcbe7
-      internalID: 1957419691
+      spriteID: fcfa620c6855597479feb64690ea4716
+      internalID: -717677916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_57
+      name: Ninja_Tileset_stone_path_30
       rect:
         serializedVersion: 2
         x: 16
-        y: 356
+        y: 484
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25de8a4ed75894041877a86bbb6b71de
-      internalID: 1898228441
+      spriteID: 6f6a4408ee1f8d5419d6ba4178876a42
+      internalID: -652344889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_58
+      name: Ninja_Tileset_stone_path_31
       rect:
         serializedVersion: 2
         x: 32
-        y: 356
+        y: 484
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b42e2009303ca04f82415d93fa4b67a
-      internalID: 1877233460
+      spriteID: c3c13dd24477b2d4991a8687218f27f9
+      internalID: -1679959203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Tileset_stone_path_59
+      name: Ninja_Tileset_stone_path_32
       rect:
         serializedVersion: 2
         x: 48
-        y: 356
+        y: 484
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ba6dc3bd355a4c47a379025bc672c29
-      internalID: 1440055857
+      spriteID: 22dc606d5e9350244b3f7e5c6c187922
+      internalID: -1195319699
       vertices: []
       indices: 
       edges: []

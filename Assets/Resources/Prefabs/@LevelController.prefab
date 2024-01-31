@@ -48,25 +48,26 @@ MonoBehaviour:
   level: 5
   terrain: 1
   maxFloor: 5
+  maxWell: 2
   thornPref: {fileID: 2294303991517542432, guid: 7f4bbcdea8b57e2469235f8c3fd55e32, type: 3}
   cloudPref: {fileID: 6808597048495421660, guid: efeee2fbfd35dc64e9f1bfcac0d47db6, type: 3}
   tilesetWells:
-  - {fileID: 11400000, guid: 8907ef308ee121f4a8c1236362e38828, type: 2}
-  - {fileID: 11400000, guid: 695dba64d716e214fabcc4fee2443632, type: 2}
-  - {fileID: 11400000, guid: 33b50dc8381c46c41b8a82e932b16fc9, type: 2}
-  - {fileID: 11400000, guid: 169feb434b2d9d54cbc896283c4e90a4, type: 2}
-  - {fileID: 11400000, guid: 378bd9b11110a414b8310dce08fb1c16, type: 2}
-  - {fileID: 11400000, guid: 7d148b04f5de1e940bb75ebd42180c5d, type: 2}
-  - {fileID: 11400000, guid: 6b7e41872b260004c8f334ba37c3d387, type: 2}
-  - {fileID: 11400000, guid: 12bf6d7587b69d94fb4d54c2cb93b645, type: 2}
-  - {fileID: 11400000, guid: 3924537557b208f49ba666e13f0fb639, type: 2}
-  - {fileID: 11400000, guid: ed0af35c8aad40c45a9994e63cdce10d, type: 2}
-  - {fileID: 11400000, guid: 6ce3a13caba2d7146b0f65c721d035e2, type: 2}
-  - {fileID: 11400000, guid: 0a708f7113acd4d4fa5042f5678d8f04, type: 2}
-  - {fileID: 11400000, guid: c07593d82bff2a44eaa8731d195701e2, type: 2}
-  - {fileID: 11400000, guid: 0e018395339149942a7f8ee319090dc7, type: 2}
-  - {fileID: 11400000, guid: 24da53b99d7dbc74ca343f6265a10849, type: 2}
-  - {fileID: 11400000, guid: 0c24a5ac2aa61e54ea79f2d3271681d5, type: 2}
+  - {fileID: 11400000, guid: 87ed51da7cebaf343a453120b17ad0cf, type: 2}
+  - {fileID: 11400000, guid: fb1d76691748ac048a081b3de0ed77ba, type: 2}
+  - {fileID: 11400000, guid: 26d3eade20a4dbe4fb460ef4158e33f6, type: 2}
+  - {fileID: 11400000, guid: 5dd653bae2c90aa468a0e5dabccfe85f, type: 2}
+  - {fileID: 11400000, guid: 97c31e9dae2a26c43bf0e8ca6907636b, type: 2}
+  - {fileID: 11400000, guid: 2aeb6f5f260f8ee44a53b07c80815d02, type: 2}
+  - {fileID: 11400000, guid: 2393b4207b6bdde4d8116fe0fd03b90f, type: 2}
+  - {fileID: 11400000, guid: 43a9073281921d44290344542c81cdf7, type: 2}
+  - {fileID: 11400000, guid: cb341e19ee1e4b1479cb58ed608ac453, type: 2}
+  - {fileID: 11400000, guid: 3ab83c785d3c67449aff668ac4d3c1b1, type: 2}
+  - {fileID: 11400000, guid: 6efce94bf3f01a140918cc5ed17ccfdb, type: 2}
+  - {fileID: 11400000, guid: 4ed009d7a439a96479d8172ff0abd413, type: 2}
+  - {fileID: 11400000, guid: 711d6f59678b6cd40a98231f3f6aa40f, type: 2}
+  - {fileID: 11400000, guid: c738230b6ea7632478c32867fd43ceac, type: 2}
+  - {fileID: 11400000, guid: ccd5b515161094b4a9a7ff98999196af, type: 2}
+  - {fileID: 11400000, guid: 67b8a82db16115f4a940dd7a10feaace, type: 2}
   tilesetNatural:
   - {fileID: 11400000, guid: 510af4ae784504544969dbdb9228ebd1, type: 2}
   - {fileID: 11400000, guid: c4feac919b46d3348ab39ce5780f8437, type: 2}

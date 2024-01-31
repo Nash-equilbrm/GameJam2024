@@ -149,7 +149,7 @@ public class LevelController : MonoBehaviour
 
     private void ChangeTile(Block block, int floor)
     {
-        if (floor < 2)
+        if (floor > maxWell)
         {
             for (int i = 0; i < tilesetWells.Count; i++)
             {
@@ -174,15 +174,13 @@ public class LevelController : MonoBehaviour
 
             }
 
-            else if (i < maxFloor - 1)
+            else if (i < (maxFloor - 1) * 2 / 3)
             {
-                Debug.Log("DIEU spawn normal");
                 res += GenerateBodyBlockID(DifficultyLevel.Normal, i).ToString() + "-";
                     
             }
             else
             {
-                Debug.Log("DIEU spawn hard");
                 res += GenerateBodyBlockID(DifficultyLevel.Hard, i).ToString() + "-";
 
             }
