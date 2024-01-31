@@ -48,8 +48,8 @@ MonoBehaviour:
   level: 5
   terrain: 1
   maxFloor: 5
-  player: {fileID: 0}
   thornPref: {fileID: 2294303991517542432, guid: 7f4bbcdea8b57e2469235f8c3fd55e32, type: 3}
+  cloudPref: {fileID: 6808597048495421660, guid: efeee2fbfd35dc64e9f1bfcac0d47db6, type: 3}
   tilesetWells:
   - {fileID: 11400000, guid: 8907ef308ee121f4a8c1236362e38828, type: 2}
   - {fileID: 11400000, guid: 695dba64d716e214fabcc4fee2443632, type: 2}

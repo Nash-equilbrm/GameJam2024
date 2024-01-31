@@ -21,14 +21,12 @@ public class LevelController : MonoBehaviour
     [SerializeField] private int level;
     [SerializeField] private TypeTerrain terrain;
     [SerializeField] private int maxFloor = 5;
-
-    [Space(2.0f)]
-    [Header("TRANSFORM")]
-    [SerializeField] private Transform player;
+    [SerializeField] private int maxWell = 2;
 
     [Space(2.0f)]
     [Header("PREFAB")]
     [SerializeField] private GameObject thornPref;
+    [SerializeField] private GameObject cloudPref;
 
     [SerializeField] List<Tile> tilesetWells = new();
     [SerializeField] List<Tile> tilesetNatural = new();
@@ -106,6 +104,11 @@ public class LevelController : MonoBehaviour
         //    int rd = Random.Range(0, blocksBody.Length);
         //    blockTemp = blocksBody[rd].GetComponent<Block>();
         //} while (blockTemp.DifficultyLevel != difficultyLevel);
+        if (floor == maxWell)
+        {
+            Vector3 posCloud = new Vector3(0, endPosY, 0);
+            GetOutOfTheWell(posCloud);
+        }
         blockTemp = blocksBody[index].GetComponent<Block>();
 
         endPosY += blockTemp.GetBlockMapSize().y / 2f;
@@ -148,10 +151,10 @@ public class LevelController : MonoBehaviour
     {
         if (floor < 2)
         {
-            for (int i = 0; i < tilesetNatural.Count; i++)
+            for (int i = 0; i < tilesetWells.Count; i++)
             {
-                TileMapHelper.ChangeTile(block.Obstacle, tilesetNatural[i], tilesetWells[i]);
-                TileMapHelper.ChangeTile(block.Wall, tilesetNatural[i], tilesetWells[i]);
+                TileMapHelper.ChangeTile(block.Obstacle, tilesetWells[i], tilesetNatural[i]);
+                TileMapHelper.ChangeTile(block.Wall, tilesetWells[i], tilesetNatural[i]);
             }
         }
     }
@@ -165,7 +168,7 @@ public class LevelController : MonoBehaviour
 
         for (int i = 1; i < maxFloor - 1; i++)
         {
-            if (i < 2)
+            if (i < maxWell)
             {
                 res += GenerateBodyBlockID(DifficultyLevel.Easy, i).ToString() + "-";
 
@@ -173,11 +176,13 @@ public class LevelController : MonoBehaviour
 
             else if (i < maxFloor - 1)
             {
+                Debug.Log("DIEU spawn normal");
                 res += GenerateBodyBlockID(DifficultyLevel.Normal, i).ToString() + "-";
-
+                    
             }
             else
             {
+                Debug.Log("DIEU spawn hard");
                 res += GenerateBodyBlockID(DifficultyLevel.Hard, i).ToString() + "-";
 
             }
@@ -208,4 +213,9 @@ public class LevelController : MonoBehaviour
         GenerateEndBlock(blockId[blockId.Count - 1]);
 
     }
+
+    private void GetOutOfTheWell(Vector3 posSpawn)
+    {
+        GameObject cloud = PhotonNetwork.Instantiate(cloudPref.name, posSpawn, Quaternion.identity);
+    }    
 }
