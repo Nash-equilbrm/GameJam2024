@@ -21,7 +21,6 @@ public class Block : MonoBehaviour
     [SerializeField] private Tilemap thorn;
     [SerializeField] private Tilemap obstacle;
     [SerializeField] private Tilemap finish;
-    [SerializeField] Tile tile;
 
     public Tilemap Wall { get => wall; set => wall = value; }
     public Tilemap Thorn { get => thorn; set => thorn = value; }
@@ -33,8 +32,8 @@ public class Block : MonoBehaviour
     public Vector3 GetBlockMapSize()
     {
         Vector3Int size = wall.size;
-        Vector3 cellSize = Vector3.one * tile.sprite.bounds.size.x; 
-        Vector3 worldSize = new(size.x * cellSize.x, (size.y * cellSize.y) - (tile.sprite.bounds.size.y * 4), size.z * cellSize.z);
+        Vector3 cellSize = Vector3.one; 
+        Vector3 worldSize = new(size.x * cellSize.x, (size.y * cellSize.y) - 4f, size.z * cellSize.z);
         return worldSize;
     }
 
