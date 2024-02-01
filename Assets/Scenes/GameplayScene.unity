@@ -452,6 +452,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6308947163925386084, guid: 231949a4a772b884d824467e0d00022d, type: 3}
+      propertyPath: maxWell
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308947163925386084, guid: 231949a4a772b884d824467e0d00022d, type: 3}
       propertyPath: maxFloor
       value: 100
       objectReference: {fileID: 0}
