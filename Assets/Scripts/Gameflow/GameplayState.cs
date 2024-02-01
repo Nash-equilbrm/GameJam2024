@@ -8,6 +8,7 @@ using Photon.Pun;
 using HaloKero.UI;
 using ExitGames.Client.Photon;
 using System.Collections;
+using System.Linq;
 
 
 
@@ -100,7 +101,7 @@ namespace HaloKero.Gameplay
 
 
 
-        private float _checkForResultDelay = 1f;
+        private float _checkForResultDelay = 1.5f;
         private float _checkResultTimer = 0f;
         private IEnumerator OnTimeUpCoRoutine()
         {
@@ -118,23 +119,30 @@ namespace HaloKero.Gameplay
             Debug.Log("CheckResult");
             float max = 0;
             int winnerActorNumber = -1;
-            foreach (var p in PhotonNetwork.PlayerList)
+            int pCount = 0;
+            while(pCount < PhotonNetwork.PlayerList.Count())
             {
-                if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("p" + p.ActorNumber.ToString(), out object scoreObj))
+                pCount = 0;
+                foreach (var p in PhotonNetwork.PlayerList)
                 {
-                    float score = (float)scoreObj;
-                    if (max < score)
+                    if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("p" + p.ActorNumber.ToString(), out object scoreObj))
                     {
-                        max = score;
-                        winnerActorNumber = p.ActorNumber;
+                        float score = (float)scoreObj;
+                        if (max < score)
+                        {
+                            max = score;
+                            winnerActorNumber = p.ActorNumber;
+                        }
+                        Debug.Log("score " + p.ActorNumber.ToString() + ": " + score);
+                        pCount++;
                     }
-                    Debug.Log("score " + p.ActorNumber.ToString() + ": " + score);
+                    else
+                    {
+                        // Handle the case where "ready" custom property is not found
+                        Debug.LogWarning("Custom property 'score' not found for player: " + p.ActorNumber);
+                    }
                 }
-                else
-                {
-                    // Handle the case where "ready" custom property is not found
-                    Debug.LogWarning("Custom property 'score' not found for player: " + p.ActorNumber);
-                }
+
             }
 
             if (PhotonNetwork.LocalPlayer.ActorNumber == winnerActorNumber)
