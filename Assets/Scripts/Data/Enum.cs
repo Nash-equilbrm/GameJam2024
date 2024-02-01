@@ -45,6 +45,7 @@ public enum EventID
     OnTimeChanged,
     OnMapGenerate,
     OnHeightChanged,
+    CameraShake,
 
     //PLAYER
     PlayerJump,
