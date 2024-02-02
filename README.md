@@ -16,3 +16,6 @@
 - Press "Space" to jump.
 - Press "E" to activate your character's skill.
 - Race to the top to prove you are the best ninja frog.
+
+# Game URL:
+https://nash-equ17ibrium.itch.io/halo-kero
