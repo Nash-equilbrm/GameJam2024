@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
     private Transform jumpEffect;
     private ParticleSystem JumpParticle;
     private Vector3 lastJumpPosition;
+
+    private SpriteRenderer sr;
+    private float colorLooseRate;
+    
     private void OnDestroy()
     {
         this.Unregister(EventID.TimeUp, OnTimeUp);
@@ -262,5 +266,13 @@ public class PlayerController : MonoBehaviour
     public void HitGroundSound()
     {
         this.Broadcast(EventID.PlayerHitGround);
+    }
+
+    public void SetupAfterImage(float _loosingSpeed, Sprite _spriteImage)
+    {
+        sr = GetComponent<SpriteRenderer>();
+
+        sr.sprite = _spriteImage;
+        colorLooseRate = _loosingSpeed;
     }
 }
