@@ -21,6 +21,8 @@ public enum EventID
     OnLanguageChange,
     OnGameLoading,
     OnBtnClick,
+    IgnoreTouch,
+    StopIgnoreTouch,
 
 
     // MULTIPLAYER
@@ -53,6 +55,7 @@ public enum EventID
     PlayerHitGround,
     PlayerFlip,
     DartHitDart,
+    PlayerUseSkill,
     StartSummonSkill,
     SkillActive,
 

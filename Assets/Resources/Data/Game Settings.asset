@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _music: 0.19365132
   _soundFx: 0.10635305
-  _gameDuration: 5
+  _gameDuration: 120

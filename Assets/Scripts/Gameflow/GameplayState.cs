@@ -30,9 +30,11 @@ namespace HaloKero.Gameplay
             _playing = true;
             _timer = _gameDuration;
             UIManager.Instance?.HideAllScreens();
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
             UIManager.Instance?.ShowOverlap<GameplayOverlap>(forceShowData: true);
-
-
+#elif UNITY_ANDROID
+            UIManager.Instance?.ShowOverlap<GameplayOverlapTouchScreen>(forceShowData: true);
+#endif
             _context.Register(EventID.EndGamePlay, OnEndGame);
             _context.Register(EventID.BackToMenu, GoBackToMainMenu);
 
@@ -73,7 +75,7 @@ namespace HaloKero.Gameplay
                 _timer -= Time.deltaTime;
                 _context.Broadcast(EventID.OnTimeChanged, _timer);
             }
-            else if(_playing) 
+            else if (_playing)
             {
                 _context.Broadcast(EventID.TimeUp);
                 OnTimeUp();
@@ -88,7 +90,7 @@ namespace HaloKero.Gameplay
             UIManager.Instance?.HideAllPopups();
 
             UIManager.Instance?.ShowScreen<ResultScreen>(forceShowData: true);
-            
+
             _context.StartCoroutine(OnTimeUpCoRoutine());
         }
 
@@ -105,7 +107,7 @@ namespace HaloKero.Gameplay
         private float _checkResultTimer = 0f;
         private IEnumerator OnTimeUpCoRoutine()
         {
-            while(_checkResultTimer < _checkForResultDelay)
+            while (_checkResultTimer < _checkForResultDelay)
             {
                 _checkResultTimer += Time.deltaTime;
                 yield return null;
@@ -120,7 +122,7 @@ namespace HaloKero.Gameplay
             float max = 0;
             int winnerActorNumber = -1;
             int pCount = 0;
-            while(pCount < PhotonNetwork.PlayerList.Count())
+            while (pCount < PhotonNetwork.PlayerList.Count())
             {
                 pCount = 0;
                 foreach (var p in PhotonNetwork.PlayerList)

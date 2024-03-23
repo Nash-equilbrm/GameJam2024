@@ -3,6 +3,7 @@ using Photon.Pun;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 //[RequireComponent(typeof(Rigidbody2D), typeof(TouchDirection))]
 public class PlayerController : MonoBehaviour
@@ -28,10 +29,12 @@ public class PlayerController : MonoBehaviour
     public PhotonView photonView;
 
     public bool canMove;
+    public bool ignoreTap = false;
     public float cantMoveTime;
 
     public Animator animator;
 
+    private bool _tapLastFrame = false;
 
     private Transform jumpEffect;
     private ParticleSystem JumpParticle;
@@ -39,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer sr;
     private float colorLooseRate;
-    
+
     private void OnDestroy()
     {
         this.Unregister(EventID.TimeUp, OnTimeUp);
@@ -69,6 +72,10 @@ public class PlayerController : MonoBehaviour
         Camera.main.GetComponent<CameraFollow>().SetupCamera(this.transform);
         // when time's up
         this.Register(EventID.TimeUp, OnTimeUp);
+
+#if UNITY_ANDROID
+        this.Register(EventID.PlayerUseSkill, OnPlayerStartUseSkill);
+#endif
     }
 
     public bool isFacingRight
@@ -90,9 +97,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //Casting Skill
-        
+
         //Check control permission
-        if (!photonView.IsMine) return; 
+        if (!photonView.IsMine) return;
         if (photonView.CreatorActorNr != PhotonNetwork.LocalPlayer.ActorNumber)
         {
             return;
@@ -117,8 +124,8 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Stun", true);
             }
-            
-        }      
+
+        }
         if (!canMove && touchDirection.isGrounded && cantMoveTime <= 0)
         {
             canMove = true;
@@ -144,23 +151,44 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsHurt", !touchDirection.isGrounded);
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && canMove)
+        bool jumpCondition = false;
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        jumpCondition = Input.GetKeyDown(KeyCode.Space);
+#elif UNITY_ANDROID
+        jumpCondition = (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began  && !ignoreTap);
+#endif
+        if (jumpCondition)
         {
-            photonView.RPC("SetTriggerJumping", RpcTarget.Others);
-            SetTriggerJumping();
-            //Adio and GFX
-            lastJumpPosition = transform.position;
+#if UNITY_ANDROID
+            if (_tapLastFrame)
+            {
+                _tapLastFrame = false;
+                return;
+            }
+#endif
+            if (canMove)
+            {
+                photonView.RPC("SetTriggerJumping", RpcTarget.Others);
+                SetTriggerJumping();
+                lastJumpPosition = transform.position;
 
-            jumpEffect.position = new Vector3(lastJumpPosition.x, lastJumpPosition.y - 0.556f, lastJumpPosition.z);
-            this.Broadcast(EventID.PlayerJump);
-            JumpParticle.Play();
-            //Physic
-            rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
+                jumpEffect.position = new Vector3(lastJumpPosition.x, lastJumpPosition.y - 0.556f, lastJumpPosition.z);
+                this.Broadcast(EventID.PlayerJump);
+                JumpParticle.Play();
+                rb.velocity = new Vector2(isFacingRight ? speed : -speed, jumpForce);
+#if UNITY_ANDROID
+                _tapLastFrame = true;
+#endif
+
+            }
         }
-
-
+        else if (Input.touchCount > 0 && ignoreTap)
+        {
+            ignoreTap = false;
+        }
     }
+
+
     [PunRPC]
     public void SetTriggerJumping()
     {
@@ -190,7 +218,18 @@ public class PlayerController : MonoBehaviour
         {
             currentSkillCD -= Time.timeScale * Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.E) && !isSkillCasting && currentSkillCD <= 0)
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OnPlayerStartUseSkill();
+        }
+#endif
+    }
+
+    private void OnPlayerStartUseSkill(object data = null)
+    {
+        ignoreTap = true;
+        if (!isSkillCasting && currentSkillCD <= 0)
         {
             animator.SetBool("IsSummoning", true);
             this.Broadcast(EventID.StartSummonSkill);
@@ -198,6 +237,7 @@ public class PlayerController : MonoBehaviour
             //photonView.RPC("UseSkill", RpcTarget.All);
         }
     }
+
 
     [PunRPC]
     private void UseSkill()
